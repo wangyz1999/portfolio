@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@/layouts/Base";
 import PostPreview from "@/components/blog/PostPreview";
+import ResearchPreview from "@/components/research/ResearchPreview";
 import SocialList from "@/components/SocialList";
 import { sortMDByDate } from "@/utils";
 import { Picture } from "@astrojs/image/components";
@@ -10,8 +11,12 @@ import resume_src from "../assets/resume.pdf";
 import InLineLink from "@/components/InLineLink";
 
 const MAX_POSTS = 10;
+
 const allPosts = await getCollection("post");
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
+
+const allResearch = await getCollection("research");
+// const allResearchByDate = sortMDByDate(allResearch).slice(0, MAX_RESEARCH);
 ---
 
 <PageLayout meta={{ title: "Home" }}>
@@ -62,6 +67,26 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 		</div>
 	</section>
 
+	<section class="mt-16">
+		<h2 class="title mb-4 text-xl">Research</h2>
+		<ul class="space-y-3 sm:space-y-10">
+			{
+				allResearch.map((p) => (
+					<li class="flex flex-col">
+						<ResearchPreview research={p} />
+					</li>
+				))
+			}
+			<!-- <ResearchPreview research="sda" />
+			<ResearchPreview research="sd" />
+			<ResearchPreview research="sd" />
+			<ResearchPreview research="sd" />
+			<ResearchPreview research="sd" />
+			<ResearchPreview research="sd" />
+			<ResearchPreview research="sd" /> -->
+		</ul>
+	</section>
+
 	<section aria-label="Blog post list" class="mt-16">
 		<h2 class="title mb-4 text-xl">Posts</h2>
 		<ul class="space-y-4 sm:space-y-2">
@@ -73,9 +98,5 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 				))
 			}
 		</ul>
-	</section>
-
-	<section class="mt-16">
-		<h2 class="title mb-4 text-xl">New Section</h2>
 	</section>
 </PageLayout>

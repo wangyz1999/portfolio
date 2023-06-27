@@ -1,0 +1,42 @@
+---
+import { Image } from "@astrojs/image/components";
+
+const { research, as: Element = "div" } = Astro.props;
+---
+
+<Element class="flex flex-col sm:flex-row">
+	<!-- <div class="w-1/4 bg-green-500 p-1 text-white">
+		<Image
+			src={research.data.feature}
+			alt={research.data.title}
+			width={"100%"}
+			aspectRatio={1}
+		/>
+	</div>
+	<div class="w-3/4 bg-blue-500 p-1 text-white">This is a larger div.</div> -->
+	<div class="flex w-full items-center justify-center text-white sm:w-1/4">
+		<Image src={research.data.feature} alt={research.data.title} height={400} aspectRatio={1} />
+	</div>
+	<div class="flex w-full flex-col p-4 pl-7 text-white sm:w-3/4">
+		<h2 class="title mb-3 text-xl">{research.data.title}</h2>
+		<ul class="flex flex-row flex-wrap text-gray-500">
+			{
+				research.data.authors.map((author: string, idx: number) => {
+					return (
+						<li
+							class="mr-2"
+							style={
+								idx === research.data.author_idx
+									? { textDecoration: "underline" }
+									: null
+							}
+						>
+							{author}
+							{idx !== research.data.authors.length - 1 ? "," : ""}
+						</li>
+					);
+				})
+			}
+		</ul>
+	</div>
+</Element>
