@@ -4,6 +4,10 @@ import PageLayout from "@/layouts/Base";
 import PostPreview from "@/components/blog/PostPreview";
 import SocialList from "@/components/SocialList";
 import { sortMDByDate } from "@/utils";
+import { Picture } from "@astrojs/image/components";
+import profile_pic from "../assets/profile.jpg";
+import resume_src from "../assets/resume.pdf";
+import InLineLink from "@/components/InLineLink";
 
 const MAX_POSTS = 10;
 const allPosts = await getCollection("post");
@@ -12,14 +16,52 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
 <PageLayout meta={{ title: "Home" }}>
 	<section>
-		<h1 class="title mb-6">Hello World!</h1>
-		<p class="mb-4">
-			Hi, I’m a theme for Astro, an example of how you can use this starter to create a personal
-			blog. If you want to know more about how you can customise me, add more posts, and make it
-			your own, click on one the github icon link below which will take you to my repo.
-		</p>
-		<SocialList />
+		<div class="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+			<div class="flex-1 p-4">
+				<Picture
+					class="mx-auto w-full rounded-md"
+					widths={[400, 768, 1024, 2040]}
+					sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+					loading="eager"
+					width={1024}
+					height={576}
+					src={profile_pic}
+					alt="profile"
+				/>
+				<div class="mt-4">
+					<SocialList />
+				</div>
+			</div>
+			<div class="flex-1 p-4">
+				<h1 class="text-xxl title mb-4">Yunzhe Wang</h1>
+				<p class="mb-4">
+					I'm a M.S. Computer Science student at Columbia University working with Prof. <InLineLink
+						href="https://www.hodlipson.com/"
+						text="Hod Lipson"
+					/>, Dr. <InLineLink href="http://boyuanchen.com/" text="Boyuan Chen" />, and PhD
+					candidate <InLineLink href="https://www.yuhang-hu.com/" text="Yuhang Hu" />. I
+					work on Efficient Machine Learning within Robotics.
+				</p>
+				<p class="mb-4">
+					Previous, I obtained my B.S. Computational Neuroscience and B.A. Applied
+					Mathematics at University of Southern California, lucky to work with Dr. <InLineLink
+						href="https://www.linkedin.com/in/volkan-ustun-9883a74/"
+						text="Volkan Ustun"
+					/> on Reinforcement Learning for Socially Intelligent Agents.
+				</p>
+
+				<p class="mb-4">
+					I'm interested in Cognitive Science and Artifitial Intelligence with a recent
+					focus on Multimodal and Large Language Model.
+				</p>
+
+				<p class="mb-4">
+					Check out my <InLineLink href={resume_src} text="Resume" />
+				</p>
+			</div>
+		</div>
 	</section>
+
 	<section aria-label="Blog post list" class="mt-16">
 		<h2 class="title mb-4 text-xl">Posts</h2>
 		<ul class="space-y-4 sm:space-y-2">

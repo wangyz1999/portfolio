@@ -1,0 +1,12 @@
+---
+let {
+	href = "#",
+	target = "_blank",
+	rel = "noopener noreferrer",
+	text = "Link text",
+} = Astro.props;
+---
+
+<a href={href} target={target} rel={rel} class="cactus-link inline-block">
+	{text}
+</a>
