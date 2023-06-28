@@ -1,5 +1,6 @@
 ---
 import { Image } from "@astrojs/image/components";
+import InLineLink from "@/components/InLineLink";
 
 const { research, as: Element = "div" } = Astro.props;
 ---
@@ -38,6 +39,16 @@ const { research, as: Element = "div" } = Astro.props;
 				})
 			}
 		</ul>
-		<p class="text-black dark:text-white">{research.data.title}</p>
+		<p class="mb-3 italic text-black dark:text-white">{research.data.description}</p>
+
+		<ul class="flex flex-row text-black dark:text-white">
+			{
+				Object.entries(research.data.links).map(([key, value]) => (
+					<li class="mr-3">
+						[<InLineLink text={key} href={value} />]
+					</li>
+				))
+			}
+		</ul>
 	</div>
 </Element>

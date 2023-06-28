@@ -7,9 +7,10 @@ publishDate: "01 Feb 2023"
 authors: ["Yunzhe Wang", "Nikolos Gurney", "Jincheng Zhou", "David V. Pynadath", "Volkan Ustun"]
 author_idx: 0
 
+description: "AAAI 2021 Fall Symposium Series Workshop"
+
 links: 
-    Arxiv: "https://arxiv.org/abs/cs/0006027"
-    Github: "https://github.com/trendemia/trendemia-starfield"
+    Paper: "https://link.springer.com/chapter/10.1007/978-3-031-21671-8_14"
+    Code: "https://github.com/trendemia/trendemia-starfield"
 ---
 
-## Testing the title tag
