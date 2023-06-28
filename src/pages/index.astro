@@ -7,7 +7,6 @@ import SocialList from "@/components/SocialList";
 import { sortMDByDate } from "@/utils";
 import { Picture } from "@astrojs/image/components";
 import profile_pic from "../assets/profile.jpg";
-import resume_src from "../assets/resume.pdf";
 import InLineLink from "@/components/InLineLink";
 
 const MAX_POSTS = 10;
@@ -61,7 +60,7 @@ const allResearch = await getCollection("research");
 				</p>
 
 				<p class="mb-4">
-					Check out my <InLineLink href={resume_src} text="Resume" />
+					Check out my <InLineLink href="/resume.pdf" text="Resume" />
 				</p>
 			</div>
 		</div>
