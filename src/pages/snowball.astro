@@ -10,7 +10,7 @@ const meta = {
 };
 
 let images = [];
-for (let i = 0; i < 50; i++) {
+for (let i = 0; i < 45; i++) {
 	// Change 10 to the number of images you want
 	let width = Math.floor(Math.random() * 800) + 1000; // Random width between 100 and 1100
 	let height = Math.floor(Math.random() * 800) + 1000; // Random height between 100 and 1100
@@ -18,7 +18,45 @@ for (let i = 0; i < 50; i++) {
 }
 ---
 
+<script>
+	const scrollBtn = document.getElementById("to-top-btn") as HTMLButtonElement;
+	const targetHeader = document.getElementById("snowball-header") as HTMLDivElement;
+
+	function callback(entries: IntersectionObserverEntry[]) {
+		entries.forEach((entry) => {
+			// only show the scroll to top button when the heading is out of view
+			scrollBtn.dataset.show = (!entry.isIntersecting).toString();
+		});
+	}
+
+	scrollBtn.addEventListener("click", () => {
+		document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
+	});
+
+	const observer = new IntersectionObserver(callback);
+	observer.observe(targetHeader);
+</script>
+
 <PageLayout meta={meta}>
-	<h1 class="title mb-6">Introducing 雪球 (snowball)</h1>
+	<h1 class="title mb-8" id="snowball-header">Introducing 雪球 (snowball)</h1>
 	<ImageGallery images={images} />
+	<button
+		id="to-top-btn"
+		class="z-90 fixed bottom-8 end-4 flex h-10 w-10 translate-y-28 items-center justify-center rounded-full border-2 border-transparent bg-zinc-200 text-3xl opacity-0 transition-all duration-300 hover:border-zinc-400 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 dark:bg-zinc-700 sm:end-8 sm:h-12 sm:w-12"
+		aria-label="Back to Top"
+		data-show="false"
+		><svg
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			focusable="false"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke-width="2"
+			stroke="currentColor"
+			class="h-6 w-6"
+		>
+			<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"
+			></path>
+		</svg>
+	</button>
 </PageLayout>
