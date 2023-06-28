@@ -71,19 +71,12 @@ const allResearch = await getCollection("research");
 		<h2 class="title mb-4 text-xl">Research</h2>
 		<ul class="space-y-3 sm:space-y-10">
 			{
-				allResearch.map((p) => (
+				allResearch.map((p: any) => (
 					<li class="flex flex-col">
 						<ResearchPreview research={p} />
 					</li>
 				))
 			}
-			<!-- <ResearchPreview research="sda" />
-			<ResearchPreview research="sd" />
-			<ResearchPreview research="sd" />
-			<ResearchPreview research="sd" />
-			<ResearchPreview research="sd" />
-			<ResearchPreview research="sd" />
-			<ResearchPreview research="sd" /> -->
 		</ul>
 	</section>
 

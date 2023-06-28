@@ -19,12 +19,12 @@ const { research, as: Element = "div" } = Astro.props;
 	</div>
 	<div class="flex w-full flex-col p-4 pl-7 text-white sm:w-3/4">
 		<h2 class="title mb-3 text-xl">{research.data.title}</h2>
-		<ul class="flex flex-row flex-wrap text-gray-500">
+		<ul class="mb-3 flex flex-row flex-wrap text-gray-500">
 			{
 				research.data.authors.map((author: string, idx: number) => {
 					return (
 						<li
-							class="mr-2"
+							class="mr-2 dark:text-gray-300"
 							style={
 								idx === research.data.author_idx
 									? { textDecoration: "underline" }
@@ -38,5 +38,6 @@ const { research, as: Element = "div" } = Astro.props;
 				})
 			}
 		</ul>
+		<p class="text-black dark:text-white">{research.data.title}</p>
 	</div>
 </Element>
