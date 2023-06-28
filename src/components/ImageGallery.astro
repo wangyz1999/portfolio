@@ -1,0 +1,24 @@
+---
+// Component Definition
+let { images = [] } = Astro.props;
+
+// Split the image array into four groups for the layout
+let imagesGroups = [
+    images.slice(0, Math.ceil(images.length / 4)),
+    images.slice(Math.ceil(images.length / 4), Math.ceil(images.length / 2)),
+    images.slice(Math.ceil(images.length / 2), Math.ceil((3 * images.length) / 4)),
+    images.slice(Math.ceil((3 * images.length) / 4), images.length),
+];
+---
+
+<div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+    {
+        imagesGroups.map((group) => (
+            <div class="grid gap-4">
+                {group.map((src: string) => (
+                    <img class="h-auto max-w-full rounded-lg" src={src} alt="" />
+                ))}
+            </div>
+        ))
+    }
+</div>

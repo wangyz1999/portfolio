@@ -2,6 +2,7 @@
 import PageLayout from "@/layouts/Base";
 // import { Image } from "@astrojs/image/components";
 // import aboutImg from "../assets/about-astro.png";
+import ProjectList from "@/components/projects/ProjectList";
 
 const meta = {
 	title: "About",
@@ -10,8 +11,81 @@ const meta = {
 ---
 
 <PageLayout meta={meta}>
-	<div class="space-y-6">
-		<h1 class="title">Featured</h1>
-		<h1 class="title">Programming Art</h1>
+	<div class="space-y-14">
+		<div>
+			<h1 class="title mb-8">Featured</h1>
+
+			<ProjectList
+				items={[
+					{
+						imgSrc: "https://picsum.photos/200",
+						imgAlt: "Image description 1",
+						title: "Title 1",
+					},
+					{
+						imgSrc: "https://picsum.photos/200",
+						imgAlt: "Image description 2",
+						title: "Title 2",
+					},
+					{
+						imgSrc: "https://picsum.photos/200",
+						imgAlt: "Image description 2",
+						title: "Title 2",
+					},
+				]}
+			/>
+		</div>
+
+		<div>
+			<h1 class="title mb-8">Programming Art</h1>
+
+			<ProjectList
+				items={[
+					{
+						imgSrc: "https://picsum.photos/200",
+						imgAlt: "Image description 1",
+						title: "Title 1",
+					},
+					{
+						imgSrc: "https://picsum.photos/200",
+						imgAlt: "Image description 2",
+						title: "Title 2",
+					},
+					{
+						imgSrc: "https://picsum.photos/200",
+						imgAlt: "Image description 2",
+						title: "Title 2",
+					},
+				]}
+			/>
+		</div>
+		<div>
+			<h1 class="title mb-8">Machine Learning</h1>
+
+			<ProjectList
+				items={[
+					{
+						imgSrc: "https://picsum.photos/200",
+						imgAlt: "Image description 1",
+						title: "Title 1",
+					},
+					{
+						imgSrc: "https://picsum.photos/200",
+						imgAlt: "Image description 2",
+						title: "Title 2",
+					},
+					{
+						imgSrc: "https://picsum.photos/200",
+						imgAlt: "Image description 2",
+						title: "Title 2",
+					},
+					{
+						imgSrc: "https://picsum.photos/200",
+						imgAlt: "Image description 2",
+						title: "Title 2",
+					},
+				]}
+			/>
+		</div>
 	</div>
 </PageLayout>

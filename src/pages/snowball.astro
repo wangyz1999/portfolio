@@ -1,22 +1,24 @@
 ---
 import PageLayout from "@/layouts/Base";
-import { Image } from "@astrojs/image/components";
-import aboutImg from "../assets/about-astro.png";
+// import { Image } from "@astrojs/image/components";
+// import aboutImg from "../assets/about-astro.png";
+import ImageGallery from "@/components/ImageGallery";
 
 const meta = {
 	title: "My cat snowball!",
 	description: "You found my cat!",
 };
+
+let images = [];
+for (let i = 0; i < 50; i++) {
+	// Change 10 to the number of images you want
+	let width = Math.floor(Math.random() * 800) + 1000; // Random width between 100 and 1100
+	let height = Math.floor(Math.random() * 800) + 1000; // Random height between 100 and 1100
+	images.push(`https://picsum.photos/${width}/${height}`);
+}
 ---
 
 <PageLayout meta={meta}>
 	<h1 class="title mb-6">Introducing 雪球 (snowball)</h1>
-	<div class="my-4 grid justify-center">
-		<Image
-			class="rotate-180"
-			src={aboutImg}
-			alt="A cartoon cactus looking at the 'Astro.build' logo"
-			loading="eager"
-		/>
-	</div>
+	<ImageGallery images={images} />
 </PageLayout>
