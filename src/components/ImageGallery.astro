@@ -16,7 +16,15 @@ let imagesGroups = [
         imagesGroups.map((group) => (
             <div class="grid gap-4">
                 {group.map((src: string) => (
-                    <img class="h-auto max-w-full rounded-lg" src={src} alt="" />
+                    <a href={src} target="_blank" rel="noopener noreferrer">
+                        <div class="overflow-hidden rounded-lg">
+                            <img
+                                class="h-auto max-w-full  transition-transform duration-500 ease-in-out hover:scale-125"
+                                src={src}
+                                alt=""
+                            />
+                        </div>
+                    </a>
                 ))}
             </div>
         ))
