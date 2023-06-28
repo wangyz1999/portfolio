@@ -17,7 +17,12 @@ const {
 
 <html lang={siteConfig.lang}>
 	<head>
-		<BaseHead title={title} description={description} ogImage={ogImage} articleDate={articleDate} />
+		<BaseHead
+			title={title}
+			description={description}
+			ogImage={ogImage}
+			articleDate={articleDate}
+		/>
 		<script define:vars={{ siteConfig }}>
 			const root = document.documentElement;
 			const colorThemeMetaTag = document.querySelector("meta[name='theme-color']");
@@ -49,6 +54,21 @@ const {
 
 			// initailse root class attribute
 			root.classList.toggle("dark", isDark);
+		</script>
+
+		<!-- Google tag (gtag.js) -->
+		<script
+			async
+			type="text/partytown"
+			src="https://www.googletagmanager.com/gtag/js?id=G-Z93QE73T55"></script>
+		<script type="text/partytown">
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "G-Z93QE73T55");
 		</script>
 	</head>
 	<body>
