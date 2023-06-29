@@ -1,7 +1,7 @@
 ---
 title: "Human-Robot Facial Co-expression"
 
-feature: "https://i.gifer.com/7jkq.gif"
+feature: "/imgs/projects/coexpress.gif"
 description: Submitted to Science Robotics (Revision)
 
 publishDate: "02 Jan 2023"
