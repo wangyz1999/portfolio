@@ -10,12 +10,13 @@ import profile_pic from "../assets/profile.jpg";
 import InLineLink from "@/components/InLineLink";
 
 const MAX_POSTS = 10;
+const MAX_RESEARCH = 10;
 
 const allPosts = await getCollection("post");
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
 const allResearch = await getCollection("research");
-// const allResearchByDate = sortMDByDate(allResearch).slice(0, MAX_RESEARCH);
+const allResearchByDate = sortMDByDate(allResearch).slice(0, MAX_RESEARCH);
 ---
 
 <PageLayout meta={{ title: "Home" }}>
@@ -70,7 +71,7 @@ const allResearch = await getCollection("research");
 		<h2 class="text-xxl title mb-4">Research</h2>
 		<ul class="space-y-3 sm:space-y-10">
 			{
-				allResearch.map((p: any) => (
+				allResearchByDate.map((p: any) => (
 					<li class="flex flex-col">
 						<ResearchPreview research={p} />
 					</li>
