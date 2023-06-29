@@ -1,5 +1,5 @@
 ---
-title: "Lip synchronization for Animatronic Robot Face"
+title: "Lip Synchronization for Animatronic Robot Face"
 
 feature: "imgs/projects/lip-sync.gif"
 description: In Preparation
@@ -10,8 +10,8 @@ authors: ["Yuhang Hu", "Yunzhe Wang", "Boyuan Chen", "Yingke Wang", "Jiong Lin",
 author_idx: 1
 
 links: 
-    Report: "#"
-    Code: "#"
+    Report: "/reports/lip-sync.pdf"
+    Code: "https://github.com/wangyz1999/3DTalkingFaceMesh"
 ---
 
 ## Testing the title tag

@@ -10,7 +10,6 @@ authors: ["Yuhang Hu", "Boyuan Chen", "Jiong Lin", "Yunzhe Wang", "Yingke Wang",
 author_idx: 3
 
 links: 
-    Paper: "#"
     Code: "https://github.com/H-Y-H-Y-H/HR_Facial_Coexpression"
 ---
 
