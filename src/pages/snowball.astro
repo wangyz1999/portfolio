@@ -4,18 +4,45 @@ import PageLayout from "@/layouts/Base";
 // import aboutImg from "../assets/about-astro.png";
 import ImageGallery from "@/components/ImageGallery";
 
+import { promises as fs } from "fs";
+import { join } from "path";
+
+let getImages = async () => {
+	const directoryPath = join(process.cwd(), "public/imgs/snowball"); // replace with your directory path
+	// const files = await fs.readdir(directoryPath);
+	// const images = files.filter((file) => file.endsWith(".jpeg"));
+	// return images.map((image) => [`/imgs/snowball/${image}`]);
+
+	const files = await fs.readdir(directoryPath);
+	let images = [];
+	for (let i = 0; i < files.length; i++) {
+		images.push([`/imgs/snowball/cat${i}.jpeg`]);
+	}
+	return images;
+};
+
+let images = await getImages();
+// console.log(images);
+
 const meta = {
 	title: "Snowball",
 	description: "My cat snowball, a.k.a 雪球 (xue qiu)",
 };
 
-let images = [];
-for (let i = 0; i < 45; i++) {
-	// Change 10 to the number of images you want
-	let width = Math.floor(Math.random() * 800) + 1000; // Random width between 100 and 1100
-	let height = Math.floor(Math.random() * 800) + 1000; // Random height between 100 and 1100
-	images.push(`https://picsum.photos/${width}/${height}`);
-}
+// let images = [];
+// for (let i = 0; i < 45; i++) {
+// 	// Change 10 to the number of images you want
+// 	let width = Math.floor(Math.random() * 800) + 1000; // Random width between 100 and 1100
+// 	let height = Math.floor(Math.random() * 800) + 1000; // Random height between 100 and 1100
+// 	images.push(`https://picsum.photos/${width}/${height}`);
+// }
+
+// for (let i = 0; i < 45; i++) {
+// 	// Change 10 to the number of images you want
+// 	// let width = Math.floor(Math.random() * 800) + 1000; // Random width between 100 and 1100
+// 	// let height = Math.floor(Math.random() * 800) + 1000; // Random height between 100 and 1100
+// 	images.push(`https://picsum.photos/${width}/${height}`);
+// }
 ---
 
 <script>
