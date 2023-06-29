@@ -1,7 +1,8 @@
 ---
 title: "Route Optimization in Service of a Search and Rescue Artificial Social Intelligence Agent"
 
-feature: "https://i.ibb.co/kBjHfM8/asist.webp"
+# feature: "https://i.ibb.co/kBjHfM8/asist.webp"
+feature: "/imgs/projects/asist.webp"
 
 publishDate: "01 Feb 2021"
 authors: ["Yunzhe Wang", "Nikolos Gurney", "Jincheng Zhou", "David V. Pynadath", "Volkan Ustun"]
@@ -11,6 +12,6 @@ description: "Association for the Advancement of Artificial Intelligence (AAAI) 
 
 links: 
     Paper: "https://link.springer.com/chapter/10.1007/978-3-031-21671-8_14"
-    Code: "https://github.com/trendemia/trendemia-starfield"
+    Code: "https://github.com/wangyz1999/Attention-ASIST"
 ---
 
