@@ -1,7 +1,7 @@
 ---
 title: "Lip synchronization for Animatronic Robot Face"
 
-feature: "https://i.gifer.com/7jkq.gif"
+feature: "imgs/projects/lip-sync.gif"
 description: In Preparation
 
 publishDate: "02 Jun 2022"
