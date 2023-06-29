@@ -1,7 +1,7 @@
 ---
 title: "Robot configuration identification from motion data"
 
-feature: "https://i.gifer.com/7jkq.gif"
+feature: "/imgs/projects/identification.gif"
 description: Submitted to the 7th Conference on Robot Learning (CoRL 2023)
 
 publishDate: "09 Jun 2023"

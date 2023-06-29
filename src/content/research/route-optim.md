@@ -2,7 +2,7 @@
 title: "Route Optimization in Service of a Search and Rescue Artificial Social Intelligence Agent"
 
 # feature: "https://i.ibb.co/kBjHfM8/asist.webp"
-feature: "/imgs/projects/asist.webp"
+feature: "/imgs/projects/asist.gif"
 
 publishDate: "01 Feb 2021"
 authors: ["Yunzhe Wang", "Nikolos Gurney", "Jincheng Zhou", "David V. Pynadath", "Volkan Ustun"]

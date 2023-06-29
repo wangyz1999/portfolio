@@ -10,9 +10,7 @@ authors: ["Yuhang Hu", "Yunzhe Wang", "Boyuan Chen", "Yingke Wang", "Jiong Lin",
 author_idx: 1
 
 links: 
-    Report 1: "#"
-    Report 2: "#"
-    Report 3: "#"
+    Report: "#"
     Code: "#"
 ---
 
