@@ -2,12 +2,24 @@
 import PageLayout from "@/layouts/Base";
 // import { Image } from "@astrojs/image/components";
 // import aboutImg from "../assets/about-astro.png";
-import ProjectList from "@/components/projects/ProjectList";
+import ProjectPreview from "@/components/projects/ProjectPreview";
+import { getCollection } from "astro:content";
+import { selectBySlug } from "@/utils";
 
 const meta = {
 	title: "Projects",
 	description: "Some of my projects that I've worked on.",
 };
+
+const allProjects = await getCollection("projects");
+
+const featuredProjectList = ["trendemia"];
+const programmingArtProjectList = ["trendemia"];
+const machineLearningProjectList = ["trendemia"];
+
+const featuredProjects = selectBySlug(allProjects, featuredProjectList);
+const programmingArtProjects = selectBySlug(allProjects, programmingArtProjectList);
+const machineLearningProjects = selectBySlug(allProjects, machineLearningProjectList);
 ---
 
 <script>
@@ -31,81 +43,30 @@ const meta = {
 
 <PageLayout meta={meta}>
 	<div class="space-y-14">
-		<div>
-			<h1 class="title mb-8" id="project-feature">Featured</h1>
-
-			<ProjectList
-				items={[
-					{
-						imgSrc: "https://picsum.photos/200",
-						imgAlt: "Image description 1",
-						title: "Title 1",
-					},
-					{
-						imgSrc: "https://picsum.photos/200",
-						imgAlt: "Image description 2",
-						title: "Title 2",
-					},
-					{
-						imgSrc: "https://picsum.photos/200",
-						imgAlt: "Image description 2",
-						title: "Title 2",
-					},
-				]}
-			/>
-		</div>
-
-		<div>
-			<h1 class="title mb-8">Programming Art</h1>
-
-			<ProjectList
-				items={[
-					{
-						imgSrc: "https://picsum.photos/200",
-						imgAlt: "Image description 1",
-						title: "Title 1",
-					},
-					{
-						imgSrc: "https://picsum.photos/200",
-						imgAlt: "Image description 2",
-						title: "Title 2",
-					},
-					{
-						imgSrc: "https://picsum.photos/200",
-						imgAlt: "Image description 2",
-						title: "Title 2",
-					},
-				]}
-			/>
-		</div>
-		<div>
-			<h1 class="title mb-8">Machine Learning</h1>
-
-			<ProjectList
-				items={[
-					{
-						imgSrc: "https://picsum.photos/200",
-						imgAlt: "Image description 1",
-						title: "Title 1",
-					},
-					{
-						imgSrc: "https://picsum.photos/200",
-						imgAlt: "Image description 2",
-						title: "Title 2",
-					},
-					{
-						imgSrc: "https://picsum.photos/200",
-						imgAlt: "Image description 2",
-						title: "Title 2",
-					},
-					{
-						imgSrc: "https://picsum.photos/200",
-						imgAlt: "Image description 2",
-						title: "Title 2",
-					},
-				]}
-			/>
-		</div>
+		<ul>
+			<li>
+				<h1 class="title mb-8" id="project-feature">Featured</h1>
+				<div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
+					{featuredProjects.map((p: any) => <ProjectPreview project={p} />)}
+				</div>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<h1 class="title mb-8" id="project-feature">Machine Learning</h1>
+				<div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
+					{machineLearningProjects.map((p: any) => <ProjectPreview project={p} />)}
+				</div>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<h1 class="title mb-8" id="project-feature">Progamming Art</h1>
+				<div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
+					{programmingArtProjects.map((p: any) => <ProjectPreview project={p} />)}
+				</div>
+			</li>
+		</ul>
 	</div>
 
 	<button

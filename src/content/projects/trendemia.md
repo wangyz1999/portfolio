@@ -1,11 +1,11 @@
 ---
-title: "A second research"
+title: "Trendemia"
+subtitle: "Haaaha"
 
-feature: "https://fastly.picsum.photos/id/223/200/300.jpg?hmac=IZftr2PJy4auHpfBpLuMtFhsxgQYlUgXdV5rFwjGItQ"
+description: "jajajaj"
+
+feature: "https://picsum.photos/200"
 
 
-links: 
-    Arxiv: "https://arxiv.org/abs/cs/0006027"
-    Github: "https://github.com/trendemia/trendemia-starfield"
 ---
 
