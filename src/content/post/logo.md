@@ -1,8 +1,8 @@
 ---
 title: "How I designed my website logo using AI tools in less than 30 minutes"
 publishDate: "29 Jun 2023"
-description: "Featuring Midjourney 5.2 + Vectorize.ai"
-tags: ["AI", "Web Design"]
+description: "Featuring Midjourney 5.2 + Vectorizer.ai"
+tags: ["AI", "Web"]
 ---
 
 ![The logo of my website, the big Y is the first letter of my name.](https://cdn-images-1.medium.com/max/3200/1*ao-xtFvCon1aqzMj2-udJQ.png)*The logo of my website, the big Y is the first letter of my name.*

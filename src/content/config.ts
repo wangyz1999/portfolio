@@ -31,4 +31,15 @@ const research = defineCollection({
 	}),
 });
 
-export const collections = { post, research };
+const project = defineCollection({
+	type: "content",
+	schema: z.object({
+		title: z.string(),
+		subtitle: z.string().optional(),
+		description: z.string().optional(),
+		publishDate: z.string().transform((str) => new Date(str)),
+		feature: z.string().optional()
+	}),
+});
+
+export const collections = { post, research, project };
