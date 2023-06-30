@@ -4,7 +4,7 @@ import PageLayout from "@/layouts/Base";
 import PostPreview from "@/components/blog/PostPreview";
 import ResearchPreview from "@/components/research/ResearchPreview";
 import SocialList from "@/components/SocialList";
-import { sortMDByDate } from "@/utils";
+import { sortMDByDate, sortResearchByDate } from "@/utils";
 import { Picture } from "@astrojs/image/components";
 import profile_pic from "../assets/profile.jpg";
 import InLineLink from "@/components/InLineLink";
@@ -16,7 +16,7 @@ const allPosts = await getCollection("post");
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
 const allResearch = await getCollection("research");
-const allResearchByDate = sortMDByDate(allResearch).slice(0, MAX_RESEARCH);
+const allResearchByDate = sortResearchByDate(allResearch).slice(0, MAX_RESEARCH);
 ---
 
 <PageLayout meta={{ title: "Home" }}>
