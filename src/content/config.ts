@@ -37,7 +37,6 @@ const project = defineCollection({
 		title: z.string(),
 		subtitle: z.string().optional(),
 		description: z.string().optional(),
-		publishDate: z.string().transform((str) => new Date(str)),
 		feature: z.string().optional()
 	}),
 });
