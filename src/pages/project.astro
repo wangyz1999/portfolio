@@ -13,9 +13,9 @@ const meta = {
 
 const allProjects = await getCollection("project");
 
-const featuredProjectList = ["trendemia"];
+const featuredProjectList = ["trendemia", "speaker-dia"];
 const programmingArtProjectList = ["trendemia"];
-const machineLearningProjectList = ["trendemia"];
+const machineLearningProjectList = ["speaker-dia", "coral-reef"];
 
 const featuredProjects = selectBySlug(allProjects, featuredProjectList);
 const programmingArtProjects = selectBySlug(allProjects, programmingArtProjectList);
