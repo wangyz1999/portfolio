@@ -10,8 +10,7 @@ authors: ["Yuhang Hu", "Yunzhe Wang", "Boyuan Chen", "Yingke Wang", "Jiong Lin",
 author_idx: 1
 
 links: 
-    Report: "/reports/lip-sync.pdf"
-    Code: "https://github.com/wangyz1999/3DTalkingFaceMesh"
+    Summary: "#"
 ---
 
 ## Testing the title tag

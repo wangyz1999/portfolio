@@ -10,7 +10,7 @@ authors: ["Volkan Ustun", "Ronit Jorvekar", "Nikolos Gurney", "David V Pynadath"
 author_idx: 4
 
 links: 
-    Paper: "https://drive.google.com/file/d/1-ehYh82Tqkhz4EGdBj7Bj_BlABCv1DxA/view?usp=sharing"
+    Summary: "#"
 ---
 
 ## Testing the title tag

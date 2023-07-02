@@ -11,7 +11,6 @@ author_idx: 0
 description: "Association for the Advancement of Artificial Intelligence (AAAI) 2021 Fall Symposium Series Workshop"
 
 links: 
-    Paper: "https://link.springer.com/chapter/10.1007/978-3-031-21671-8_14"
-    Code: "https://github.com/wangyz1999/Attention-ASIST"
+    Publication: "https://link.springer.com/chapter/10.1007/978-3-031-21671-8_14"
 ---
 
