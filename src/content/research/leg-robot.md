@@ -10,7 +10,7 @@ authors: ["Yuhang Hu", "Yunzhe Wang", "Ruibo Liu", "Zhou Shen", "Hod Lipson"]
 author_idx: 1
 
 links: 
-    Report: "/reports/leg-robot.pdf"
+    Summary: "#"
     Code: "https://github.com/H-Y-H-Y-H/meta_real"
 ---
 
