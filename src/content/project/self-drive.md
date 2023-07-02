@@ -1,10 +1,10 @@
 ---
-title: "starfield.trendemia.org"
-subtitle: "Interactive Visulization of 1.7M Arxiv Papers"
+title: "Automonous Driving Agent"
+subtitle: "Simulate a car racing agent using reinforcement learning in Unity3D"
 
 description: "jajajaj"
 
-feature: "/imgs/projects/trendemia.gif"
+feature: "/imgs/projects/self-drive.gif"
 
 
 ---

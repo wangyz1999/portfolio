@@ -1,10 +1,10 @@
 ---
-title: "starfield.trendemia.org"
-subtitle: "Interactive Visulization of 1.7M Arxiv Papers"
+title: "Unsupervised Neural Machine Translation"
+subtitle: "A Survery Project in Unsupervised Learning"
 
 description: "jajajaj"
 
-feature: "/imgs/projects/trendemia.gif"
+feature: "/imgs/projects/unmt.gif"
 
 
 ---
