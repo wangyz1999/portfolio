@@ -1,10 +1,10 @@
 ---
-title: "starfield.trendemia.org"
-subtitle: "Interactive Visulization of 1.7M Arxiv Papers"
+title: "Connection"
+subtitle: "Data Visulization of China City Connection using p5.js"
 
 description: "jajajaj"
 
-feature: "/imgs/projects/trendemia.gif"
+feature: "/imgs/projects/china-city.gif"
 
 
 ---

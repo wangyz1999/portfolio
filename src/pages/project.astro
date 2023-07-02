@@ -13,11 +13,18 @@ const meta = {
 
 const allProjects = await getCollection("project");
 
-const featuredProjectList = ["trendemia", "speaker-dia"];
-const programmingArtProjectList = ["trendemia"];
-const machineLearningProjectList = ["speaker-dia", "coral-reef"];
+const BrandingProjectList = ["trendemia"];
+const programmingArtProjectList = ["breath", "china-city", "firework"];
+const machineLearningProjectList = [
+	"speaker-dia",
+	"coral-reef",
+	"hunchback",
+	"mapf",
+	"self-drive",
+	"unmt",
+];
 
-const featuredProjects = selectBySlug(allProjects, featuredProjectList);
+const BrandingProjects = selectBySlug(allProjects, BrandingProjectList);
 const programmingArtProjects = selectBySlug(allProjects, programmingArtProjectList);
 const machineLearningProjects = selectBySlug(allProjects, machineLearningProjectList);
 ---
@@ -45,15 +52,15 @@ const machineLearningProjects = selectBySlug(allProjects, machineLearningProject
 	<div class="space-y-14">
 		<ul>
 			<li>
-				<h1 class="title mb-8" id="project-feature">Featured</h1>
+				<h1 class="title mb-8" id="project-feature">Branding</h1>
 				<div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
-					{featuredProjects.map((p: any) => <ProjectPreview project={p} />)}
+					{BrandingProjects.map((p: any) => <ProjectPreview project={p} />)}
 				</div>
 			</li>
 		</ul>
 		<ul>
 			<li>
-				<h1 class="title mb-8" id="project-feature">Machine Learning</h1>
+				<h1 class="title mb-8" id="project-feature">AI and Machine Learning</h1>
 				<div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
 					{machineLearningProjects.map((p: any) => <ProjectPreview project={p} />)}
 				</div>
