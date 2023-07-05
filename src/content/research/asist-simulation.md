@@ -10,7 +10,7 @@ authors: ["Volkan Ustun", "Ronit Jorvekar", "Nikolos Gurney", "David V Pynadath"
 author_idx: 4
 
 links: 
-    Summary: "#"
+    Summary: "/research/asist-simulation"
 ---
 
 ## Testing the title tag

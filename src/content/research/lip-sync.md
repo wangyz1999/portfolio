@@ -10,7 +10,7 @@ authors: ["Yuhang Hu", "Yunzhe Wang", "Boyuan Chen", "Yingke Wang", "Jiong Lin",
 author_idx: 1
 
 links: 
-    Summary: "#"
+    Summary: "/research/lip-sync"
 ---
 
 ## Testing the title tag
