@@ -8,10 +8,10 @@ publishDate: "01 Feb 2021"
 authors: ["Yunzhe Wang", "Nikolos Gurney", "Jincheng Zhou", "David V. Pynadath", "Volkan Ustun"]
 author_idx: 0
 
-description: "Association for the Advancement of Artificial Intelligence (AAAI) 2021 Fall Symposium Series Workshop"
+description: "Association for the Advancement of Artificial Intelligence (AAAI) 2021 Fall Symposium Series"
 
 links: 
-    Summary: "/research/route-optim"
+    Overview: "/research/route-optim"
     Publication: "https://link.springer.com/chapter/10.1007/978-3-031-21671-8_14"
 ---
 

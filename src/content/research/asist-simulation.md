@@ -2,7 +2,7 @@
 title: "Employing Neural Heuristics for Route Planning and Monitoring in Service of a Search and Rescue Artificial Social Intelligence Agent"
 
 feature: "/imgs/projects/asist-simulation.gif"
-description: ""
+description: "Submitted to the Winter Simulation Conference (WSC 2023)"
 
 publishDate: "02 Apr 2023"
 authors: ["Volkan Ustun", "Ronit Jorvekar", "Nikolos Gurney", "David V Pynadath", "Yunzhe Wang"]
@@ -10,7 +10,17 @@ authors: ["Volkan Ustun", "Ronit Jorvekar", "Nikolos Gurney", "David V Pynadath"
 author_idx: 4
 
 links: 
-    Summary: "/research/asist-simulation"
+    Overview: "/research/asist-simulation"
 ---
 
-## Testing the title tag
+## Employing Neural Heuristics for Route Planning and Monitoring in Service of a Search and Rescue Artificial Social Intelligence Agent
+
+In an Urban Search and Rescue (USAR) mission, it's important that an Artificial Social Intelligence (ASI) agent keeps track of how well the rescue team is moving through the area. Plus, understanding the choices the team makes about where to go can give helpful clues about how well the team is working and when the ASI agent should step in to help.
+
+New technologies, like Graph Neural Networks, transformers, and attention models, are now good enough to almost instantly figure out the best possible routes in such missions. This paper talks about a new system that uses these technologies to make and suggest routes to an ASI agent and to evaluate the route choices made by participants in the DARPA ASIST Minecraft USAR Task.
+
+This system also looks at whether it's helpful to use measures of how well the team moves through the area as a sign that the ASI agent needs to step in and help.
+
+## My Contribution
+
+Building upon my earlier work, I have suggested several enhancements to the existing neural network architecture and the training process that could lead to enhanced performance. For instance, I identified a method to incorporate the graph directly into the neural network, eliminating the requirement for dimensionality reduction. The team successfully accomplished the task of implementing and testing this new approach.

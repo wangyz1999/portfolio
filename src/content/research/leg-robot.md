@@ -10,7 +10,7 @@ authors: ["Yuhang Hu", "Yunzhe Wang", "Ruibo Liu", "Zhou Shen", "Hod Lipson"]
 author_idx: 1
 
 links: 
-    Summary: "/research/leg-robot"
+    Overview: "/research/leg-robot"
     Code: "https://github.com/H-Y-H-Y-H/meta_real"
 ---
 
@@ -33,7 +33,8 @@ I worked on the machine learning part of the project.
 
 - \> The efficacy of neural network architecture is significantly influenced by the underlying data assumptions. Progress was notably amplified when data was approached as a time series.
 - \> After establishing data assumptions and modalities, utilizing state-of-the-art encoder architectures as a baseline accelerates idea verification and performance evaluation.
-- \> WandB is an invaluable tool for automating hyperparameter optimization and tracking model experiments.
+- \> Training Data and Real-World Data Can Diverge: Models trained on robot simulation datasets might perform poorly on real-world physical robot due to "data distribution shift". Adaption techniques are needed to tackle this issue.
+- \> Various machine learning pachages such as PyTorch Lightning, WandB are created to shorten development and experimentation cycles through automated hyperparameter optimization and auto experiemnt tracking. 
 
 
 
