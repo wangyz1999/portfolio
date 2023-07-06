@@ -23,4 +23,12 @@ Imagine if this ASI tool could consider all this information while figuring out 
 
 But recent improvements in technology, specifically Graph Neural Networks, transformers, and attention models, could change that. These technologies could be used to quickly figure out nearly the best routes.
 
-In this paper, we use these new tech tools as part of a decision-making framework to find routes for the teams participating in a search and rescue task organized by DARPA ASIST in the game Minecraft. We'll also share what we've discovered so far.
+In this paper, we use these new tech tools as part of a decision-making framework to find routes for the teams participating in a search and rescue task organized by DARPA ASIST in the game Minecraft.
+
+## My Contribution
+
+- \> Developped a semantic graph environment for reinforcement learning and visulization
+ 
+- \> Immplemented 5 reinforcement learning and linear programming algorithms for route optimization.
+
+- \> Developed a sequential decision making framework leveraging Graph Transformer and the REINFORCE algorithm 
