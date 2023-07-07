@@ -3,11 +3,13 @@ const { project, as: Element = "div" } = Astro.props;
 ---
 
 <Element class="flex flex-col">
-	<img
-		src={project.data.feature}
-		alt={project.data.title}
-		class="h-50 w-full rounded-lg object-cover ease-in-out hover:opacity-80"
-	/>
+	<a href={project.data.imglink} target="_blank"
+		><img
+			src={project.data.feature}
+			alt={project.data.title}
+			class="h-50 w-full rounded-lg object-cover ease-in-out hover:opacity-80"
+		/></a
+	>
 	<h3 class="title my-3 text-center text-xl">{project.data.title}</h3>
 	<h3 class="text-center">{project.data.subtitle}</h3>
 </Element>
