@@ -40,4 +40,4 @@ In my first attempt to develop machine learning models from scratch in research,
 
 ## Current Status
 
-Due to hardware limitations and lack of degree of freedom of mouth module, the current robot motor cannot keep up with the real-time generated lip-synced facial expression and were unable to authentically make certain lips motion. A renouned journel submission is expected after resolving such hardware issues.
+Due to hardware limitations and lack of degree of freedom of the current mouth module, the robot motor cannot keep up with the real-time generated lip-synced facial expression and were unable to make authentically motion in certain lips region. A renouned journel submission is expected after overcomming such limitation.
