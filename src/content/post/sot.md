@@ -17,11 +17,11 @@ In this article, you’ll receive a concise overview of various prompt engineeri
 
 - Chain-of-Thought
 - Chain-of-Thought-Self-Consistency
-- Tree-of-Thought
-- Graph-of-Thought
-- Algorithm-of-Thought
+- Tree-of-Thoughts
+- Graph-of-Thoughts
+- Algorithm-of-Thoughts
 - Skeleton-of-Thought
-- Program-of-Thought
+- Program-of-Thoughts
 
 ## Chain-of-Thought (CoT)
 *Instead of directly outputting an answer, provide the language model with intermediate reasoning examples to guide its response.*
@@ -81,7 +81,7 @@ The [Skeleton-of-Thought (SoT)](https://arxiv.org/abs/2307.15337) paradigm is di
 
 In the initial “Skeleton Stage,” rather than producing a comprehensive response, the model is prompted to generate a concise answer skeleton. This abbreviated representation prompted through a meticulously crafted skeleton template, captures the core elements of the prospective answer, thus establishing a foundation for the subsequent stage.
 
-In the ensuing “Point-Expanding Stage,” the LLM systematically amplifies each component delineated in the answer skeleton. Leveraging a point-expanding prompt template, the model concurrently elaborates on each segment of the skeleton. This dichotomous approach, which separates the generative process into preliminary skeletal formulation and parallelized detailed expansion, not only accelerates response generation but also strives to uphold the coherence and precision of the outputs
+In the ensuing “Point-Expanding Stage,” the LLM systematically amplifies each component delineated in the answer skeleton. Leveraging a point-expanding prompt template, the model concurrently elaborates on each segment of the skeleton. This dichotomous approach, which separates the generative process into preliminary skeletal formulation and parallelized detailed expansion, not only accelerates response generation but also strives to uphold the coherence and precision of the outputs.
 
 ## Program-of-Thoughts (PoT)
 *Formulate the reasoning behind question answering into an executable program, incorporated the program intepretor output as part of the final answer.*
