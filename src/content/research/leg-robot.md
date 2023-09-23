@@ -2,7 +2,7 @@
 title: "Robot Configuration Identification from Motion Data"
 
 feature: "/imgs/projects/identification.gif"
-description: Submitted to the 7th Conference on Robot Learning (CoRL 2023)
+description: Submitted to the 7th Conference on Robot Learning (ICRA 2024)
 
 publishDate: "09 Jun 2023"
 authors: ["Yuhang Hu", "Yunzhe Wang", "Ruibo Liu", "Zhou Shen", "Hod Lipson"]
