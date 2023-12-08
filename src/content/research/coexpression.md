@@ -2,7 +2,7 @@
 title: "Human-Robot Facial Co-expression"
 
 feature: "/imgs/projects/coexpress.gif"
-description: Science Robotics (In Revision)
+description: Science Robotics (Under Evaluation)
 
 publishDate: "02 Jan 2023"
 authors: ["Yuhang Hu", "Boyuan Chen", "Jiong Lin", "Yunzhe Wang", "Yingke Wang", "Cameron Mehlman", "Hod Lipson"]

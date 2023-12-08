@@ -2,7 +2,7 @@
 title: "Employing Neural Heuristics for Route Planning and Monitoring in Service of a Search and Rescue Artificial Social Intelligence Agent"
 
 feature: "/imgs/projects/asist-simulation.gif"
-description: "Submitted to the Winter Simulation Conference (WSC 2023)"
+description: "Accepted to 16th International Conference on Agents and Artificial Intelligence (ICAART 2024)"
 
 publishDate: "02 Apr 2023"
 authors: ["Volkan Ustun", "Ronit Jorvekar", "Nikolos Gurney", "David V Pynadath", "Yunzhe Wang"]
@@ -23,4 +23,4 @@ This system also looks at whether it's helpful to use measures of how well the t
 
 ## My Contribution
 
-Building upon my earlier work, I have suggested several enhancements to the existing neural network architecture and the training process that could lead to enhanced performance. For instance, I identified a method to incorporate the graph directly into the neural network, eliminating the requirement for dimensionality reduction. The team successfully accomplished the task of implementing and testing this new approach.
+Building upon my earlier work, I have suggested several ideas that enhances the existing approach such as neural architecture changes, training pipeline, data collection. I also helped analyzing and visualizing data that access routing performance improvement in human-AI teaming scenerio.

@@ -2,7 +2,7 @@
 title: "Lip Synchronization for Animatronic Robot Face"
 
 feature: "/imgs/projects/lip-sync.gif"
-description: In Preparation
+description: In Submission
 
 publishDate: "02 Jun 2022"
 authors: ["Yuhang Hu", "Yunzhe Wang", "Boyuan Chen", "Yingke Wang", "Jiong Lin", "Hod Lipson"]
