@@ -1,5 +1,5 @@
 ---
-title: "Employing Neural Heuristics for Route Planning and Monitoring in Service of a Search and Rescue Artificial Social Intelligence Agent"
+title: "Assessing Routing Decisions of Search and Rescue Teams in Service of an Artificial Social Intelligence Agent"
 
 feature: "/imgs/projects/asist-simulation.gif"
 description: "Accepted to 16th International Conference on Agents and Artificial Intelligence (ICAART 2024)"
