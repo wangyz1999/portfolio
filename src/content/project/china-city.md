@@ -1,6 +1,6 @@
 ---
 title: "Connection"
-subtitle: "Data Visulization of China City Connection using p5.js"
+subtitle: "China City Connection Visualization"
 imglink: https://youtu.be/i-6xpqGxad0
 description: "jajajaj"
 

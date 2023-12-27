@@ -2,34 +2,28 @@
 import PageLayout from "@/layouts/Base";
 // import { Image } from "@astrojs/image/components";
 // import aboutImg from "../assets/about-astro.png";
+import ImageGallery from "@/components/ImageGallery";
 import ProjectPreview from "@/components/project/ProjectPreview";
-import { getCollection } from "astro:content";
 import { selectBySlug } from "@/utils";
+import { getCollection } from "astro:content";
+
+import { promises as fs } from "fs";
+import { join } from "path";
 
 const meta = {
-	title: "Project",
-	description: "Some of my projects that I've worked on.",
+	title: "Hobbies",
+	description: "My hobbies and interests outside of work",
 };
 
+const programmingArtProjectList = ["breath", "china-city", "firework"];
 const allProjects = await getCollection("project");
+const programmingArtProjects = selectBySlug(allProjects, programmingArtProjectList);
 
-const BrandingProjectList = ["trendemia"];
-const machineLearningProjectList = [
-	"speaker-dia",
-	"coral-reef",
-	"hunchback",
-	"mapf",
-	"self-drive",
-	"unmt",
-];
-
-const BrandingProjects = selectBySlug(allProjects, BrandingProjectList);
-const machineLearningProjects = selectBySlug(allProjects, machineLearningProjectList);
 ---
 
 <script>
 	const scrollBtn = document.getElementById("to-top-btn") as HTMLButtonElement;
-	const targetHeader = document.getElementById("project-feature") as HTMLDivElement;
+	const targetHeader = document.getElementById("snowball-header") as HTMLDivElement;
 
 	function callback(entries: IntersectionObserverEntry[]) {
 		entries.forEach((entry) => {
@@ -47,25 +41,21 @@ const machineLearningProjects = selectBySlug(allProjects, machineLearningProject
 </script>
 
 <PageLayout meta={meta}>
+	<h1 class="title mb-2" id="program-art">Programming Art</h1>
+	<h2 class="subtitle mb-8 text-base">The Artistic Side of My Code</h2>
 	<div class="space-y-14">
-		<ul>
-			<li>
-				<h1 class="title mb-8" id="project-feature">Web App</h1>
-				<div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
-					{BrandingProjects.map((p: any) => <ProjectPreview project={p} />)}
-				</div>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				<h1 class="title mb-8" id="project-feature">AI and ML</h1>
-				<div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
-					{machineLearningProjects.map((p: any) => <ProjectPreview project={p} />)}
-				</div>
-			</li>
-		</ul>
+		<div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
+			{programmingArtProjects.map((p: any) => <ProjectPreview project={p} />)}
+		</div>
 	</div>
 
+	<h1 class="title mb-8" id="photography-header">Photography</h1>
+	<h1 class="title mb-8" id="drawing-header">Drawing</h1>
+	<h1 class="title mb-8" id="cooking-header">Cooking</h1>
+	<h1 class="title mb-8" id="singing-header">Singing</h1>
+	<h1 class="title mb-8" id="minecraft-header">Minecraft</h1>
+
+	<!-- <ImageGallery images={images} /> -->
 	<button
 		id="to-top-btn"
 		class="z-90 fixed bottom-8 end-4 flex h-10 w-10 translate-y-28 items-center justify-center rounded-full border-2 border-transparent bg-zinc-200 text-3xl opacity-0 transition-all duration-300 hover:border-zinc-400 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 dark:bg-zinc-700 sm:end-8 sm:h-12 sm:w-12"

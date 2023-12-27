@@ -12,7 +12,11 @@ export const MENU_LINKS = [
 		path: "/posts/",
 	},
 	{
-		title: "My Cat",
+		title: "Hobbies",
+		path: "/hobbies/",
+	},
+	{
+		title: "Snowball",
 		path: "/snowball/",
 	},
 ];
