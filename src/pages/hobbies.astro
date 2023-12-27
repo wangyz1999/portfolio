@@ -1,14 +1,9 @@
 ---
 import PageLayout from "@/layouts/Base";
-// import { Image } from "@astrojs/image/components";
-// import aboutImg from "../assets/about-astro.png";
-import ImageGallery from "@/components/ImageGallery";
+import ImageGrid from "@/components/ImageGrid";
 import ProjectPreview from "@/components/project/ProjectPreview";
 import { selectBySlug } from "@/utils";
 import { getCollection } from "astro:content";
-
-import { promises as fs } from "fs";
-import { join } from "path";
 
 const meta = {
 	title: "Hobbies",
@@ -50,7 +45,8 @@ const programmingArtProjects = selectBySlug(allProjects, programmingArtProjectLi
 	</div>
 
 	<h1 class="title mb-2 mt-6" id="photography-header">Photography</h1>
-	<h2 class="subtitle mb-8 text-base">Once a year, go someplace I've never been before.</h2>
+	<h2 class="subtitle mb-8 text-base">Once a year, go someplace I've never been before</h2>
+
 
 
 	<h1 class="title mb-2 mt-6" id="drawing-header">Drawing</h1>
