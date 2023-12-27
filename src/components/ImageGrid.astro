@@ -1,0 +1,22 @@
+---
+// Define the component with props for different screen sizes
+let { images = [], cols = 1, smCols = 2, mdCols = 3, lgCols = 4 } = Astro.props;
+---
+
+<div class={`grid grid-cols-${cols} sm:grid-cols-${smCols} md:grid-cols-${mdCols} lg:grid-cols-${lgCols} gap-4`}>
+    {
+        images.map((src) => (
+            <a href={src} target="_blank" rel="noopener noreferrer">
+                <div class="overflow-hidden rounded-lg">
+                    <img
+                        class="h-auto max-w-full transition-transform duration-500 ease-in-out hover:scale-125"
+                        src={src}
+                        alt=""
+                    />
+                </div>
+            </a>
+        ))
+    }
+</div>
+
+
