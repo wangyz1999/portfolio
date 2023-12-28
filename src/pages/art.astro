@@ -20,11 +20,12 @@ async function getImages(folder: string, prefix: string) {
 }
 
 const meta = {
-	title: "Hobbies",
-	description: "My hobbies and interests outside of work",
+	title: "Art",
+	description: "My artistic side, including photography, sketching, culinary ...",
 };
 
 let img_photo = await getImages("photo", "photo");
+let img_drawing = await getImages("draw", "draw");
 
 const programmingArtProjectList = ["breath", "china-city", "firework"];
 const allProjects = await getCollection("project");
@@ -51,7 +52,7 @@ const programmingArtProjects = selectBySlug(allProjects, programmingArtProjectLi
 </script>
 
 <PageLayout meta={meta}>
-	<h1 class="title mb-2" id="program-art">Programming Art</h1>
+	<h1 class="title mb-2" id="program-art">Coding</h1>
 	<h2 class="subtitle mb-8 text-base">The Artistic Side of My Code</h2>
 	<div class="space-y-14">
 		<div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
@@ -63,9 +64,12 @@ const programmingArtProjects = selectBySlug(allProjects, programmingArtProjectLi
 	<h2 class="subtitle mb-8 text-base">Once a year, go someplace I've never been before</h2>
 	<ImageGrid images={img_photo} />
 
-	<h1 class="title mb-2 mt-6" id="drawing-header">Drawing</h1>
-	<h1 class="title mb-2 mt-6" id="cooking-header">Cooking</h1>
-	<h1 class="title mb-2 mt-6" id="singing-header">Singing</h1>
+	<h1 class="title mb-2 mt-6" id="drawing-header">Sketch</h1>
+	<h2 class="subtitle mb-8 text-base">My earliest hobby, since pre-school</h2>
+	<ImageGrid images={img_drawing} />
+
+	<h1 class="title mb-2 mt-6" id="cooking-header">Culinary</h1>
+	<h1 class="title mb-2 mt-6" id="singing-header">Vocal</h1>
 	<h1 class="title mb-2 mt-6" id="minecraft-header">Minecraft</h1>
 
 	<!-- <ImageGallery images={images} /> -->
