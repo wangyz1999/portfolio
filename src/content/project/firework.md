@@ -5,8 +5,4 @@ imglink: https://youtu.be/3jlBbc7pvCQ
 description: "jajajaj"
 
 feature: "/imgs/projects/firework.gif"
-
-
 ---
-
-

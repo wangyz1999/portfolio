@@ -5,7 +5,4 @@ imglink: https://github.com/wangyz1999/hunchback-detection
 description: "jajajaj"
 
 feature: "/imgs/projects/hunchback.gif"
-
-
 ---
-

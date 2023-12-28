@@ -5,11 +5,11 @@ description: "Understanding bias in word embeddings and their implications on AI
 tags: ["NLP", "AI"]
 ---
 
-![image by Midjourney](https://cdn-images-1.medium.com/max/2048/1*OfwmEGSyAwqLILjlWqHp9w.png)*image by Midjourney*
+![image by Midjourney](https://cdn-images-1.medium.com/max/2048/1*OfwmEGSyAwqLILjlWqHp9w.png)_image by Midjourney_
 
 The rapid growth of artificial intelligence (AI) and natural language processing (NLP) in recent years has transformed various industries, from healthcare to finance. As AI systems continue to weave themselves into the fabric of our daily lives, ensuring that these systems are fair, transparent, and unbiased becomes increasingly important. Bias in AI and NLP can emerge in different ways — from the data collection and training process to the algorithms' design, and can inadvertently perpetuate or even amplify existing societal biases and stereotypes.
 
-![Hungarian is a gender-neutral language with no gendered pronouns, so Google Translate automatically chooses the gender for you. Image source [@DoraVargha](https://twitter.com/DoraVargha) from Twitter](https://cdn-images-1.medium.com/max/3600/0*F22lVSC9k1MWMz7e)*Hungarian is a gender-neutral language with no gendered pronouns, so Google Translate automatically chooses the gender for you. Image source [@DoraVargha](https://twitter.com/DoraVargha) from Twitter*
+![Hungarian is a gender-neutral language with no gendered pronouns, so Google Translate automatically chooses the gender for you. Image source [@DoraVargha](https://twitter.com/DoraVargha) from Twitter](https://cdn-images-1.medium.com/max/3600/0*F22lVSC9k1MWMz7e)_Hungarian is a gender-neutral language with no gendered pronouns, so Google Translate automatically chooses the gender for you. Image source [@DoraVargha](https://twitter.com/DoraVargha) from Twitter_
 
 Within NLP, biases can be encoded in word embeddings, which are mathematical representations of words that capture their meaning and semantic relationships. When biases find their way into word embeddings, they can unintentionally affect the AI systems that utilize them, leading to unfair or discriminatory outcomes. For example, gender bias present in word embeddings can reinforce gender stereotypes and contribute to unequal treatment of different genders in AI applications, such as recommendation systems, translation services, and resume scoring.
 
@@ -21,7 +21,7 @@ The first step in addressing bias in NLP systems is to identify and measure the 
 
 In a similar vein, we can apply the concept of the IAT to word embeddings. Word embeddings, such as [Word2Vec](https://arxiv.org/abs/1301.3781) and [GloVe](https://nlp.stanford.edu/pubs/glove.pdf), are trained on large text corpora and encode semantic relationships between words as vectors. These vectors can then be used to perform analogy tests that reveal potential biases in the embeddings. For example, if the analogy “man is to computer programmer as woman is to homemaker” holds for a given word embedding, the model encodes a gender stereotype.
 
-![Word2Vec and GloVe word embeddings.](https://cdn-images-1.medium.com/max/2100/0*9So_GeF7CQYLBU-6.png)*Word2Vec and GloVe word embeddings.*
+![Word2Vec and GloVe word embeddings.](https://cdn-images-1.medium.com/max/2100/0*9So_GeF7CQYLBU-6.png)_Word2Vec and GloVe word embeddings._
 
 Researchers have developed the [Word Embedding Association Test (WEAT)](https://researchportal.bath.ac.uk/en/publications/semantics-derived-automatically-from-language-corpora-necessarily) to detect biases in word embeddings systematically. WEAT compares two sets of target words (e.g., male and female names) and two sets of attribute words (e.g., career and family-related words) and tests the null hypothesis that there is no difference in the semantic similarity between the target sets and attribute sets. By permuting all combinations of target sets and attribute sets, WEAT calculates a test statistic that quantifies the degree of association between target and attribute word sets. If there is no bias present, the difference in association scores should not be significant. On the other hand, if a bias is detected, we can identify which pairs of input and target words contribute to the observed bias.
 
@@ -65,7 +65,7 @@ Limitations of Debiasing Techniques: Although these debiasing methods show some 
 
 1. Classifier Performance: Another way to evaluate the efficacy of debiasing techniques is to train a classifier to predict the gender of a word based on its embeddings. Using the 5,000 most biased gendered words, researchers trained a support vector machine (SVM) classifier on 1,000 random samples and predicted the gender for the remaining 4,000 words. The results showed that the prediction accuracy dropped only marginally with both debiasing methods, suggesting that the debiased embeddings still carry significant gender information.
 
-![Clustering for HARD-DEBIASED (post-processing) embedding, before (left-hand-side) and after (right-hand-side) debiasing, a clear separation can still be seen, though explicit effort in debiasing. Figure 1 (a). Lipstick on a Pig: Debiasing Methods Cover up Systematic Gender Biases in Word Embeddings But do not Remove Them Source: (Gonen and Goldberg 2019)](https://cdn-images-1.medium.com/max/2000/1*xNPSHe9WG0y2xoYWa10uXA.png)*Clustering for HARD-DEBIASED (post-processing) embedding, before (left-hand-side) and after (right-hand-side) debiasing, a clear separation can still be seen, though explicit effort in debiasing. Figure 1 (a). Lipstick on a Pig: Debiasing Methods Cover up Systematic Gender Biases in Word Embeddings But do not Remove Them Source: (Gonen and Goldberg 2019)*
+![Clustering for HARD-DEBIASED (post-processing) embedding, before (left-hand-side) and after (right-hand-side) debiasing, a clear separation can still be seen, though explicit effort in debiasing. Figure 1 (a). Lipstick on a Pig: Debiasing Methods Cover up Systematic Gender Biases in Word Embeddings But do not Remove Them Source: (Gonen and Goldberg 2019)](https://cdn-images-1.medium.com/max/2000/1*xNPSHe9WG0y2xoYWa10uXA.png)_Clustering for HARD-DEBIASED (post-processing) embedding, before (left-hand-side) and after (right-hand-side) debiasing, a clear separation can still be seen, though explicit effort in debiasing. Figure 1 (a). Lipstick on a Pig: Debiasing Methods Cover up Systematic Gender Biases in Word Embeddings But do not Remove Them Source: (Gonen and Goldberg 2019)_
 
 These limitations highlight the challenges faced in addressing biases in NLP systems. Despite the progress made in developing debiasing techniques, they have not yet proven to be completely effective in eliminating biases from word embeddings. It is essential for researchers and AI practitioners to continue exploring new methods and refining existing techniques to address bias in NLP better and build fairer AI systems.
 
@@ -85,10 +85,10 @@ As AI practitioners, it is our responsibility to be aware of our work's biases a
 
 ## References
 
-[1] Caliskan, Aylin, Joanna J. Bryson, and Arvind Narayanan. [Semantics derived automatically from language corpora contain human-like biases.](https://www.science.org/doi/10.1126/science.aal4230) (2017) *Science* 356.6334: 183–186.
+[1] Caliskan, Aylin, Joanna J. Bryson, and Arvind Narayanan. [Semantics derived automatically from language corpora contain human-like biases.](https://www.science.org/doi/10.1126/science.aal4230) (2017) _Science_ 356.6334: 183–186.
 
-[2] Bolukbasi, Tolga, et al. [Man is to computer programmer as woman is to homemaker? debiasing word embeddings.](https://papers.nips.cc/paper_files/paper/2016/hash/a486cd07e4ac3d270571622f4f316ec5-Abstract.html) (2016) *Advances in neural information processing systems* 29.
+[2] Bolukbasi, Tolga, et al. [Man is to computer programmer as woman is to homemaker? debiasing word embeddings.](https://papers.nips.cc/paper_files/paper/2016/hash/a486cd07e4ac3d270571622f4f316ec5-Abstract.html) (2016) _Advances in neural information processing systems_ 29.
 
-[3] May, Chandler, et al. [On measuring social biases in sentence encoders.](https://arxiv.org/abs/1903.10561) (2019) *arXiv preprint arXiv:1903.10561*.
+[3] May, Chandler, et al. [On measuring social biases in sentence encoders.](https://arxiv.org/abs/1903.10561) (2019) _arXiv preprint arXiv:1903.10561_.
 
-[4] Gonen, Hila, and Yoav Goldberg. (2019) [Lipstick on a pig: Debiasing methods cover up systematic gender biases in word embeddings but do not remove them.](https://arxiv.org/abs/1903.03862) *arXiv preprint arXiv:1903.03862*.
+[4] Gonen, Hila, and Yoav Goldberg. (2019) [Lipstick on a pig: Debiasing methods cover up systematic gender biases in word embeddings but do not remove them.](https://arxiv.org/abs/1903.03862) _arXiv preprint arXiv:1903.03862_.

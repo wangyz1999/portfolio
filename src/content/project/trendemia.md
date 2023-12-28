@@ -7,7 +7,4 @@ imglink: "https://starfield.trendemia.org"
 description: "jajajaj"
 
 feature: "/imgs/projects/trendemia.gif"
-
-
 ---
-

@@ -5,7 +5,4 @@ subtitle: "Kaggle: Objection Detecting crown-of-thorns starfish"
 description: "jajajaj"
 
 feature: "/imgs/projects/reef.gif"
-
-
 ---
-

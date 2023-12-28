@@ -9,8 +9,8 @@ authors: ["Volkan Ustun", "Ronit Jorvekar", "Nikolos Gurney", "David V Pynadath"
 
 author_idx: 4
 
-links: 
-    Overview: "/research/asist-simulation"
+links:
+  Overview: "/research/asist-simulation"
 ---
 
 ## Employing Neural Heuristics for Route Planning and Monitoring in Service of a Search and Rescue Artificial Social Intelligence Agent

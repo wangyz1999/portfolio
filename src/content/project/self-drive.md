@@ -5,7 +5,4 @@ imglink: https://csci527.wixsite.com/agentsmart
 description: "jajajaj"
 
 feature: "/imgs/projects/self-drive.gif"
-
-
 ---
-
