@@ -2,9 +2,8 @@
 import PageLayout from "@/layouts/Base";
 import ImageGrid from "@/components/ImageGrid";
 import ProjectPreview from "@/components/project/ProjectPreview";
-import { selectBySlug } from "@/utils";
+import { selectBySlug, getImages } from "@/utils";
 import { getCollection } from "astro:content";
-import { getImages } from "@/utils";
 
 const meta = {
 	title: "Hobbies",
@@ -21,7 +20,7 @@ const programmingArtProjects = selectBySlug(allProjects, programmingArtProjectLi
 
 <script>
 	const scrollBtn = document.getElementById("to-top-btn") as HTMLButtonElement;
-	const targetHeader = document.getElementById("snowball-header") as HTMLDivElement;
+	const targetHeader = document.getElementById("program-art") as HTMLDivElement;
 
 	function callback(entries: IntersectionObserverEntry[]) {
 		entries.forEach((entry) => {

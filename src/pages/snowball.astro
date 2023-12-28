@@ -4,7 +4,6 @@ import ImageGallery from "@/components/ImageGallery";
 import { getImages } from "@/utils";
 
 let images = await getImages("snowball", "cat");
-// console.log(images);
 
 const meta = {
 	title: "Snowball",
@@ -32,7 +31,7 @@ const meta = {
 </script>
 
 <PageLayout meta={meta}>
-	<h1 class="title mb-8" id="snowball-header">Introducing 雪球 (snowball)</h1>
+	<h1 class="title mb-8" id="snowball-header">Introducing Snowball</h1>
 	<ImageGallery images={images}/>
 
 	<button
