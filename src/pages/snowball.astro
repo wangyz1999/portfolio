@@ -8,10 +8,14 @@ async function getImages(folder: string, prefix: string) {
 	const directoryPath = join(process.cwd(), `public/imgs/${folder}`);
 
 	let files = await fs.readdir(directoryPath);
-	files = files.filter((file) => file.startsWith(prefix));
+	files = files.filter((file: string) => file.startsWith(prefix) && !file.endsWith("_tn.webp"));
+
 	let images = [];
 	for (let i = 0; i < files.length; i++) {
-		images.push(`/imgs/${folder}/${prefix}${i}.jpeg`);
+		images.push({
+			src: `/imgs/${folder}/${prefix}${i}.jpeg`,
+			thumbnail: `/imgs/${folder}/${prefix}${i}_tn.webp`,
+		});
 	}
 	return images;
 }
