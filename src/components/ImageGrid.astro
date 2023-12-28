@@ -1,17 +1,22 @@
 ---
 let { images = [], cols = 1, smCols = 2, mdCols = 3, lgCols = 4 } = Astro.props;
+
+interface Img {
+	src: string;
+	thumbnail: string;
+}
 ---
 
 <div
 	class={`grid grid-cols-${cols} sm:grid-cols-${smCols} md:grid-cols-${mdCols} lg:grid-cols-${lgCols} gap-4`}
 >
 	{
-		images.map((src: string) => (
-			<a href={src} target="_blank" rel="noopener noreferrer">
+		images.map((img: Img) => (
+			<a href={img.src} target="_blank" rel="noopener noreferrer">
 				<div class="overflow-hidden rounded-lg">
 					<img
 						class="h-auto max-w-full transition-transform duration-500 ease-in-out hover:scale-125"
-						src={src}
+						src={img.thumbnail}
 						alt=""
 					/>
 				</div>
