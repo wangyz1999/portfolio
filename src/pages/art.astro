@@ -26,6 +26,7 @@ const meta = {
 
 let img_photo = await getImages("photo", "photo");
 let img_drawing = await getImages("sketch", "draw");
+let img_culinary = await getImages("cook", "dish");
 
 const programmingArtProjectList = ["breath", "china-city", "firework"];
 const allProjects = await getCollection("project");
@@ -60,17 +61,19 @@ const programmingArtProjects = selectBySlug(allProjects, programmingArtProjectLi
 		</div>
 	</div>
 
-	<h1 class="title mb-2 mt-6" id="photography-header">Photography</h1>
+	<h1 class="title mb-2 mt-12" id="photography-header">Photography</h1>
 	<h2 class="subtitle mb-8 text-base">Once a year, go someplace I've never been before</h2>
 	<ImageGrid images={img_photo} />
 
-	<h1 class="title mb-2 mt-6" id="drawing-header">Sketch</h1>
+	<h1 class="title mb-2 mt-12" id="drawing-header">Sketch</h1>
 	<h2 class="subtitle mb-8 text-base">My earliest hobby, since pre-school</h2>
 	<ImageGrid images={img_drawing} />
 
-	<h1 class="title mb-2 mt-6" id="cooking-header">Culinary</h1>
-	<h1 class="title mb-2 mt-6" id="singing-header">Vocal</h1>
-	<h1 class="title mb-2 mt-6" id="minecraft-header">Minecraft</h1>
+	<h1 class="title mb-2 mt-12" id="cooking-header">Culinary</h1>
+	<h2 class="subtitle mb-8 text-base">I try to make some of my dishes look good</h2>
+	<ImageGrid images={img_culinary} />
+
+	<h1 class="title mb-2 mt-12" id="minecraft-header">Minecraft</h1>
 
 	<!-- <ImageGallery images={images} /> -->
 	<button
