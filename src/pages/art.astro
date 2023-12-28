@@ -1,6 +1,7 @@
 ---
 import PageLayout from "@/layouts/Base";
 import ImageGrid from "@/components/ImageGrid";
+import MusicGrid from "@/components/MusicGrid";
 import ProjectPreview from "@/components/project/ProjectPreview";
 import { selectBySlug } from "@/utils";
 import { getCollection } from "astro:content";
@@ -24,9 +25,27 @@ const meta = {
 	description: "My artistic side, including photography, sketching, culinary ...",
 };
 
-let img_photo = await getImages("photo", "photo");
-let img_drawing = await getImages("sketch", "draw");
-let img_culinary = await getImages("cook", "dish");
+const img_photo = await getImages("photo", "photo");
+const img_drawing = await getImages("sketch", "draw");
+const img_culinary = await getImages("cook", "dish");
+
+const songs = [
+	{
+		title: "Perfect",
+		coverImg: "/imgs/song/song0.jpg",
+		audioSrc: "/audio/song0.mp3",
+	},
+	{
+		title: "If I Were Young 年少有为 ",
+		coverImg: "/imgs/song/song1.jpg",
+		audioSrc: "/audio/song1.mp3",
+	},
+	{
+		title: "一次就好",
+		coverImg: "/imgs/song/song2.webp",
+		audioSrc: "/audio/song2.mp3",
+	},
+];
 
 const programmingArtProjectList = ["breath", "china-city", "firework"];
 const allProjects = await getCollection("project");
@@ -73,7 +92,12 @@ const programmingArtProjects = selectBySlug(allProjects, programmingArtProjectLi
 	<h2 class="subtitle mb-8 text-base">I try to make some of my dishes look good</h2>
 	<ImageGrid images={img_culinary} />
 
+	<h1 class="title mb-2 mt-12" id="vocal-header">Vocal</h1>
+	<h2 class="subtitle mb-8 text-base">I sing, sometimes</h2>
+	<MusicGrid songs={songs} />
+
 	<h1 class="title mb-2 mt-12" id="minecraft-header">Minecraft</h1>
+	<h2 class="subtitle mb-8 text-base">I own a non-profit Minecraft community server</h2>
 
 	<!-- <ImageGallery images={images} /> -->
 	<button
