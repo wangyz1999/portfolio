@@ -4,11 +4,14 @@ import ImageGrid from "@/components/ImageGrid";
 import ProjectPreview from "@/components/project/ProjectPreview";
 import { selectBySlug } from "@/utils";
 import { getCollection } from "astro:content";
+import { getImages } from "@/utils";
 
 const meta = {
 	title: "Hobbies",
 	description: "My hobbies and interests outside of work",
 };
+
+let img_photo = await getImages("photo", "photo");
 
 const programmingArtProjectList = ["breath", "china-city", "firework"];
 const allProjects = await getCollection("project");
@@ -46,7 +49,7 @@ const programmingArtProjects = selectBySlug(allProjects, programmingArtProjectLi
 
 	<h1 class="title mb-2 mt-6" id="photography-header">Photography</h1>
 	<h2 class="subtitle mb-8 text-base">Once a year, go someplace I've never been before</h2>
-
+	<ImageGrid images={img_photo} />
 
 
 	<h1 class="title mb-2 mt-6" id="drawing-header">Drawing</h1>
