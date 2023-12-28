@@ -13,7 +13,7 @@ def create_thumbnails(folder_name):
             image_path = os.path.join(folder_name, filename)
             with Image.open(image_path) as img:
                 # Calculate the thumbnail size
-                thumbnail_size = tuple([int(dim / 2) for dim in img.size])
+                thumbnail_size = tuple([int(dim * 2 / 5) for dim in img.size])
 
                 # Create and save the thumbnail
                 img.thumbnail(thumbnail_size)
