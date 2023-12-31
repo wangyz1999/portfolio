@@ -25,7 +25,7 @@ In this article, you’ll receive a concise overview of various prompt engineeri
 
 ## Chain-of-Thought (CoT)
 
-_Instead of directly outputting an answer, provide the language model with intermediate reasoning examples to guide its response._
+> Instead of directly outputting an answer, provide the language model with intermediate reasoning examples to guide its response.
 
 [Chain-of-Thought (CoT)](https://arxiv.org/abs/2201.11903) prompting has been recognized as one of the pioneering and most impactful prompt engineering techniques, enhancing the decision-making processes in large language models. Distinct from conventional prompting methodologies that emphasize direct input-output interactions, CoT compels a model to segment its reasoning into intermediary steps. This method draws parallels to human cognitive processes wherein intricate challenges are segmented into smaller, more manageable components.
 
@@ -35,13 +35,13 @@ To illustrate, consider a mathematical problem: “Roger possesses 5 tennis ball
 
 ### Chain-of-Thought-Self-Consistency (CoT-SC)
 
-_Construct multiple chains of thought, evaluate each one, and ultimately select the most effective and coherent chain._
+> Construct multiple chains of thought, evaluate each one, and ultimately select the most effective and coherent chain.
 
 A subsequent advancement from the Chain of Thought framework is [CoT-Self-consistency](https://arxiv.org/abs/2203.11171). This method instigates multiple concurrent reasoning pathways in response to a query and applies weighting mechanisms prior to finalizing an answer. This approach resembles ensemble techniques observed in traditional machine learning but is applied to thought sequences in large language models.
 
 ## Tree-of-Thoughts (ToT)
 
-_Expand on the chains of thought in a tree format. This allows for backtracking, exploring multiple branches of reasoning stemming from a single root idea._
+> Expand on the chains of thought in a tree format. This allows for backtracking, exploring multiple branches of reasoning stemming from a single root idea.
 
 [Tree-of-Thoughts (ToT)](https://arxiv.org/abs/2305.10601) offers a more structured prompting framework for LLM reasoning by breaking down complex problems into more manageable parts. Unlike the CoT which reasons in a linked chain, ToT organizes its problem-solving strategy in a tree format. Each node, referred to as a ‘thought,’ is a coherent language sequence serving as a step towards the final answer. By dividing problems into these discrete ‘thought’ units — from a brief series of words in a crossword puzzle to a component of a mathematical equation — ToT ensures that each phase of the problem is systematically addressed.
 
@@ -53,7 +53,7 @@ ToT’s importance stems from its holistic design, adaptability, and efficiency.
 
 ## Graph-of-Thoughts (GoT)
 
-_Evolve the tree structure into Direct Acyclic Graphs. This introduces self-loops which can either solidify a particular line of thought or aggregate multiple thoughts into a cohesive one._
+> Evolve the tree structure into Direct Acyclic Graphs. This introduces self-loops which can either solidify a particular line of thought or aggregate multiple thoughts into a cohesive one.
 
 The [Graph-of-Thoughts (GoT)](https://arxiv.org/abs/2308.09687) framework represents an advanced progression from CoT and ToT methodologies. Central to the GoT framework is the conceptualization of ideas as vertices in a Directed Acyclic Graph (DAG). In this context, each vertex corresponds to a specific thought or solution — be it preliminary, intermediary, or terminal — elicited by an input stimulus. The directed edges within this graph depict the interdependency among these thoughts. Specifically, if an edge extends from thought t1​ to t2​, it signifies that t2​ was conceived based on t1​. This systematization permits a multiplicity of thoughts since nodes may be classified into distinct categories such as “plans” or “outcomes”.
 
@@ -65,7 +65,7 @@ Furthermore, GoT introduces an evaluative dimension through Scoring and Ranking.
 
 ## Algorithm-of-Thoughts (AoT)
 
-_Maintains a single evolving context chain, eliminating the need for redundant queries as in the Tree-of-Thought. It explores a mutable path of reasoning._
+> Maintains a single evolving context chain, eliminating the need for redundant queries as in the Tree-of-Thought. It explores a mutable path of reasoning.
 
 While ToT and GoT address the LLM reasoning challenge through search-based mechanisms, producing a myriad of reasoning paths in graph forms. However, their heavy reliance on numerous LLM queries, sometimes numbering in the hundreds for a singular problem, poses computational inefficiencies.
 
@@ -79,7 +79,7 @@ The cornerstone of AoT lies in its four main components: 1) Decomposing complex 
 
 ## Skeleton-of-Thought (SoT)
 
-_Generate an answer blueprint first before parallelly fleshing out the details, reducing the time taken to generate a complete response._
+> Generate an answer blueprint first before parallelly fleshing out the details, reducing the time taken to generate a complete response.
 
 The [Skeleton-of-Thought (SoT)](https://arxiv.org/abs/2307.15337) paradigm is distinctively designed not primarily to augment the reasoning capabilities of Large Language Models (LLMs), but to address the pivotal challenge of minimizing end-to-end generation latency. The methodology operates based on a dual-stage approach that focuses on producing a preliminary blueprint of the answer, followed by its comprehensive expansion.
 
@@ -91,7 +91,7 @@ In the ensuing “Point-Expanding Stage,” the LLM systematically amplifies eac
 
 ## Program-of-Thoughts (PoT)
 
-_Formulate the reasoning behind question answering into an executable program, incorporated the program intepretor output as part of the final answer._
+> Formulate the reasoning behind question answering into an executable program, incorporated the program intepretor output as part of the final answer.
 
 [Program-of-Thoughts (PoT)](https://arxiv.org/abs/2211.12588) is a unique approach to LLM reasoning, instead of merely generating an answer in natural language, PoT mandates the creation of an executable program, which means it can be run on a program interpreter, like Python, to produce tangible outcomes. This method stands in contrast to more direct models, emphasizing its ability to break down reasoning into sequential steps and associate semantic meanings with variables. As a result, PoT offers a clearer, more expressive, and grounded model of how answers are derived, enhancing accuracy and understanding, especially for math-type logical questions where numerical calculations are needed.
 
