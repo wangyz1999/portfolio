@@ -11,14 +11,14 @@ export const MENU_LINKS = [
 		title: "Blog",
 		path: "/posts/",
 	},
-	{
-		title: "Hobbies",
-		path: "/hobbies/",
-	},
-	{
-		title: "Snowball",
-		path: "/snowball/",
-	},
+	// {
+	// 	title: "Hobbies",
+	// 	path: "/hobbies/",
+	// },
+	// {
+	// 	title: "Snowball",
+	// 	path: "/snowball/",
+	// },
 ];
 
 // ! Remember to add your own socials
