@@ -1,8 +1,8 @@
 ---
-title: "Robot Configuration Identification from Motion Data"
+title: "Reconfigurable Robot Identification from Motion Data"
 
 feature: "/imgs/projects/identification.gif"
-description: Submitted to 2024 IEEE International Conference on Robotics and Automation (ICRA2024)
+description: IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2024) (Oral)
 
 publishDate: "09 Jun 2023"
 authors: ["Yuhang Hu", "Yunzhe Wang", "Ruibo Liu", "Zhou Shen", "Hod Lipson"]
@@ -10,11 +10,11 @@ authors: ["Yuhang Hu", "Yunzhe Wang", "Ruibo Liu", "Zhou Shen", "Hod Lipson"]
 author_idx: 1
 
 links:
-  Overview: "/research/leg-robot"
-  Code: "https://github.com/H-Y-H-Y-H/meta_real"
+  Paper: "https://arxiv.org/abs/2403.10496"
+  Code: "https://github.com/H-Y-H-Y-H/meta_self_modeling_id"
 ---
 
-## Robot Configuration Identification from Motion Data
+## Reconfigurable Robot Identification from Motion Data
 
 The ability to create a long-term body self-image through movement is natural for humans: we can perceive the position, orientation and motion of our body parts without seeing and thinking, thanks to proprioceptors located within muscles, tendons, skin and joints. Such spatial self-awareness is also essential for robots to anticipate outcomes of motor action without trying them out in physical reality.
 
