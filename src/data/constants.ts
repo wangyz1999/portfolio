@@ -25,6 +25,6 @@ export const MENU_LINKS = [
 export const SOCIAL_LINKS = {
 	github: "https://github.com/wangyz1999",
 	linkedin: "https://www.linkedin.com/in/yunzhe-wang/",
-	email: "yw3737@columbia.edu",
+	email: "yunzhewa@usc.edu",
 	medium: "https://medium.com/@wangyz",
 };

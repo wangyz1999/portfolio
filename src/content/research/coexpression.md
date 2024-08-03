@@ -2,7 +2,7 @@
 title: "Human-Robot Facial Co-expression"
 
 feature: "/imgs/projects/coexpress.gif"
-description: Science Robotics (Under Evaluation)
+description: Science Robotics 2024
 
 publishDate: "02 Jan 2023"
 authors:
@@ -19,7 +19,7 @@ authors:
 author_idx: 3
 
 links:
-  Overview: "/research/coexpression"
+  Paper: "https://www.science.org/doi/10.1126/scirobotics.adi4724"
   Code: "https://github.com/H-Y-H-Y-H/HR_Facial_Coexpression"
 ---
 

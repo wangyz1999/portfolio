@@ -10,7 +10,7 @@ authors: ["Volkan Ustun", "Ronit Jorvekar", "Nikolos Gurney", "David V Pynadath"
 author_idx: 4
 
 links:
-  Overview: "/research/asist-simulation"
+  Paper: "Assessing Routing Decisions of Search and Rescue Teams in Service of an Artificial Social Intelligence Agent"
 ---
 
 ## Employing Neural Heuristics for Route Planning and Monitoring in Service of a Search and Rescue Artificial Social Intelligence Agent

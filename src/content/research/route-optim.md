@@ -11,8 +11,7 @@ author_idx: 0
 description: "Association for the Advancement of Artificial Intelligence (AAAI) 2021 Fall Symposium Series"
 
 links:
-  Overview: "/research/route-optim"
-  Publication: "https://link.springer.com/chapter/10.1007/978-3-031-21671-8_14"
+  Paper: "https://link.springer.com/chapter/10.1007/978-3-031-21671-8_14"
 ---
 
 ## Route Optimization in Service of a Search and Rescue Artificial Social Intelligence Agent
