@@ -1,0 +1,28 @@
+---
+let { songs = [], cols = 1, smCols = 2, mdCols = 3, lgCols = 4 } = Astro.props;
+
+interface Song {
+	coverImg: string;
+	audioSrc: string;
+	title: string;
+}
+---
+
+<div
+	class={`grid grid-cols-${cols} sm:grid-cols-${smCols} md:grid-cols-${mdCols} lg:grid-cols-${lgCols} gap-4`}
+>
+	{
+		songs.map((song: Song) => (
+			<a href={song.audioSrc} target="_blank" rel="noopener noreferrer">
+				<div class="overflow-hidden rounded-lg">
+					<img
+						class="h-auto max-w-full transition-transform duration-500 ease-in-out hover:scale-125"
+						src={song.coverImg}
+						alt=""
+					/>
+				</div>
+				<h1 class="mt-2 text-center text-lg font-bold">{song.title}</h1>
+			</a>
+		))
+	}
+</div>

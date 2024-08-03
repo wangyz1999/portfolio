@@ -17,11 +17,7 @@ const { research, as: Element = "div" } = Astro.props;
 					return (
 						<li
 							class="mr-2 dark:text-gray-300"
-							style={
-								idx === research.data.author_idx
-									? { textDecoration: "underline" }
-									: null
-							}
+							style={idx === research.data.author_idx ? { textDecoration: "underline" } : null}
 						>
 							{author}
 							{idx !== research.data.authors.length - 1 ? "," : ""}

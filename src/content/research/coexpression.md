@@ -2,16 +2,25 @@
 title: "Human-Robot Facial Co-expression"
 
 feature: "/imgs/projects/coexpress.gif"
-description: Science Robotics (In Revision)
+description: Science Robotics (Under Evaluation)
 
 publishDate: "02 Jan 2023"
-authors: ["Yuhang Hu", "Boyuan Chen", "Jiong Lin", "Yunzhe Wang", "Yingke Wang", "Cameron Mehlman", "Hod Lipson"]
+authors:
+  [
+    "Yuhang Hu",
+    "Boyuan Chen",
+    "Jiong Lin",
+    "Yunzhe Wang",
+    "Yingke Wang",
+    "Cameron Mehlman",
+    "Hod Lipson",
+  ]
 
 author_idx: 3
 
-links: 
-    Overview: "/research/coexpression"
-    Code: "https://github.com/H-Y-H-Y-H/HR_Facial_Coexpression"
+links:
+  Overview: "/research/coexpression"
+  Code: "https://github.com/H-Y-H-Y-H/HR_Facial_Coexpression"
 ---
 
 ## Human-Robot Facial Co-expression
@@ -28,4 +37,4 @@ In fact, we've found that a robot can predict a person's smile almost 0.7 second
 
 ## My Contribution
 
-I designed and implemented algorithms in several areas such as facial landmark extraction and normalization, conversion of facial features from a human distribution to a robot distribution, and training of a landmark-based inverse model. These same algorithms were equally utilized in the project involving lip-synchronization for the robotic face. 
+I designed and implemented algorithms in several areas such as facial landmark extraction and normalization, conversion of facial features from a human distribution to a robot distribution, and training of a landmark-based inverse model. These same algorithms were equally utilized in the project involving lip-synchronization for the robotic face.

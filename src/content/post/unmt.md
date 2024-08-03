@@ -5,8 +5,7 @@ description: "Decoding the Intricacies of Unsupervised Neural Machine Translatio
 tags: ["NLP", "AI"]
 ---
 
-
-![“Unsupervised Machine Translation”, Image by Midjourney](https://cdn-images-1.medium.com/max/2048/1*PlinKS7GTHETa_zYZJUNYw@2x.jpeg)*“Unsupervised Machine Translation”, Image by Midjourney*
+![“Unsupervised Machine Translation”, Image by Midjourney](https://cdn-images-1.medium.com/max/2048/1*PlinKS7GTHETa_zYZJUNYw@2x.jpeg)_“Unsupervised Machine Translation”, Image by Midjourney_
 
 In the ever-evolving landscape of machine translation, [Unsupervised Neural Machine Translation (UNMT)](https://engineering.fb.com/2018/08/31/ai-research/unsupervised-machine-translation-a-novel-approach-to-provide-fast-accurate-translations-for-more-languages/) is making waves as a game-changer for the industry. This innovative sub-field focuses on training translation models without the need for parallel data, utilizing the vast reservoirs of monolingual data now available. As large-scale language models become increasingly accessible, UNMT is poised to redefine the way we approach translation tasks.
 
@@ -35,12 +34,12 @@ Adding two-word vectors together often results in a vector closest to the vector
 
 1. [**Global Vectors (GloVe)**](https://aclanthology.org/D14-1162/): GloVe is an unsupervised learning algorithm for obtaining vector representations for words. It leverages both global statistical information (aggregated from the entire corpus) and local information (from the neighboring words) to create word vectors. These vectors capture the semantic meaning of words, whereas words with similar meanings have vectors that are close together in the vector space.
 
-![**Word2Vec and GloVe word embedding**](https://cdn-images-1.medium.com/max/2456/1*wmmWvN0HRi9aY8zFAcLNLg.png)*Word2Vec and GloVe word embedding*
+![**Word2Vec and GloVe word embedding**](https://cdn-images-1.medium.com/max/2456/1*wmmWvN0HRi9aY8zFAcLNLg.png)_Word2Vec and GloVe word embedding_
 
 ### Local Context Window Methods
 
 1. [**Word2Vec**](https://arxiv.org/abs/1301.3781): Word2Vec uses a shallow neural network with a single hidden layer. The input to the network is a one-hot encoded vector representing the input word, and the output is a set of probabilities for each word in the vocabulary. The hidden layer contains the word vectors, which are learned during training.
-Two main algorithms are used in word2vec: the continuous bag-of-words (CBOW) model and the skip-gram model. The CBOW model tries to predict the current word given the surrounding words, while the skip-gram model tries to predict the surrounding words given the current word. Both algorithms can be effective, but the skip-gram model is generally considered to perform better with larger datasets.
+   Two main algorithms are used in word2vec: the continuous bag-of-words (CBOW) model and the skip-gram model. The CBOW model tries to predict the current word given the surrounding words, while the skip-gram model tries to predict the surrounding words given the current word. Both algorithms can be effective, but the skip-gram model is generally considered to perform better with larger datasets.
 
 1. [**FastText**](https://aclanthology.org/Q17-1010/): FastText is a similar word representation learning technique as compared to Word2Vec. It is particularly useful for working with large text datasets because it is computationally more efficient. Unlike Word2Vec, FastText uses hierarchical softmax, a faster method for training word vectors than the traditional softmax approach. Also, FastText uses sub-word information, which allows it to create vectors for out-of-vocabulary words by combining the vectors of their component subwords. This makes FastText effective at handling rare words and words with spelling variations. For example, the embedding of the word “cat” would be represented as a single vector if using Word2Vec, whereas FastText uses a combination of the character n-grams “c,” “ca,” “cat,” “a,” “at,” and “t.”
 
@@ -48,19 +47,19 @@ Two main algorithms are used in word2vec: the continuous bag-of-words (CBOW) mod
 
 A de-noising autoencoder (DAE) is trained to reconstruct a clean “repaired” input from a corrupted version of it. This is done by corrupting the initial input by adding text noises. Common noises include:
 
-* **Token Masking**: Randomly replace word tokens in a sentence with a mask token [MASK]. The task is commonly known as Masked Language Modeling (MLM).
+- **Token Masking**: Randomly replace word tokens in a sentence with a mask token [MASK]. The task is commonly known as Masked Language Modeling (MLM).
 
-* **Token Deletion**: Randomly delete word tokens in a sentence. Note the difference between token masking and token deletion is that the former preserves sentence length while the latter does not.
+- **Token Deletion**: Randomly delete word tokens in a sentence. Note the difference between token masking and token deletion is that the former preserves sentence length while the latter does not.
 
-* **Token Permutation**: Randomly shuffle word orders in a sentence.
+- **Token Permutation**: Randomly shuffle word orders in a sentence.
 
-![Illustration of Denoising Auto-Encoding. Figure by Author](https://cdn-images-1.medium.com/max/2796/1*h-B5OKp7vfGWlEX0M66I7Q.png)*Illustration of Denoising Auto-Encoding. Figure by Author*
+![Illustration of Denoising Auto-Encoding. Figure by Author](https://cdn-images-1.medium.com/max/2796/1*h-B5OKp7vfGWlEX0M66I7Q.png)_Illustration of Denoising Auto-Encoding. Figure by Author_
 
 ## Latent Space Alignment
 
 Mikolov observed that the structures of continuous word embedding spaces are similar across languages, including those that are distantly related, such as English and Vietnamese. They proposed using a linear mapping from a source to a target embedding space based on this similarity.
 
-![Aligning the latent space of English and French. Word translation can be performed through a nearest neighbor search after aligning. Figure from [Conneau 2017](https://arxiv.org/abs/1710.04087)](https://cdn-images-1.medium.com/max/2672/1*z65Mm7Yd8Kwxm1prPRewpQ.png)*Aligning the latent space of English and French. Word translation can be performed through a nearest neighbor search after aligning. Figure from [Conneau 2017](https://arxiv.org/abs/1710.04087)*
+![Aligning the latent space of English and French. Word translation can be performed through a nearest neighbor search after aligning. Figure from [Conneau 2017](https://arxiv.org/abs/1710.04087)](https://cdn-images-1.medium.com/max/2672/1*z65Mm7Yd8Kwxm1prPRewpQ.png)_Aligning the latent space of English and French. Word translation can be performed through a nearest neighbor search after aligning. Figure from [Conneau 2017](https://arxiv.org/abs/1710.04087)_
 
 To learn this mapping, they used a parallel vocabulary of 5,000 words as anchor points and evaluated their approach to a word translation task. Since then, various efforts have been made to improve cross-lingual word embeddings, such as the [iterative method of Artetxe](https://aclanthology.org/P17-1042/), which reduces the needed dictionary size to as little as 25 words. Nonetheless, all of these alignment methods rely on bilingual word lexicons.
 
@@ -78,20 +77,17 @@ The key idea behind adversarial domain adaptation is to use an adversarial train
 
 ![Diagram of Adversarial Approach. The discriminator’s objective is to classify the source of
 the latent embedding. The encoder’s training objective is to reconstruct the corrupted sentence and to
-confuse the discriminator. Figure by Author](https://cdn-images-1.medium.com/max/3966/1*DLhIbK7_h4CDDzvaKKa5sA.png)*Diagram of Adversarial Approach. The discriminator’s objective is to classify the source of
+confuse the discriminator. Figure by Author](https://cdn-images-1.medium.com/max/3966/1*DLhIbK7_h4CDDzvaKKa5sA.png)_Diagram of Adversarial Approach. The discriminator’s objective is to classify the source of
 the latent embedding. The encoder’s training objective is to reconstruct the corrupted sentence and to
-confuse the discriminator. Figure by Author*
+confuse the discriminator. Figure by Author_
 
 During training, the feature extractor is given input data from both the source and target domains, and it is trained to extract features that are useful for predicting the correct output in both domains. Meanwhile, the domain discriminator is trained to predict the domain of the input data, using the features extracted by the feature extractor network as input.
 
 Formally, the discriminator has trained to classify the language source by minimizing the cross-entropy loss:
 
-
 The encoder and the decoders are trained to reconstruct the original sentence:
 
-
 The encoder is also trained to fool the discriminator.
-
 
 ### Back-Translation
 
@@ -103,13 +99,13 @@ Guillaume (2018) proposed an[ Iterative algorithm](https://arxiv.org/abs/1711.00
 
 ![Diagram of the proposed Iterative algorithm. This model is a sequence-to-sequence
 architecture which means it could achieve sentence translation after training instead of word-to-word
-any more. Figure by Author](https://cdn-images-1.medium.com/max/2964/1*WLWF0a4PhuqrHoA-fQw28A.png)*Diagram of the proposed Iterative algorithm. This model is a sequence-to-sequence
+any more. Figure by Author](https://cdn-images-1.medium.com/max/2964/1*WLWF0a4PhuqrHoA-fQw28A.png)_Diagram of the proposed Iterative algorithm. This model is a sequence-to-sequence
 architecture which means it could achieve sentence translation after training instead of word-to-word
-any more. Figure by Author*
+any more. Figure by Author_
 
-The logic behind the Iterative algorithm is described as follows, which concentrates on the sequence-sequence translation. This algorithm highly relies on an iteration process starting from an initial translation model *M¹* in the pseudocode line 3. This *M¹* is learned through the achievement from the model proposed by [Conneau (2017)](https://arxiv.org/abs/1711.00043), and thus derived *M* could be used to translate the available monolingual data, which is a necessary step in back-translation. Next, the for loop in lines 4–8 will update the encoder and decoder with the parameters needed and minimize their objective function. In the end, *M^{t+1},* consisting of the newest encoder and decoder, will be returned. The specific process is in the algorithm below:
+The logic behind the Iterative algorithm is described as follows, which concentrates on the sequence-sequence translation. This algorithm highly relies on an iteration process starting from an initial translation model _M¹_ in the pseudocode line 3. This _M¹_ is learned through the achievement from the model proposed by [Conneau (2017)](https://arxiv.org/abs/1711.00043), and thus derived _M_ could be used to translate the available monolingual data, which is a necessary step in back-translation. Next, the for loop in lines 4–8 will update the encoder and decoder with the parameters needed and minimize their objective function. In the end, _M^{t+1},_ consisting of the newest encoder and decoder, will be returned. The specific process is in the algorithm below:
 
-![Iterative Training Algorithm of Unsupervised Machine Translation by [Lample 2018](https://arxiv.org/abs/1711.00043)](https://cdn-images-1.medium.com/max/2000/1*b9mTEgvOzjq_ynDoxKiKgQ.png)*Iterative Training Algorithm of Unsupervised Machine Translation by [Lample 2018](https://arxiv.org/abs/1711.00043)*
+![Iterative Training Algorithm of Unsupervised Machine Translation by [Lample 2018](https://arxiv.org/abs/1711.00043)](https://cdn-images-1.medium.com/max/2000/1*b9mTEgvOzjq_ynDoxKiKgQ.png)_Iterative Training Algorithm of Unsupervised Machine Translation by [Lample 2018](https://arxiv.org/abs/1711.00043)_
 
 ## Limitations and Challenges
 
@@ -119,9 +115,9 @@ Many existing works focus on modeling UNMT systems, but there is a lack of resea
 
 The performances of UNMT commonly do not perform better in distant language pairs such as Chinese/Japanese-English than similar language pairs such as German/French-English. This could be due to two reasons:
 
-* The syntactic structures of distant language pairs are very different. Therefore, syntactic correspondence is very difficult to learn without parallel supervision for UNMT.
+- The syntactic structures of distant language pairs are very different. Therefore, syntactic correspondence is very difficult to learn without parallel supervision for UNMT.
 
-* The distant language pair may not have enough shared words/subwords to learn the shared latent representation.
+- The distant language pair may not have enough shared words/subwords to learn the shared latent representation.
 
 ### Efficiency
 
@@ -146,5 +142,6 @@ We have thoroughly discussed two main aspects of Unsupervised Neural Machine Tra
 *Machine translation has recently achieved impressive performance thanks to recent advances in deep learning and the…*arxiv.org](https://arxiv.org/abs/1711.00043)
 
 ## Related Article From Author
+
 [**Unveiling and Addressing Bias in Natural Language Processing**
 *Understanding and mitigating bias in word embeddings and their implications on AI fairness*pub.towardsai.net](https://pub.towardsai.net/unveiling-and-addressing-bias-in-natural-language-processing-38d6ca52fec6)

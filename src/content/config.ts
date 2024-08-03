@@ -38,7 +38,7 @@ const project = defineCollection({
 		subtitle: z.string().optional(),
 		imglink: z.string().optional(),
 		description: z.string().optional(),
-		feature: z.string().optional()
+		feature: z.string().optional(),
 	}),
 });
 

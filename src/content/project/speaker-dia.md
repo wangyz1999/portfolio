@@ -5,7 +5,4 @@ imglink: https://github.com/wangyz1999/syncnet-speaker-diarization
 description: "jajajaj"
 
 feature: "/imgs/projects/speaker-dia.gif"
-
-
 ---
-

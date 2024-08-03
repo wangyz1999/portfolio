@@ -1,0 +1,124 @@
+---
+import PageLayout from "@/layouts/Base";
+import ImageGrid from "@/components/ImageGrid";
+import MusicGrid from "@/components/MusicGrid";
+import ProjectPreview from "@/components/project/ProjectPreview";
+import { selectBySlug } from "@/utils";
+import { getCollection } from "astro:content";
+import { promises as fs } from "fs";
+import { join } from "path";
+
+async function getImages(folder: string, prefix: string) {
+	const directoryPath = join(process.cwd(), `public/imgs/${folder}`);
+
+	let files = await fs.readdir(directoryPath);
+	files = files.filter((file: string) => file.startsWith(prefix) && !file.endsWith("_tn.webp"));
+
+	let images = [];
+	for (let i = 0; i < files.length; i++) {
+		images.push({
+			src: `/imgs/${folder}/${prefix}${i}.jpeg`,
+			thumbnail: `/imgs/${folder}/${prefix}${i}_tn.webp`,
+		});
+	}
+	return images;
+}
+
+const meta = {
+	title: "Hobbies",
+	description: "My hobbies, including photography, sketching, culinary ...",
+};
+
+const img_photo = await getImages("photo", "photo");
+const img_drawing = await getImages("sketch", "draw");
+const img_culinary = await getImages("cook", "dish");
+
+const songs = [
+	{
+		title: "Perfect",
+		coverImg: "/imgs/song/song0.webp",
+		audioSrc: "/audio/song0.mp3",
+	},
+	{
+		title: "If I Were Young 年少有为 ",
+		coverImg: "/imgs/song/song1.jpg",
+		audioSrc: "/audio/song1.mp3",
+	},
+	{
+		title: "一次就好",
+		coverImg: "/imgs/song/song2.webp",
+		audioSrc: "/audio/song2.mp3",
+	},
+];
+
+const programmingArtProjectList = ["breath", "china-city", "firework"];
+const allProjects = await getCollection("project");
+const programmingArtProjects = selectBySlug(allProjects, programmingArtProjectList);
+---
+
+<script>
+	const scrollBtn = document.getElementById("to-top-btn") as HTMLButtonElement;
+	const targetHeader = document.getElementById("program-art") as HTMLDivElement;
+
+	function callback(entries: IntersectionObserverEntry[]) {
+		entries.forEach((entry) => {
+			// only show the scroll to top button when the heading is out of view
+			scrollBtn.dataset.show = (!entry.isIntersecting).toString();
+		});
+	}
+
+	scrollBtn.addEventListener("click", () => {
+		document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
+	});
+
+	const observer = new IntersectionObserver(callback);
+	observer.observe(targetHeader);
+</script>
+
+<PageLayout meta={meta}>
+	<h1 class="title mb-2" id="program-art">Programming Art</h1>
+	<h2 class="subtitle mb-8 text-base">The Artistic Side of My Code</h2>
+	<div class="space-y-14">
+		<div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
+			{programmingArtProjects.map((p: any) => <ProjectPreview project={p} />)}
+		</div>
+	</div>
+
+	<h1 class="title mb-2 mt-12" id="photography-header">Photography</h1>
+	<h2 class="subtitle mb-8 text-base">Once a year, go someplace I've never been before</h2>
+	<ImageGrid images={img_photo} />
+
+	<h1 class="title mb-2 mt-12" id="drawing-header">Sketch</h1>
+	<h2 class="subtitle mb-8 text-base">My earliest hobby, since pre-school</h2>
+	<ImageGrid images={img_drawing} />
+
+	<h1 class="title mb-2 mt-12" id="cooking-header">Culinary</h1>
+	<h2 class="subtitle mb-8 text-base">I try to make some of my dishes look good</h2>
+	<ImageGrid images={img_culinary} />
+
+	<h1 class="title mb-2 mt-12" id="vocal-header">Vocal</h1>
+	<h2 class="subtitle mb-8 text-base">I sing, sometimes</h2>
+	<MusicGrid songs={songs} />
+
+	<!-- <h1 class="title mb-2 mt-12" id="minecraft-header">Minecraft</h1>
+	<h2 class="subtitle mb-8 text-base">I own a non-profit Minecraft community server</h2> -->
+
+	<button
+		id="to-top-btn"
+		class="z-90 fixed bottom-8 end-4 flex h-10 w-10 translate-y-28 items-center justify-center rounded-full border-2 border-transparent bg-zinc-200 text-3xl opacity-0 transition-all duration-300 hover:border-zinc-400 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 dark:bg-zinc-700 sm:end-8 sm:h-12 sm:w-12"
+		aria-label="Back to Top"
+		data-show="false"
+		><svg
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+			focusable="false"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke-width="2"
+			stroke="currentColor"
+			class="h-6 w-6"
+		>
+			<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"></path>
+		</svg>
+	</button>
+</PageLayout>

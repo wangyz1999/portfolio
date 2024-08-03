@@ -10,9 +10,9 @@ author_idx: 0
 
 description: "Association for the Advancement of Artificial Intelligence (AAAI) 2021 Fall Symposium Series"
 
-links: 
-    Overview: "/research/route-optim"
-    Publication: "https://link.springer.com/chapter/10.1007/978-3-031-21671-8_14"
+links:
+  Overview: "/research/route-optim"
+  Publication: "https://link.springer.com/chapter/10.1007/978-3-031-21671-8_14"
 ---
 
 ## Route Optimization in Service of a Search and Rescue Artificial Social Intelligence Agent
@@ -28,7 +28,7 @@ In this paper, we use these new tech tools as part of a decision-making framewor
 ## My Contribution
 
 - \> Developped a semantic graph environment for reinforcement learning and visulization
- 
+
 - \> Immplemented 5 reinforcement learning and linear programming algorithms for route optimization.
 
-- \> Developed a sequential decision making framework leveraging Graph Transformer and the REINFORCE algorithm 
+- \> Developed a sequential decision making framework leveraging Graph Transformer and the REINFORCE algorithm

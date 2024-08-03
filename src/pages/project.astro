@@ -14,7 +14,6 @@ const meta = {
 const allProjects = await getCollection("project");
 
 const BrandingProjectList = ["trendemia"];
-const programmingArtProjectList = ["breath", "china-city", "firework"];
 const machineLearningProjectList = [
 	"speaker-dia",
 	"coral-reef",
@@ -25,7 +24,6 @@ const machineLearningProjectList = [
 ];
 
 const BrandingProjects = selectBySlug(allProjects, BrandingProjectList);
-const programmingArtProjects = selectBySlug(allProjects, programmingArtProjectList);
 const machineLearningProjects = selectBySlug(allProjects, machineLearningProjectList);
 ---
 
@@ -52,7 +50,7 @@ const machineLearningProjects = selectBySlug(allProjects, machineLearningProject
 	<div class="space-y-14">
 		<ul>
 			<li>
-				<h1 class="title mb-8" id="project-feature">Application</h1>
+				<h1 class="title mb-8" id="project-feature">Web App</h1>
 				<div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
 					{BrandingProjects.map((p: any) => <ProjectPreview project={p} />)}
 				</div>
@@ -60,17 +58,9 @@ const machineLearningProjects = selectBySlug(allProjects, machineLearningProject
 		</ul>
 		<ul>
 			<li>
-				<h1 class="title mb-8" id="project-feature">AI and Machine Learning</h1>
+				<h1 class="title mb-8" id="project-feature">AI and ML</h1>
 				<div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
 					{machineLearningProjects.map((p: any) => <ProjectPreview project={p} />)}
-				</div>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				<h1 class="title mb-8" id="project-feature">Progamming Art</h1>
-				<div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
-					{programmingArtProjects.map((p: any) => <ProjectPreview project={p} />)}
 				</div>
 			</li>
 		</ul>
@@ -91,8 +81,7 @@ const machineLearningProjects = selectBySlug(allProjects, machineLearningProject
 			stroke="currentColor"
 			class="h-6 w-6"
 		>
-			<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"
-			></path>
+			<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"></path>
 		</svg>
 	</button>
 </PageLayout>
