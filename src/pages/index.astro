@@ -16,126 +16,142 @@ const allPosts = await getCollection("post");
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
 const allResearch = await getCollection("research");
-const allResearchByDate = sortResearchByDate(allResearch).slice(0, MAX_RESEARCH);
+const allResearchByDate = sortResearchByDate(allResearch).slice(
+  0,
+  MAX_RESEARCH
+);
 ---
 
 <PageLayout meta={{ title: "Home" }}>
-	<section>
-		<div class="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-			<div class="flex-1 p-4">
-				<Picture
-					class="mx-auto w-full rounded-md"
-					widths={[400, 768, 1024, 2040]}
-					sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-					loading="eager"
-					width={1024}
-					height={576}
-					src={profile_pic}
-					alt="profile"
-				/>
-				<div class="mt-4">
-					<SocialList />
-				</div>
-			</div>
-			<div class="flex-1 p-4">
-				<h1 class="text-xxl title mb-3">Yunzhe Wang</h1>
-				<p class="mb-3">
-					I'm an AI Software Engineer at Bubble, specializing in generative AI for
-					text-to-web-application generation.
-				</p>
-				<p class="mb-3">
-					I have an M.S. in Computer Science from Columbia University where I worked with Prof. <InLineLink
-						href="https://www.hodlipson.com/"
-						text="Hod Lipson"
-					/> on ML and Robotics. I completed my B.S. in Computational Neuroscience, B.A. in Applied Mathematics,
-					and a Minor in Computer Science at USC, working on Cognitive Architecture and RL for Social
-					AI Agents with Dr. <InLineLink
-						href="https://www.linkedin.com/in/volkan-ustun-9883a74/"
-						text="Volkan Ustun"
-					/> and Prof. <InLineLink
-						href="https://viterbi.usc.edu/directory/faculty/Rosenbloom/Paul"
-						text="Paul Rosenbloom"
-					/>
-				</p>
+  <section>
+    <div class="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+      <div class="flex-1 p-4">
+        <Picture
+          class="mx-auto w-full rounded-md"
+          widths={[400, 768, 1024, 2040]}
+          sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+          loading="eager"
+          width={1024}
+          height={576}
+          src={profile_pic}
+          alt="profile"
+        />
+        <div class="mt-4">
+          <SocialList />
+        </div>
+      </div>
+      <div class="flex-1 p-4">
+        <h1 class="text-xxl title mb-3">Yunzhe Wang</h1>
+        <p class="mb-3">
+          I am a Computer Science PhD student at USC, advised by <InLineLink
+            href="https://ict.usc.edu/about-us/leadership/senior-management/william-swartout/"
+            text="William Swartout"
+          /> and
+          <InLineLink
+            href="https://ict.usc.edu/about-us/leadership/research-leadership/volkan-ustun/"
+            text="Volkan Ustun"
+          />. My research focuses on bridging the gap between humans and AI in
+          multi-agent scenarios, creating a collaborative future where both can
+          thrive.
+        </p>
 
-				<p class="mb-4">
-					Driven by my interest in AI and Cognitive Science, I aspire for more human-centered AI
-					development that enhance human capabilities.
-				</p>
+        <p class="mb-3">
+          Prior to joining USC, I worked as an AI Researcher and Software
+          Engineer at <InLineLink href="https://bubble.io/" text="Bubble.io" />,
+          where I developed LLM-Agents for interactive web development. I also
+          conducted research in machine learning and robotics at Columbia
+          University's Creative Machines Lab advised by <InLineLink
+            href="https://www.hodlipson.com/"
+            text="Hod Lipson"
+          />.
+        </p>
+        <h2 class="text-xl font-semibold mb-2 text-accent-2">
+          Research Interests
+        </h2>
+        <ul class="mb-4 list-disc list-inside space-y-1">
+          <li>
+            Large Language Model Driven Multi-Agent Simulation and Interaction
+          </li>
+          <li>Large-Scale Heterogeneous Multi-Agent Reinforcement Learning</li>
+          <li>Graph Neural Networks</li>
+        </ul>
 
-				<p class="mb-4">
-					--&gt <InLineLink href="/cv.pdf" text="Curriculum Vitae" /> &lt--
-				</p>
-			</div>
-		</div>
-	</section>
+        <p class="mb-4">
+          --&gt; <InLineLink href="/cv.pdf" text="My Curriculum Vitae" /> &lt;--
+        </p>
+      </div>
+    </div>
+  </section>
 
-	<section class="mt-16">
-		<h2 class="text-xxl title mb-4">Updates</h2>
-		<ul class="space-y-3 sm:space-y-3">
-			<li class="flex">
-				<time class="min-w-[120px] text-gray-500">Jul 2023</time>
-				<p>
-					Joining <InLineLink href="https://bubble.io/" text="Bubble.io" /> as an AI Software Engineer
-					focused on generative AI research and development in text-to-web-application generation.
-				</p>
-			</li>
-			<li class="flex">
-				<time class="min-w-[120px] text-gray-500">May 2023</time>
-				<p>Graduated from Columbia University with a M.S. in Computer Science 🎉</p>
-			</li>
-			<li class="flex">
-				<time class="min-w-[120px] text-gray-500">Sep 2021</time>
-				<p>
-					Joining the <InLineLink
-						href="https://www.creativemachineslab.com/"
-						text="Creative Machines Lab"
-					/> and work on Machine Learning in Robotics 🤖
-				</p>
-			</li>
-			<li class="flex">
-				<time class="min-w-[120px] text-gray-500">May 2023</time>
-				<p>
-					Graduated from USC with B.S. Computational Neuroscience, B.A. Applied Mathematics, and a
-					minor in Computer Science 🚀
-				</p>
-			</li>
-			<li class="flex">
-				<time class="min-w-[120px] text-gray-500">May 2020</time>
-				<p>
-					Joining the <InLineLink
-						href="https://cogarch.ict.usc.edu/"
-						text="Cognitive Architecture Lab"
-					/> at <InLineLink href="https://ict.usc.edu/" text="USC ICT" /> and work on Reinforcement Learning
-					for Social AI Agents.
-				</p>
-			</li>
-		</ul>
-	</section>
+  <section class="mt-16">
+    <h2 class="text-xxl title mb-4">Updates</h2>
+    <ul class="space-y-3 sm:space-y-3">
+      <li class="flex">
+        <time class="min-w-[120px] text-gray-500">Jul 2023</time>
+        <p>
+          Joining <InLineLink href="https://bubble.io/" text="Bubble.io" /> as an
+          AI Software Engineer focused on generative AI research and development
+          in text-to-web-application generation.
+        </p>
+      </li>
+      <li class="flex">
+        <time class="min-w-[120px] text-gray-500">May 2023</time>
+        <p>
+          Graduated from Columbia University with a M.S. in Computer Science 🎉
+        </p>
+      </li>
+      <li class="flex">
+        <time class="min-w-[120px] text-gray-500">Sep 2021</time>
+        <p>
+          Joining the <InLineLink
+            href="https://www.creativemachineslab.com/"
+            text="Creative Machines Lab"
+          /> and work on Machine Learning in Robotics 🤖
+        </p>
+      </li>
+      <li class="flex">
+        <time class="min-w-[120px] text-gray-500">May 2023</time>
+        <p>
+          Graduated from USC with B.S. Computational Neuroscience, B.A. Applied
+          Mathematics, and a minor in Computer Science 🚀
+        </p>
+      </li>
+      <li class="flex">
+        <time class="min-w-[120px] text-gray-500">May 2020</time>
+        <p>
+          Joining the <InLineLink
+            href="https://cogarch.ict.usc.edu/"
+            text="Cognitive Architecture Lab"
+          /> at <InLineLink href="https://ict.usc.edu/" text="USC ICT" /> and work
+          on Reinforcement Learning for Social AI Agents.
+        </p>
+      </li>
+    </ul>
+  </section>
 
-	<section class="mt-16">
-		<h2 class="text-xxl title mb-4">Research</h2>
-		<ul class="space-y-3 sm:space-y-10">
-			{
-				allResearchByDate.map((p: any) => (
-					<li class="flex flex-col">
-						<ResearchPreview research={p} />
-					</li>
-				))
-			}
-		</ul>
-	</section>
+  <section class="mt-16">
+    <h2 class="text-xxl title mb-4">Research</h2>
+    <ul class="space-y-3 sm:space-y-10">
+      {
+        allResearchByDate.map((p: any) => (
+          <li class="flex flex-col">
+            <ResearchPreview research={p} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 
-	<section aria-label="Blog post list" class="mt-16">
-		<h2 class="text-xxl title mb-4">Posts</h2>
-		<ul class="space-y-4 sm:space-y-2">
-			{
-				allPostsByDate.map((p) => (
-					<li class="flex flex-col gap-x-2 sm:flex-row">
-						<PostPreview post={p} />
-					</li>
-				))
-			}
-		</ul>
-	</section>
+  <section aria-label="Blog post list" class="mt-16">
+    <h2 class="text-xxl title mb-4">Posts</h2>
+    <ul class="space-y-4 sm:space-y-2">
+      {
+        allPostsByDate.map((p) => (
+          <li class="flex flex-col gap-x-2 sm:flex-row">
+            <PostPreview post={p} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 </PageLayout>
