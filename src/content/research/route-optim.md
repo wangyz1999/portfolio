@@ -8,6 +8,8 @@ publishDate: "01 Feb 2021"
 authors: ["Yunzhe Wang", "Nikolos Gurney", "Jincheng Zhou", "David V. Pynadath", "Volkan Ustun"]
 author_idx: 0
 
+selected: true
+
 description: "Association for the Advancement of Artificial Intelligence (AAAI) 2021 Fall Symposium Series"
 
 links:

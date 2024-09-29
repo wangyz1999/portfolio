@@ -8,6 +8,7 @@ publishDate: "02 Jun 2022"
 authors: ["Yuhang Hu", "Yunzhe Wang", "Boyuan Chen", "Yingke Wang", "Jiong Lin", "Hod Lipson"]
 
 author_idx: 1
+selected: false
 
 links:
   Overview: "/research/lip-sync"

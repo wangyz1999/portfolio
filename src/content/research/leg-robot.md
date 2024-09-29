@@ -8,6 +8,7 @@ publishDate: "09 Jun 2023"
 authors: ["Yuhang Hu", "Yunzhe Wang", "Ruibo Liu", "Zhou Shen", "Hod Lipson"]
 
 author_idx: 1
+selected: true
 
 links:
   Paper: "https://arxiv.org/abs/2403.10496"
