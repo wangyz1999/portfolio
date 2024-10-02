@@ -16,131 +16,138 @@ const allPosts = await getCollection("post");
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
 const allResearch = await getCollection("research");
-const allResearchByDate = sortResearchByDate(allResearch).slice(
-  0,
-  MAX_RESEARCH
-);
+const allResearchByDate = sortResearchByDate(allResearch).slice(0, MAX_RESEARCH);
 ---
 
 <PageLayout meta={{ title: "Home" }}>
-  <section>
-    <div class="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-      <div class="flex-1 p-4">
-        <Picture
-          class="mx-auto w-full rounded-md"
-          widths={[400, 768, 1024, 2040]}
-          sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-          loading="eager"
-          width={1024}
-          height={576}
-          src={profile_pic}
-          alt="profile"
-        />
-        <div class="mt-4">
-          <SocialList />
-        </div>
-      </div>
-      <div class="flex-1 p-4">
-        <h1 class="text-xxl title mb-3">Yunzhe Wang</h1>
-        <p class="mb-3">
-          I am a Computer Science PhD student at USC, advised by <InLineLink
-            href="https://ict.usc.edu/about-us/leadership/senior-management/william-swartout/"
-            text="William Swartout"
-          /> and
-          <InLineLink
-            href="https://ict.usc.edu/about-us/leadership/research-leadership/volkan-ustun/"
-            text="Volkan Ustun"
-          />. My research focuses on bridging the gap between humans and AI in
-          multi-agent scenarios, creating a collaborative future where both can
-          thrive.
-        </p>
+	<section>
+		<div class="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+			<div class="flex-1 p-4">
+				<Picture
+					class="mx-auto w-full rounded-md"
+					widths={[400, 768, 1024, 2040]}
+					sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+					loading="eager"
+					width={1024}
+					height={576}
+					src={profile_pic}
+					alt="profile"
+				/>
+				<div class="mt-4">
+					<SocialList />
+				</div>
+			</div>
+			<div class="flex-1 p-4">
+				<h1 class="text-xxl title mb-3">Yunzhe Wang</h1>
+				<p class="mb-3">
+					I am a Computer Science PhD student at USC, advised by <InLineLink
+						href="https://ict.usc.edu/about-us/leadership/senior-management/william-swartout/"
+						text="William Swartout"
+					/> and
+					<InLineLink
+						href="https://ict.usc.edu/about-us/leadership/research-leadership/volkan-ustun/"
+						text="Volkan Ustun"
+					/>. My research focuses on bridging the gap between humans and AI in multi-agent
+					scenarios, creating a collaborative future where both can thrive.
+				</p>
 
-        <p class="mb-3">
-          Prior to joining USC, I worked as an AI Researcher and Software
-          Engineer at <InLineLink href="https://bubble.io/" text="Bubble.io" />,
-          where I developed LLM-Agents for interactive web development. I also
-          conducted research in machine learning and robotics at Columbia
-          University's Creative Machines Lab advised by <InLineLink
-            href="https://www.hodlipson.com/"
-            text="Hod Lipson"
-          />.
-        </p>
-        <h2 class="text-xl font-semibold mb-2 text-accent-2">
-          Research Interests
-        </h2>
-        <ul class="mb-4 list-disc list-inside space-y-1">
-          <li>
-            Large Language Model Driven Multi-Agent Simulation and Interaction
-          </li>
-          <li>Large-Scale Heterogeneous Multi-Agent Reinforcement Learning</li>
-          <li>Graph Neural Networks</li>
-        </ul>
+				<p class="mb-3">
+					Prior to joining USC, I worked as an AI Researcher and Software Engineer at <InLineLink
+						href="https://bubble.io/"
+						text="Bubble.io"
+					/>, where I developed LLM-Agents for interactive web development. I also conducted
+					research in machine learning and robotics at Columbia University's Creative Machines Lab
+					advised by <InLineLink href="https://www.hodlipson.com/" text="Hod Lipson" />.
+				</p>
+				<h2 class="mb-2 text-xl font-semibold text-accent-2">Research Interests</h2>
+				<ul class="mb-4 list-inside list-disc space-y-1">
+					<li>Large Language Model Driven Multi-Agent Simulation and Interaction</li>
+					<li>Large-Scale Heterogeneous Multi-Agent Reinforcement Learning</li>
+					<li>Graph Neural Networks</li>
+				</ul>
 
-        <p class="mb-4">
-          --&gt; <InLineLink href="/cv.pdf" text="My Curriculum Vitae" /> &lt;--
-        </p>
-      </div>
-    </div>
-  </section>
+				<p class="mb-4">
+					--&gt; <InLineLink href="/cv.pdf" text="My Curriculum Vitae" /> &lt;--
+				</p>
+			</div>
+		</div>
+	</section>
 
-  <section class="mt-16">
-    <h2 class="text-xxl title mb-4">Updates</h2>
-    <ul class="space-y-3 sm:space-y-3">
-      <li class="flex">
-        <time class="min-w-[120px] text-gray-500">Aug 2024</time>
-        <p>Starting my Computer Science PhD Journey at USC</p>
-      </li>
-      <li class="flex">
-        <time class="min-w-[120px] text-gray-500">Jun 2024</time>
-        <p>
-          Our work on robot morphology identification was accepted to IROS 2024
-          as an Oral Presentation
-        </p>
-      </li>
-      <li class="flex">
-        <time class="min-w-[120px] text-gray-500">May 2024</time>
-        <p>
-          Launched <InLineLink
-            href="https://www.science.org/doi/10.1126/scirobotics.adi4724"
-            text="AI Text-to-Page"
-          /> at Bubble
-        </p>
-      </li>
-      <li class="flex">
-        <time class="min-w-[120px] text-gray-500">Mar 2024</time>
-        <p>
-          Our face robot paper got accepted to <InLineLink
-            href="https://www.science.org/doi/10.1126/scirobotics.adi4724"
-            text="Science Robotics"
-          />
-        </p>
-      </li>
-    </ul>
-  </section>
+	<section class="mt-16">
+		<h2 class="text-xxl title mb-4">Updates</h2>
+		<ul class="space-y-3 sm:space-y-3">
+			<li class="flex">
+				<time class="min-w-[120px] text-gray-500">Aug 2024</time>
+				<p>Starting my Computer Science PhD Journey at USC</p>
+			</li>
+			<li class="flex">
+				<time class="min-w-[120px] text-gray-500">Jun 2024</time>
+				<p>
+					Our work on robot morphology identification was accepted to IROS 2024 as an Oral
+					Presentation
+				</p>
+			</li>
+			<li class="flex">
+				<time class="min-w-[120px] text-gray-500">May 2024</time>
+				<p>
+					Launched <InLineLink
+						href="https://www.science.org/doi/10.1126/scirobotics.adi4724"
+						text="AI Text-to-Page"
+					/> at Bubble
+				</p>
+			</li>
+			<li class="flex">
+				<time class="min-w-[120px] text-gray-500">Mar 2024</time>
+				<p>
+					Our face robot paper got accepted to <InLineLink
+						href="https://www.science.org/doi/10.1126/scirobotics.adi4724"
+						text="Science Robotics"
+					/>
+				</p>
+			</li>
+		</ul>
+	</section>
 
-  <section class="mt-16">
-    <h2 class="text-xxl title mb-4">Selected Publications</h2>
-    <ul class="space-y-3 sm:space-y-10">
-      {
-        allResearchByDate.map((p: any) => (
-          <li class="flex flex-col">
-            <ResearchPreview research={p} />
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+	<section class="mt-16">
+		<h2 class="text-xxl title mb-4">Selected Publications</h2>
+		<ul class="space-y-3 sm:space-y-10">
+			{
+				allResearchByDate.map((p: any) => (
+					<li class="flex flex-col">
+						<ResearchPreview research={p} />
+					</li>
+				))
+			}
+		</ul>
+	</section>
 
-  <section aria-label="Blog post list" class="mt-16">
-    <h2 class="text-xxl title mb-4">Posts</h2>
-    <ul class="space-y-4 sm:space-y-2">
-      {
-        allPostsByDate.map((p) => (
-          <li class="flex flex-col gap-x-2 sm:flex-row">
-            <PostPreview post={p} />
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+	<section class="mt-16">
+		<h2 class="text-xxl title mb-4">Services</h2>
+		<h3 class="text-md mb-2 font-semibold">Technical Program Committee (TPC) Member/Reviewer</h3>
+		<ul class="list-inside list-disc space-y-3 pl-4 sm:space-y-3">
+			<li class="pl-2">International Conference on Learning Representations (ICLR) 2025</li>
+			<li class="pl-2">Association for the Advancement of Artificial Intelligence (AAAI) 2025</li>
+			<li class="pl-2">
+				IEEE Symposium on Computational Intelligence in Natural Language Processing and Social Media
+				(CINLPSoMe) 2025
+			</li>
+			<li class="pl-2">
+				Conference on Neural Information Processing Systems (NeurIPS) 2024 Workshop Foundation
+				Models for Science
+			</li>
+		</ul>
+	</section>
+
+	<section aria-label="Blog post list" class="mt-16">
+		<h2 class="text-xxl title mb-4">Posts</h2>
+		<ul class="space-y-4 sm:space-y-2">
+			{
+				allPostsByDate.map((p) => (
+					<li class="flex flex-col gap-x-2 sm:flex-row">
+						<PostPreview post={p} />
+					</li>
+				))
+			}
+		</ul>
+	</section>
 </PageLayout>
