@@ -15,7 +15,8 @@ const allPosts = await getCollection("post");
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
 const allResearch = await getCollection("research");
-const allResearchByDate = sortResearchByDate(allResearch).slice(0, MAX_RESEARCH);
+const preprints = sortResearchByDate(allResearch.filter(r => r.data.isPreprint));
+const publications = sortResearchByDate(allResearch.filter(r => !r.data.isPreprint)).slice(0, MAX_RESEARCH);
 ---
 
 <PageLayout meta={{ title: "Home" }}>
@@ -68,10 +69,23 @@ const allResearchByDate = sortResearchByDate(allResearch).slice(0, MAX_RESEARCH)
 	</section>
 
 	<section class="mt-16">
+		<h2 class="text-xxl title mb-6">Preprints</h2>
+		<ul class="space-y-6">
+			{
+				preprints.map((p: any) => (
+					<li>
+						<ResearchPreview research={p} />
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section class="mt-16">
 		<h2 class="text-xxl title mb-6">Recent Publications</h2>
 		<ul class="space-y-6">
 			{
-				allResearchByDate.map((p: any) => (
+				publications.map((p: any) => (
 					<li>
 						<ResearchPreview research={p} />
 					</li>

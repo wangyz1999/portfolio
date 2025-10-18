@@ -11,6 +11,6 @@ author_idx: 0
 selected: true
 
 links:
-  Paper: "https://arxiv.org/pdf/2509.06355"
+  Paper: "https://arxiv.org/abs/2509.06355"
   Code: https://github.com/HATS-ICT/decoy
 ---
