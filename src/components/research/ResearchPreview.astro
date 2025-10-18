@@ -1,41 +1,152 @@
 ---
 import { Image } from "@astrojs/image/components";
-import InLineLink from "@/components/InLineLink";
 
 const { research, as: Element = "div" } = Astro.props;
+
+// Function to determine icon based on link key
+const getIcon = (key: string) => {
+	const lowerKey = key.toLowerCase();
+	if (lowerKey.includes("arxiv")) {
+		return "arxiv";
+	} else if (lowerKey.includes("code") || lowerKey.includes("github")) {
+		return "github";
+	} else if (lowerKey.includes("pdf")) {
+		return "pdf";
+	} else if (lowerKey.includes("paper") || lowerKey.includes("publication")) {
+		return "paper";
+	} else if (lowerKey.includes("video") || lowerKey.includes("demo")) {
+		return "video";
+	} else if (lowerKey.includes("overview") || lowerKey.includes("project")) {
+		return "link";
+	} else if (lowerKey.includes("slides")) {
+		return "slides";
+	} else if (lowerKey.includes("poster")) {
+		return "poster";
+	}
+	return "link";
+};
+
+const getIconTitle = (key: string) => {
+	const lowerKey = key.toLowerCase();
+	if (lowerKey.includes("arxiv")) return "arXiv";
+	if (lowerKey.includes("code") || lowerKey.includes("github")) return "Code";
+	if (lowerKey.includes("pdf")) return "PDF";
+	if (lowerKey.includes("paper") || lowerKey.includes("publication")) return "Paper";
+	if (lowerKey.includes("video") || lowerKey.includes("demo")) return "Video";
+	if (lowerKey.includes("overview") || lowerKey.includes("project")) return "Project";
+	if (lowerKey.includes("slides")) return "Slides";
+	if (lowerKey.includes("poster")) return "Poster";
+	return key;
+};
 ---
 
-<Element class="flex flex-col sm:flex-row">
-	<div class="flex w-full items-center justify-center text-white sm:w-1/4">
-		<Image src={research.data.feature} alt={research.data.title} height={400} aspectRatio={1} />
-	</div>
-	<div class="flex w-full flex-col p-4 pl-7 text-white sm:w-3/4">
-		<h2 class="title mb-3 text-xl">{research.data.title}</h2>
-		<ul class="mb-3 flex flex-row flex-wrap text-gray-500">
-			{
-				research.data.authors.map((author: string, idx: number) => {
-					return (
-						<li
-							class="mr-2 dark:text-gray-300"
-							style={idx === research.data.author_idx ? { textDecoration: "underline" } : null}
-						>
-							{author}
-							{idx !== research.data.authors.length - 1 ? "," : ""}
-						</li>
-					);
-				})
-			}
-		</ul>
-		<p class="mb-3 italic text-black dark:text-white">{research.data.description}</p>
+<Element class="group relative rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+	<div class="flex flex-col gap-6 sm:flex-row">
+		<!-- Image Section -->
+		<div class="flex w-full shrink-0 items-center justify-center sm:w-48">
+			<a href={`/research/${research.slug}`} class="block overflow-hidden rounded-lg">
+				<Image 
+					src={research.data.feature} 
+					alt={research.data.title} 
+					height={192} 
+					width={192}
+					aspectRatio={1} 
+					class="object-cover"
+				/>
+			</a>
+		</div>
 
-		<ul class="flex flex-row text-black dark:text-white">
-			{
-				Object.entries(research.data.links).map(([key, value]) => (
-					<li class="mr-3">
-						[<InLineLink text={key} href={value} target="_self" rel="" />]
-					</li>
-				))
-			}
-		</ul>
+		<!-- Content Section -->
+		<div class="flex flex-1 flex-col">
+			<!-- Title -->
+			<a href={`/research/${research.slug}`} class="group/title mb-2">
+				<h2 class="text-lg font-semibold text-gray-900 transition-colors group-hover/title:text-accent dark:text-white dark:group-hover/title:text-accent-2">
+					{research.data.title}
+				</h2>
+			</a>
+
+			<!-- Authors -->
+			<div class="mb-2 flex flex-wrap gap-x-1 text-sm text-gray-600 dark:text-gray-300">
+				{
+					research.data.authors.map((author: string, idx: number) => (
+						<span>
+							<span class={idx === research.data.author_idx ? "font-semibold underline decoration-accent decoration-2 underline-offset-2" : ""}>
+								{author}
+							</span>
+							{idx !== research.data.authors.length - 1 ? "," : ""}
+						</span>
+					))
+				}
+			</div>
+
+			<!-- Description/Venue -->
+			<p class="mb-4 text-sm italic text-gray-700 dark:text-gray-300">
+				{research.data.description}
+			</p>
+
+			<!-- Icon-based Links -->
+			<div class="flex flex-wrap gap-3">
+				{
+					Object.entries(research.data.links).map(([key, value]) => {
+						const iconType = getIcon(key);
+						const iconTitle = getIconTitle(key);
+						const url = value as string;
+						
+						return (
+							<a
+								href={url}
+								target={url.startsWith("/") ? "_self" : "_blank"}
+								rel={url.startsWith("/") ? "" : "noopener noreferrer"}
+								class="group/link flex items-center gap-2 rounded-full border border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 transition-all hover:border-accent hover:bg-accent hover:text-white dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:border-accent-2 dark:hover:bg-accent-2"
+								title={iconTitle}
+							>
+								{/* Icon SVGs */}
+								{iconType === "arxiv" && (
+									<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+										<path d="M13.5,5.5C13.5,5.5 11.47,12.69 11,14.5C10.27,11.83 8.5,5.5 8.5,5.5H6.5L10.5,18.5H11.5L15.5,5.5H13.5M21.5,3V19A1.5,1.5 0 0,1 20,20.5H4A1.5,1.5 0 0,1 2.5,19V3A1.5,1.5 0 0,1 4,1.5H20A1.5,1.5 0 0,1 21.5,3M20,3H4V19H20V3Z" />
+									</svg>
+								)}
+								{iconType === "github" && (
+									<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+										<path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+									</svg>
+								)}
+								{iconType === "pdf" && (
+									<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+										<path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18.5,20H5.5V4H13V9H18.5V20M10.1,11.4C10.08,11.44 9.81,13.16 8,16.09C8,16.09 4.5,15.5 5.5,13.5C6.07,12.34 7.3,12.54 8.5,13.35L10.1,11.4M11.29,10.59C11.58,10.21 11.86,9.79 12.14,9.33C11.92,8.5 11.74,7.5 12,6.5C12.17,5.96 12.71,5.45 13.5,6C14.5,6.71 14.05,8.43 13.16,9.79C13.66,10.79 14.37,11.59 15.27,12.16C16.18,12.73 16.84,12.87 17.5,12.5C18.5,11.93 18.29,10.29 16.33,10.21C16.25,10.21 16.18,10.21 16.1,10.22C16.17,9.82 16.39,9.45 16.74,9.21C18.62,9.25 19.82,10.73 18.97,12.09C18.5,12.93 17.5,13.25 16.5,13C15.5,12.76 14.59,12.17 13.84,11.35C12.87,11.64 11.89,12.07 11,12.67C10.11,14.76 9.16,16.5 8.5,17C7.29,18.03 5.5,17.5 6,16C6.5,14.5 8.5,14.55 10,15.03C10.78,13.67 11.39,12.09 11.71,10.68L11.29,10.59Z" />
+									</svg>
+								)}
+								{iconType === "paper" && (
+									<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+										<path d="M14,17H7V15H14M17,13H7V11H17M17,9H7V7H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
+									</svg>
+								)}
+								{iconType === "video" && (
+									<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+										<path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z" />
+									</svg>
+								)}
+								{iconType === "slides" && (
+									<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+										<path d="M13,19V16H21V19H13M13,9V5H21V9H13M13,14H21V10H13V14M3,19V16H11V19H3M3,9V5H11V9H3M3,14H11V10H3V14Z" />
+									</svg>
+								)}
+								{iconType === "poster" && (
+									<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+										<path d="M19,7H5A2,2 0 0,0 3,9V18A2,2 0 0,0 5,20H19A2,2 0 0,0 21,18V9A2,2 0 0,0 19,7M19,18H5V9H19V18M13.5,10.5A1.5,1.5 0 0,0 12,12A1.5,1.5 0 0,0 13.5,13.5A1.5,1.5 0 0,0 15,12A1.5,1.5 0 0,0 13.5,10.5M6.5,16L9.5,12.27L11.5,14.72L14.5,11L17.5,16H6.5Z" />
+									</svg>
+								)}
+								{iconType === "link" && (
+									<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+										<path d="M10.59,13.41C11,13.8 11,14.44 10.59,14.83C10.2,15.22 9.56,15.22 9.17,14.83C7.22,12.88 7.22,9.71 9.17,7.76V7.76L12.71,4.22C14.66,2.27 17.83,2.27 19.78,4.22C21.73,6.17 21.73,9.34 19.78,11.29L18.29,12.78C18.3,11.96 18.17,11.14 17.89,10.36L18.36,9.88C19.54,8.71 19.54,6.81 18.36,5.64C17.19,4.46 15.29,4.46 14.12,5.64L10.59,9.17C9.41,10.34 9.41,12.24 10.59,13.41M13.41,9.17C13.8,8.78 14.44,8.78 14.83,9.17C16.78,11.12 16.78,14.29 14.83,16.24V16.24L11.29,19.78C9.34,21.73 6.17,21.73 4.22,19.78C2.27,17.83 2.27,14.66 4.22,12.71L5.71,11.22C5.7,12.04 5.83,12.86 6.11,13.65L5.64,14.12C4.46,15.29 4.46,17.19 5.64,18.36C6.81,19.54 8.71,19.54 9.88,18.36L13.41,14.83C14.59,13.66 14.59,11.76 13.41,10.59C13,10.2 13,9.56 13.41,9.17Z" />
+									</svg>
+								)}
+								<span>{iconTitle}</span>
+							</a>
+						);
+					})
+				}
+			</div>
+		</div>
 	</div>
 </Element>
