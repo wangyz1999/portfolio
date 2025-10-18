@@ -1,2 +1,3 @@
 [build]
-  command = "pnpm rebuild sharp --platform=linux --arch=x64 && pnpm build"
+  command = "npm rebuild sharp && pnpm build"
+  publish = "dist"
