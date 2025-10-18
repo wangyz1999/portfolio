@@ -1,2 +1,3 @@
 [build]
-  command = "pnpm install --force && pnpm rebuild sharp && pnpm build"
+  command = "pnpm approve-builds && pnpm install && pnpm rebuild sharp && pnpm build"
+  publish = "dist"
