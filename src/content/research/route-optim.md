@@ -10,7 +10,7 @@ author_idx: 0
 
 selected: true
 
-description: "Association for the Advancement of Artificial Intelligence (AAAI) 2021 Fall Symposium Series"
+description: "AAAI-FSS 2021"
 
 links:
   Paper: "https://link.springer.com/chapter/10.1007/978-3-031-21671-8_14"
