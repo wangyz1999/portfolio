@@ -22,7 +22,7 @@ const year = new Date().getFullYear();
 		class="flex gap-x-2 sm:gap-x-0 sm:divide-x sm:divide-gray-500"
 	>
 		{
-			MENU_LINKS.map((link) => (
+			MENU_LINKS.filter((link: any) => !link.icon).map((link: any) => (
 				<a
 					href={link.path}
 					class="px-4 py-2 sm:px-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
