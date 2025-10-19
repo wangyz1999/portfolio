@@ -7,6 +7,8 @@ import { sortMDByDate, sortResearchByDate } from "@/utils";
 import { Picture } from "@astrojs/image/components";
 import profile_pic from "../assets/profile.jpg";
 import InLineLink from "@/components/InLineLink";
+import Icon from "../components/Icon.astro";
+import { SOCIAL_LINKS } from "@/data/constants";
 
 const MAX_POSTS = 10;
 const MAX_RESEARCH = 10;
@@ -20,22 +22,86 @@ const publications = sortResearchByDate(allResearch.filter(r => !r.data.isPrepri
 ---
 
 <PageLayout meta={{ title: "Home" }}>
-	<section>
-		<div class="flex flex-col space-y-4 sm:flex-row sm:space-x-6 sm:space-y-0">
-			<div class="w-full sm:w-64 sm:flex-shrink-0 p-4">
+	<div class="flex flex-col lg:flex-row gap-8">
+		<!-- Sticky Sidebar -->
+		<aside class="lg:w-40 lg:flex-shrink-0">
+			<div class="lg:sticky lg:top-8">
 				<Picture
-					class="mx-auto w-full rounded-md"
-					widths={[256, 320, 512]}
-					sizes="(max-width: 639px) 320px, 256px"
+					class="w-full rounded-full mb-6 aspect-square object-cover"
+					widths={[144, 192, 288]}
+					sizes="(max-width: 1023px) 192px, 144px"
 					loading="eager"
-					width={512}
-					height={512}
+					width={288}
+					height={288}
 					src={profile_pic}
 					alt="profile"
 				/>
+				
+				<!-- Social Links -->
+				<nav class="flex flex-col space-y-1">
+					<a
+						href={SOCIAL_LINKS.linkedin}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex items-center gap-3 p-2 rounded hover:bg-accent/10 transition-colors"
+					>
+						<Icon name="linkedin" />
+						<span class="text-sm font-medium">LinkedIn</span>
+					</a>
+					
+					<a
+						href={SOCIAL_LINKS.github}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex items-center gap-3 p-2 rounded hover:bg-accent/10 transition-colors"
+					>
+						<Icon name="github" />
+						<span class="text-sm font-medium">GitHub</span>
+					</a>
+					
+					<a
+						href={SOCIAL_LINKS.gscolar}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex items-center gap-3 p-2 rounded hover:bg-accent/10 transition-colors"
+					>
+						<Icon name="scholar" />
+						<span class="text-sm font-medium">Google Scholar</span>
+					</a>
+					
+					<a
+						href={SOCIAL_LINKS.medium}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex items-center gap-3 p-2 rounded hover:bg-accent/10 transition-colors"
+					>
+						<Icon name="medium" />
+						<span class="text-sm font-medium">Medium</span>
+					</a>
+					
+					<a
+						href={`mailto:${SOCIAL_LINKS.email}`}
+						class="flex items-center gap-3 p-2 rounded hover:bg-accent/10 transition-colors"
+					>
+						<Icon name="email" />
+						<span class="text-sm font-medium">Email</span>
+					</a>
+					
+					<a
+						href="/cv.pdf"
+						target="_blank"
+						class="flex items-center gap-3 p-2 rounded hover:bg-accent/10 transition-colors"
+					>
+						<Icon name="cv" />
+						<span class="text-sm font-medium">CV</span>
+					</a>
+				</nav>
 			</div>
-			<div class="flex-1 p-4">
-				<h1 class="text-xxl title mb-3">Yunzhe Wang</h1>
+		</aside>
+
+		<!-- Main Content -->
+		<main class="flex-1 min-w-0">
+			<section>
 				<p class="mb-3">
 					I am a Computer Science PhD student at USC, advised by <InLineLink
 						href="https://ict.usc.edu/about-us/leadership/senior-management/william-swartout/"
@@ -64,69 +130,69 @@ const publications = sortResearchByDate(allResearch.filter(r => !r.data.isPrepri
 					<li>Artificial Intelligence for Interactive Game Environments</li>
 					<li>Reinforcement Learning for Sequential Decision-Making</li>
 				</ul>
-			</div>
-		</div>
-	</section>
+			</section>
 
-	<section class="mt-16">
-		<h2 class="text-xxl title mb-6">Preprints</h2>
-		<ul class="space-y-6">
-			{
-				preprints.map((p: any) => (
-					<li>
-						<ResearchPreview research={p} />
+			<section class="mt-16">
+				<h2 class="text-xxl title mb-6">Preprints</h2>
+				<ul class="space-y-6">
+					{
+						preprints.map((p: any) => (
+							<li>
+								<ResearchPreview research={p} />
+							</li>
+						))
+					}
+				</ul>
+			</section>
+
+			<section class="mt-16">
+				<h2 class="text-xxl title mb-6">Recent Publications</h2>
+				<ul class="space-y-6">
+					{
+						publications.map((p: any) => (
+							<li>
+								<ResearchPreview research={p} />
+							</li>
+						))
+					}
+				</ul>
+			</section>
+
+			<section class="mt-16">
+				<h2 class="text-xxl title mb-4">Services</h2>
+				<h3 class="text-md mb-2 font-semibold">Technical Program Committee (TPC) Member/Reviewer</h3>
+				<ul class="list-inside list-disc space-y-3 pl-4 sm:space-y-3">
+					<li class="pl-2">International Conference on Learning Representations (ICLR) 2025, 2026</li>
+					<li class="pl-2">Association for the Advancement of Artificial Intelligence (AAAI) 2025, 2026 </li>
+					<li class="pl-2">Conference on Empirical Methods in Natural Language Processing (EMNLP) 2025</li>
+					<li class="pl-2">International Conference on Autonomous Agents and Multiagent Systems (AAMAS) 2025, 2026</li>
+					<li class="pl-2">Conference on Neural Information Processing Systems (NeurIPS) 2026</li>
+					<li class="pl-2">IEEE Symposium Series on Computational Intelligence 2025</li>
+					<li class="pl-2">
+						IEEE Symposium on Computational Intelligence in Natural Language Processing and Social Media
+						(CINLPSoMe) 2025
 					</li>
-				))
-			}
-		</ul>
-	</section>
-
-	<section class="mt-16">
-		<h2 class="text-xxl title mb-6">Recent Publications</h2>
-		<ul class="space-y-6">
-			{
-				publications.map((p: any) => (
-					<li>
-						<ResearchPreview research={p} />
+					<li class="pl-2">IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP) 2025</li>
+					<li class="pl-2">IEEE International Workshop on Machine Learning for Signal Processing (MLSP) 2025, 2026</li>
+					<li class="pl-2">
+						Conference on Neural Information Processing Systems (NeurIPS) 2024 Workshop Foundation
+						Models for Science
 					</li>
-				))
-			}
-		</ul>
-	</section>
+				</ul>
+			</section>
 
-	<section class="mt-16">
-		<h2 class="text-xxl title mb-4">Services</h2>
-		<h3 class="text-md mb-2 font-semibold">Technical Program Committee (TPC) Member/Reviewer</h3>
-		<ul class="list-inside list-disc space-y-3 pl-4 sm:space-y-3">
-			<li class="pl-2">International Conference on Learning Representations (ICLR) 2025, 2026</li>
-			<li class="pl-2">Association for the Advancement of Artificial Intelligence (AAAI) 2025, 2026 </li>
-			<li class="pl-2">Conference on Empirical Methods in Natural Language Processing (EMNLP) 2025</li>
-			<li class="pl-2">International Conference on Autonomous Agents and Multiagent Systems (AAMAS) 2025, 2026</li>
-			<li class="pl-2">Conference on Neural Information Processing Systems (NeurIPS) 2026</li>
-			<li class="pl-2">IEEE Symposium Series on Computational Intelligence 2025</li>
-			<li class="pl-2">
-				IEEE Symposium on Computational Intelligence in Natural Language Processing and Social Media
-				(CINLPSoMe) 2025
-			</li>
-			<li class="pl-2">IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP) 2025</li>
-			<li class="pl-2">IEEE International Workshop on Machine Learning for Signal Processing (MLSP) 2025, 2026</li>
-			<li class="pl-2">
-				Conference on Neural Information Processing Systems (NeurIPS) 2024 Workshop Foundation
-				Models for Science
-			</li>
-		</ul>
-	</section>
-
-	<section aria-label="Blog post list" class="mt-16">
-		<h2 class="text-xxl title mb-4">Posts</h2>
-		<ul class="space-y-4 sm:space-y-2">
-			{
-				allPostsByDate.map((p) => (
-					<li class="flex flex-col gap-x-2 sm:flex-row">
-						<PostPreview post={p} />
-					</li>
-				))
-			}
-		</ul>
-	</section>
+			<section aria-label="Blog post list" class="mt-16">
+				<h2 class="text-xxl title mb-4">Posts</h2>
+				<ul class="space-y-4 sm:space-y-2">
+					{
+						allPostsByDate.map((p) => (
+							<li class="flex flex-col gap-x-2 sm:flex-row">
+								<PostPreview post={p} />
+							</li>
+						))
+					}
+				</ul>
+			</section>
+		</main>
+	</div>
 </PageLayout>
