@@ -25,6 +25,8 @@ const getIcon = (key: string) => {
 		return "slides";
 	} else if (lowerKey.includes("poster")) {
 		return "poster";
+	} else if (lowerKey.includes("dataset") || lowerKey.includes("huggingface")) {
+		return "dataset";
 	}
 	return "link";
 };
@@ -40,6 +42,7 @@ const getIconTitle = (key: string) => {
 	if (lowerKey.includes("overview") || lowerKey.includes("project")) return "Project";
 	if (lowerKey.includes("slides")) return "Slides";
 	if (lowerKey.includes("poster")) return "Poster";
+	if (lowerKey.includes("dataset") || lowerKey.includes("huggingface")) return "Dataset";
 	return key;
 };
 

@@ -12,5 +12,7 @@ selected: true
 isPreprint: true
 
 links:
-  Paper: "./"
+  Paper: "https://arxiv.org/abs/2510.19150"
+  Code: https://github.com/HATS-ICT/x-ego
+  Dataset: https://huggingface.co/datasets/wangyz1999/X-EGO-CS
 ---
