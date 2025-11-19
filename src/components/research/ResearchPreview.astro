@@ -52,7 +52,7 @@ const paperLink = Object.entries(research.data.links).find(([key]) =>
 )?.[1] as string || `/research/${research.slug}`;
 ---
 
-<Element class="group relative rounded-2xl border border-white/20 bg-white/40 p-4 shadow-lg backdrop-blur-md dark:border-white/10 dark:bg-gray-900/40">
+<Element class="group relative rounded-2xl border border-white/20 bg-white/40 p-4 shadow-sm backdrop-blur-md dark:border-white/10 dark:bg-gray-900/40">
 	<div class="flex flex-col gap-4 sm:flex-row">
 		<!-- Image Section -->
 		<div class="flex w-full shrink-0 items-center justify-center sm:w-36">
@@ -60,7 +60,7 @@ const paperLink = Object.entries(research.data.links).find(([key]) =>
 				href={paperLink} 
 				target={paperLink.startsWith("/") ? "_self" : "_blank"}
 				rel={paperLink.startsWith("/") ? "" : "noopener noreferrer"}
-				class="block overflow-hidden rounded-xl transition-all duration-300 hover:scale-105"
+				class="block overflow-hidden rounded-xl"
 			>
 				<Image 
 					src={research.data.feature} 
@@ -88,7 +88,7 @@ const paperLink = Object.entries(research.data.links).find(([key]) =>
 			</a>
 
 			<!-- Authors -->
-			<div class="mb-1 flex flex-wrap gap-x-1 text-xs text-gray-600 dark:text-gray-300">
+			<div class="mb-1 flex flex-wrap gap-x-1 text-sm text-gray-600 dark:text-gray-300">
 				{
 					research.data.authors.map((author: string, idx: number) => (
 						<span>
@@ -102,7 +102,7 @@ const paperLink = Object.entries(research.data.links).find(([key]) =>
 			</div>
 
 			<!-- Description/Venue -->
-			<p class="mb-2 text-xs italic text-gray-700 dark:text-gray-300">
+			<p class="mb-2 text-sm italic text-gray-700 dark:text-gray-300">
 				{research.data.description}
 			</p>
 
@@ -122,7 +122,7 @@ const paperLink = Object.entries(research.data.links).find(([key]) =>
 								class="group/link flex items-center gap-1.5 rounded-full border border-white/30 bg-white/30 px-3 py-1 text-xs font-medium text-gray-800 backdrop-blur-sm transition-all hover:border-accent hover:bg-accent hover:text-white hover:scale-105 dark:border-white/20 dark:bg-white/10 dark:text-gray-100 dark:hover:border-accent-2 dark:hover:bg-accent-2"
 								title={iconTitle}
 							>
-								<Icon name={iconType} class="h-3.5 w-3.5" />
+								<Icon name={iconType} class="h-5 w-5" />
 								<span>{iconTitle}</span>
 							</a>
 						);
