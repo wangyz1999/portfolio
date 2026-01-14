@@ -25,7 +25,7 @@ authors:
   ]
 
 author_idx: 6
-selected: false
+selected: true
 
 links:
   Paper: "https://www.science.org/doi/10.1126/scirobotics.adx3017"
