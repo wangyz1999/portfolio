@@ -2,7 +2,7 @@
 title: "A Data-Driven Discretized CS:GO Simulation Environment to Facilitate Strategic Multi-Agent Planning Research"
 
 feature: "/imgs/projects/decoy.webp"
-description: "WSC 2025"
+description: "Proceedings of the Winter Simulation Conference, 2025"
 
 publishDate: "May 2025"
 authors: ["Yunzhe Wang", "Volkan Ustun", "Chris McGroarty"]

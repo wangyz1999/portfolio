@@ -2,7 +2,7 @@
 title: "Reconfigurable Robot Identification from Motion Data"
 
 feature: "/imgs/projects/identification.gif"
-description: IROS 2024
+description: International Conference on Intelligent Robots and Systems (IROS), 2024
 
 publishDate: "09 Jun 2023"
 authors: ["Yuhang Hu", "Yunzhe Wang", "Ruibo Liu", "Zhou Shen", "Hod Lipson"]
