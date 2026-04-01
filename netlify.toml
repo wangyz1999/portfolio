@@ -1,5 +1,5 @@
 [build]
-  command = "npm install --platform=linux --arch=x64 sharp && pnpm build"
+  command = "npm install --legacy-peer-deps --platform=linux --arch=x64 sharp && pnpm build"
   publish = "dist"
 
 [build.environment]
