@@ -8,7 +8,8 @@ publishDate: "01 Feb 2021"
 authors: ["Yunzhe Wang", "Nikolos Gurney", "Jincheng Zhou", "David V. Pynadath", "Volkan Ustun"]
 author_idx: 0
 
-hidden: true
+hidden: false
+selected: false
 category: "workshop"
 venue: "AAAI-FSS"
 tldr: ""

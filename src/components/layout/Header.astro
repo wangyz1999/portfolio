@@ -44,10 +44,8 @@ const url = new URL(Astro.request.url);
 	}
 </style>
 
-<header id="main-header" class="group relative mb-6 flex items-center justify-between sm:mb-16">
-	<a href="/" aria-current={url.pathname === "/" ? "page" : false}>
-		<span class="text-2xl font-bold sm:text-3xl">Yunzhe Wang</span>
-	</a>
+<header id="main-header" class="group sticky top-0 z-50 mb-6 flex items-center justify-between bg-bgColor/90 backdrop-blur-sm py-3 sm:mb-8">
+	<div></div>
 
 	<!-- Desktop nav (hidden on mobile) -->
 	<nav

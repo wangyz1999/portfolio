@@ -5,6 +5,10 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SkipLink from "@/components/SkipLink";
 import { siteConfig } from "@/site-config";
+import { Picture } from "astro:assets";
+import profile_pic from "../assets/profile.webp";
+import Icon from "../components/Icon.astro";
+import { SOCIAL_LINKS } from "@/data/constants";
 
 interface Props {
 	meta: SiteMeta;
@@ -103,10 +107,103 @@ const {
 	</head>
 	<body>
 		<SkipLink />
-		<Header />
-		<main id="main" class="flex-1">
-			<slot />
-		</main>
-		<Footer />
+		<div class="mx-auto max-w-6xl px-4 sm:px-8">
+			<Header />
+			<div class="flex gap-10">
+				<!-- Persistent sidebar -->
+				<aside class="hidden lg:block lg:w-52 lg:flex-shrink-0">
+					<div class="sticky top-20">
+						<Picture
+							class="w-full rounded-full mb-2 aspect-square object-cover"
+							widths={[208, 416]}
+							sizes="208px"
+							loading="eager"
+							width={288}
+							height={288}
+							src={profile_pic}
+							alt="profile"
+						/>
+						<p class="mb-4 text-center text-lg font-bold text-textColor">Yunzhe Wang</p>
+						<nav class="flex flex-row justify-center gap-1 mb-4">
+							<a
+								href={SOCIAL_LINKS.github}
+								target="_blank"
+								rel="noopener noreferrer"
+								title="GitHub"
+								class="p-2 rounded hover:bg-accent/10 transition-colors"
+							>
+								<Icon name="github" />
+							</a>
+							<a
+								href={SOCIAL_LINKS.gscolar}
+								target="_blank"
+								rel="noopener noreferrer"
+								title="Google Scholar"
+								class="p-2 rounded hover:bg-accent/10 transition-colors"
+							>
+								<Icon name="scholar" />
+							</a>
+							<a
+								href={`mailto:${SOCIAL_LINKS.email}`}
+								title="Email"
+								class="p-2 rounded hover:bg-accent/10 transition-colors"
+							>
+								<Icon name="email" />
+							</a>
+							<a
+								href="/cv.pdf"
+								target="_blank"
+								title="CV"
+								class="p-2 rounded hover:bg-accent/10 transition-colors"
+							>
+								<Icon name="cv-text" />
+							</a>
+						</nav>
+						<div class="flex items-center justify-center gap-1 text-xs text-textColor/50">
+							<Icon name="location" class="h-3.5 w-3.5 flex-shrink-0" />
+							<span>Los Angeles, CA</span>
+						</div>
+					</div>
+				</aside>
+
+				<!-- Main content -->
+				<main id="main" class="flex-1 min-w-0">
+					<!-- Mobile: centered profile block -->
+					<div class="flex flex-col items-center mb-8 lg:hidden">
+						<Picture
+							class="h-28 w-28 rounded-full object-cover mb-2"
+							widths={[112, 224]}
+							sizes="112px"
+							loading="eager"
+							width={224}
+							height={224}
+							src={profile_pic}
+							alt="profile"
+						/>
+						<p class="mb-2 text-base font-bold text-textColor">Yunzhe Wang</p>
+						<nav class="flex flex-row gap-1 mb-2">
+							<a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" title="GitHub" class="p-2 rounded hover:bg-accent/10 transition-colors">
+								<Icon name="github" />
+							</a>
+							<a href={SOCIAL_LINKS.gscolar} target="_blank" rel="noopener noreferrer" title="Google Scholar" class="p-2 rounded hover:bg-accent/10 transition-colors">
+								<Icon name="scholar" />
+							</a>
+							<a href={`mailto:${SOCIAL_LINKS.email}`} title="Email" class="p-2 rounded hover:bg-accent/10 transition-colors">
+								<Icon name="email" />
+							</a>
+							<a href="/cv.pdf" target="_blank" title="CV" class="p-2 rounded hover:bg-accent/10 transition-colors">
+								<Icon name="cv-text" />
+							</a>
+						</nav>
+						<div class="flex items-center gap-1 text-xs text-textColor/50">
+							<Icon name="location" class="h-3.5 w-3.5 flex-shrink-0" />
+							<span>Los Angeles, CA</span>
+						</div>
+					</div>
+					<slot />
+				</main>
+			</div>
+			<Footer />
+		</div>
 	</body>
 </html>

@@ -8,171 +8,178 @@ const allResearch = await getCollection("research");
 const allSorted = sortResearchByDate(allResearch);
 
 // Collect all unique tags
-const allTags = [...new Set(allSorted.flatMap((r) => r.data.tags ?? []))].sort();
-
+const allTags = [
+  ...new Set(allSorted.flatMap((r) => r.data.tags ?? [])),
+].sort();
 ---
 
 <PageLayout meta={{ title: "Research" }}>
-	<div class="mx-auto max-w-3xl">
-		<h1 class="text-xxl title mb-8">Research</h1>
+  <div>
+    <!-- Search & Filter Controls -->
+    <div class="mb-8 space-y-4">
+      <!-- Search Input -->
+      <div class="relative">
+        <svg
+          class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"></path>
+        </svg>
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Search by title, author, or keyword..."
+          class="w-full rounded-xl border border-white/20 bg-white/40 py-2.5 pl-10 pr-4 text-sm text-gray-800 shadow-sm backdrop-blur-md placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent dark:border-white/10 dark:bg-gray-900/40 dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus:ring-accent-2"
+        />
+      </div>
 
-		<!-- Search & Filter Controls -->
-		<div class="mb-8 space-y-4">
-			<!-- Search Input -->
-			<div class="relative">
-				<svg
-					class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-				>
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
-				</svg>
-				<input
-					id="search-input"
-					type="text"
-					placeholder="Search by title, author, or keyword..."
-					class="w-full rounded-xl border border-white/20 bg-white/40 py-2.5 pl-10 pr-4 text-sm text-gray-800 shadow-sm backdrop-blur-md placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent dark:border-white/10 dark:bg-gray-900/40 dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus:ring-accent-2"
-				/>
-			</div>
+      <!-- Tag Filter -->
+      <div id="tag-filters" class="flex flex-wrap gap-2">
+        <button
+          data-tag="__all__"
+          class="tag-btn active rounded-full border border-accent bg-accent px-3 py-1 text-xs font-medium text-white transition-all hover:scale-105 dark:border-accent-2 dark:bg-accent-2"
+        >
+          All
+        </button>
+        {
+          allTags.map((tag) => (
+            <button
+              data-tag={tag}
+              class="tag-btn rounded-full border border-gray-300 bg-white/40 px-3 py-1 text-xs font-medium text-gray-700 backdrop-blur-sm transition-all hover:scale-105 hover:border-accent hover:text-accent dark:border-white/20 dark:bg-white/10 dark:text-gray-300 dark:hover:border-accent-2 dark:hover:text-accent-2"
+            >
+              {tag}
+            </button>
+          ))
+        }
+      </div>
+    </div>
 
-			<!-- Tag Filter -->
-			<div id="tag-filters" class="flex flex-wrap gap-2">
-				<button
-					data-tag="__all__"
-					class="tag-btn active rounded-full border border-accent bg-accent px-3 py-1 text-xs font-medium text-white transition-all hover:scale-105 dark:border-accent-2 dark:bg-accent-2"
-				>
-					All
-				</button>
-				{
-					allTags.map((tag) => (
-						<button
-							data-tag={tag}
-							class="tag-btn rounded-full border border-gray-300 bg-white/40 px-3 py-1 text-xs font-medium text-gray-700 backdrop-blur-sm transition-all hover:scale-105 hover:border-accent hover:text-accent dark:border-white/20 dark:bg-white/10 dark:text-gray-300 dark:hover:border-accent-2 dark:hover:text-accent-2"
-						>
-							{tag}
-						</button>
-					))
-				}
-			</div>
-		</div>
+    <!-- Result count -->
+    <p id="result-count" class="mb-4 text-sm text-gray-500 dark:text-gray-400">
+    </p>
 
-		<!-- Result count -->
-		<p id="result-count" class="mb-4 text-sm text-gray-500 dark:text-gray-400"></p>
+    <!-- Research List -->
+    <ul id="research-list" class="space-y-6">
+      {
+        allSorted.map((r) => (
+          <li
+            data-id={r.id}
+            data-title={r.data.title.toLowerCase()}
+            data-authors={(r.data.authors ?? []).join(" ").toLowerCase()}
+            data-tags={(r.data.tags ?? []).join("|").toLowerCase()}
+            data-description={(r.data.description ?? "").toLowerCase()}
+          >
+            <ResearchPreview research={r} />
+          </li>
+        ))
+      }
+    </ul>
 
-		<!-- Research List -->
-		<ul id="research-list" class="space-y-6">
-			{
-				allSorted.map((r) => (
-					<li
-						data-id={r.id}
-						data-title={r.data.title.toLowerCase()}
-						data-authors={(r.data.authors ?? []).join(" ").toLowerCase()}
-						data-tags={(r.data.tags ?? []).join("|").toLowerCase()}
-						data-description={(r.data.description ?? "").toLowerCase()}
-					>
-						<ResearchPreview research={r} />
-					</li>
-				))
-			}
-		</ul>
-
-		<!-- Empty state -->
-		<div id="empty-state" class="hidden py-16 text-center text-gray-400 dark:text-gray-500">
-			<p class="text-lg">No research found matching your filters.</p>
-			<p class="mt-1 text-sm">Try a different search term or tag.</p>
-		</div>
-	</div>
+    <!-- Empty state -->
+    <div
+      id="empty-state"
+      class="hidden py-16 text-center text-gray-400 dark:text-gray-500"
+    >
+      <p class="text-lg">No research found matching your filters.</p>
+      <p class="mt-1 text-sm">Try a different search term or tag.</p>
+    </div>
+  </div>
 </PageLayout>
 
 <script>
-	const searchInput = document.getElementById("search-input") as HTMLInputElement;
-	const tagButtons = document.querySelectorAll<HTMLButtonElement>(".tag-btn");
-	const researchItems = document.querySelectorAll<HTMLLIElement>("#research-list li");
-	const resultCount = document.getElementById("result-count")!;
-	const emptyState = document.getElementById("empty-state")!;
-	const researchList = document.getElementById("research-list")!;
+  const searchInput = document.getElementById(
+    "search-input",
+  ) as HTMLInputElement;
+  const tagButtons = document.querySelectorAll<HTMLButtonElement>(".tag-btn");
+  const researchItems =
+    document.querySelectorAll<HTMLLIElement>("#research-list li");
+  const resultCount = document.getElementById("result-count")!;
+  const emptyState = document.getElementById("empty-state")!;
+  const researchList = document.getElementById("research-list")!;
 
-	let activeTag = "__all__";
-	let searchQuery = "";
+  let activeTag = "__all__";
+  let searchQuery = "";
 
-	function updateResults() {
-		let visibleCount = 0;
+  function updateResults() {
+    let visibleCount = 0;
 
-		researchItems.forEach((item) => {
-			const title = item.dataset.title ?? "";
-			const authors = item.dataset.authors ?? "";
-			const tags = item.dataset.tags ?? "";
-			const description = item.dataset.description ?? "";
+    researchItems.forEach((item) => {
+      const title = item.dataset.title ?? "";
+      const authors = item.dataset.authors ?? "";
+      const tags = item.dataset.tags ?? "";
+      const description = item.dataset.description ?? "";
 
-			const matchesSearch =
-				searchQuery === "" ||
-				title.includes(searchQuery) ||
-				authors.includes(searchQuery) ||
-				description.includes(searchQuery) ||
-				tags.includes(searchQuery);
+      const matchesSearch =
+        searchQuery === "" ||
+        title.includes(searchQuery) ||
+        authors.includes(searchQuery) ||
+        description.includes(searchQuery) ||
+        tags.includes(searchQuery);
 
-			const matchesTag =
-				activeTag === "__all__" ||
-				tags.split("|").includes(activeTag.toLowerCase());
+      const matchesTag =
+        activeTag === "__all__" ||
+        tags.split("|").includes(activeTag.toLowerCase());
 
-			if (matchesSearch && matchesTag) {
-				item.style.display = "";
-				visibleCount++;
-			} else {
-				item.style.display = "none";
-			}
-		});
+      if (matchesSearch && matchesTag) {
+        item.style.display = "";
+        visibleCount++;
+      } else {
+        item.style.display = "none";
+      }
+    });
 
-		const total = researchItems.length;
-		resultCount.textContent =
-			visibleCount === total
-				? `${total} paper${total !== 1 ? "s" : ""}`
-				: `${visibleCount} of ${total} paper${total !== 1 ? "s" : ""}`;
+    const total = researchItems.length;
+    resultCount.textContent =
+      visibleCount === total
+        ? `${total} paper${total !== 1 ? "s" : ""}`
+        : `${visibleCount} of ${total} paper${total !== 1 ? "s" : ""}`;
 
-		if (visibleCount === 0) {
-			emptyState.classList.remove("hidden");
-			researchList.classList.add("hidden");
-		} else {
-			emptyState.classList.add("hidden");
-			researchList.classList.remove("hidden");
-		}
-	}
+    if (visibleCount === 0) {
+      emptyState.classList.remove("hidden");
+      researchList.classList.add("hidden");
+    } else {
+      emptyState.classList.add("hidden");
+      researchList.classList.remove("hidden");
+    }
+  }
 
-	function setActiveTag(tag: string) {
-		activeTag = tag;
-		tagButtons.forEach((btn) => {
-			const isActive = btn.dataset.tag === tag;
-			btn.classList.toggle(
-				"border-accent",
-				isActive
-			);
-			btn.classList.toggle("bg-accent", isActive);
-			btn.classList.toggle("text-white", isActive);
-			btn.classList.toggle("dark:border-accent-2", isActive);
-			btn.classList.toggle("dark:bg-accent-2", isActive);
-			btn.classList.toggle("border-gray-300", !isActive);
-			btn.classList.toggle("bg-white/40", !isActive);
-			btn.classList.toggle("text-gray-700", !isActive);
-			btn.classList.toggle("dark:border-white/20", !isActive);
-			btn.classList.toggle("dark:bg-white/10", !isActive);
-			btn.classList.toggle("dark:text-gray-300", !isActive);
-		});
-	}
+  function setActiveTag(tag: string) {
+    activeTag = tag;
+    tagButtons.forEach((btn) => {
+      const isActive = btn.dataset.tag === tag;
+      btn.classList.toggle("border-accent", isActive);
+      btn.classList.toggle("bg-accent", isActive);
+      btn.classList.toggle("text-white", isActive);
+      btn.classList.toggle("dark:border-accent-2", isActive);
+      btn.classList.toggle("dark:bg-accent-2", isActive);
+      btn.classList.toggle("border-gray-300", !isActive);
+      btn.classList.toggle("bg-white/40", !isActive);
+      btn.classList.toggle("text-gray-700", !isActive);
+      btn.classList.toggle("dark:border-white/20", !isActive);
+      btn.classList.toggle("dark:bg-white/10", !isActive);
+      btn.classList.toggle("dark:text-gray-300", !isActive);
+    });
+  }
 
-	tagButtons.forEach((btn) => {
-		btn.addEventListener("click", () => {
-			setActiveTag(btn.dataset.tag ?? "__all__");
-			updateResults();
-		});
-	});
+  tagButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      setActiveTag(btn.dataset.tag ?? "__all__");
+      updateResults();
+    });
+  });
 
-	searchInput.addEventListener("input", () => {
-		searchQuery = searchInput.value.toLowerCase().trim();
-		updateResults();
-	});
+  searchInput.addEventListener("input", () => {
+    searchQuery = searchInput.value.toLowerCase().trim();
+    updateResults();
+  });
 
-	// Initialize count
-	updateResults();
+  // Initialize count
+  updateResults();
 </script>
