@@ -8,8 +8,11 @@ publishDate: "May 2025"
 authors: ["Yunzhe Wang", "Volkan Ustun", "Chris McGroarty"]
 
 author_idx: 0
-selected: true
-tags: ["Multi-Agent", "Game AI", "Simulation", "Strategic Planning"]
+selected: false
+category: "conference"
+venue: "WSC"
+tldr: ""
+tags: ["Multi-Agent", "Game AI", "Simulation"]
 
 links:
   Paper: "https://arxiv.org/abs/2509.06355"

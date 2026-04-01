@@ -18,7 +18,10 @@ authors:
 
 author_idx: 3
 selected: true
-tags: ["Robotics", "Humanoid", "Human-Robot Interaction", "Deep Learning"]
+category: "journal"
+venue: "Science Robotics"
+tldr: ""
+tags: ["Robotics", "Human-Robot Interaction", "Facial Expression"]
 links:
   Paper: "https://www.science.org/doi/10.1126/scirobotics.adi4724"
   Code: "https://github.com/H-Y-H-Y-H/HR_Facial_Coexpression"

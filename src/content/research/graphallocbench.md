@@ -16,8 +16,11 @@ authors:
   ]
 
 author_idx: 1
-selected: true
-tags: ["Benchmark", "Reinforcement Learning", "Multi-Objective", "Graph Neural Networks"]
+selected: false
+category: "preprint"
+venue: ""
+tldr: ""
+tags: ["Benchmark", "Reinforcement Learning", "Multi-Objective Optimization", "Graph Neural Networks"]
 
 links:
   Paper: "https://arxiv.org/abs/2601.20753"

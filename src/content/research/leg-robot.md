@@ -9,7 +9,10 @@ authors: ["Yuhang Hu", "Yunzhe Wang", "Ruibo Liu", "Zhou Shen", "Hod Lipson"]
 
 author_idx: 1
 selected: true
-tags: ["Robotics", "Self-Modeling", "Motion Analysis"]
+category: "conference"
+venue: "IROS"
+tldr: ""
+tags: ["Robotics", "Self-Modeling"]
 
 links:
   Paper: "https://arxiv.org/abs/2403.10496"

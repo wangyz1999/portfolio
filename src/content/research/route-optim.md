@@ -9,6 +9,9 @@ authors: ["Yunzhe Wang", "Nikolos Gurney", "Jincheng Zhou", "David V. Pynadath",
 author_idx: 0
 
 hidden: true
+category: "workshop"
+venue: "AAAI-FSS"
+tldr: ""
 tags: ["Search & Rescue", "Route Optimization", "Human-AI Teaming"]
 
 description: "AAAI-FSS 2021"

@@ -4,7 +4,7 @@ title: "Learning Realistic Lip Motions for Humanoid Face Robots"
 feature: "/imgs/projects/lip-sync.jpg"
 description: Science Robotics 2026
 
-publishDate: "01 Jun 2026"
+publishDate: "01 Jan 2026"
 authors:
   [
     "Yuhang Hu",
@@ -26,7 +26,10 @@ authors:
 
 author_idx: 6
 selected: true
-tags: ["Robotics", "Humanoid", "Speech", "Deep Learning"]
+category: "journal"
+venue: "Science Robotics"
+tldr: ""
+tags: ["Robotics", "Human-Robot Interaction", "Speech", "Facial Expression"]
 
 links:
   Paper: "https://www.science.org/doi/10.1126/scirobotics.adx3017"

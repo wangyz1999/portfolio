@@ -8,7 +8,10 @@ publishDate: "Sep 2025"
 authors: ["Tianyi Zhang", "Xiaolin Zhou", "Yunzhe Wang", "Erik Cambria", "David Traum", "Rui Mao"]
 
 author_idx: 2
-selected: true
+selected: false
+category: "preprint"
+venue: ""
+tldr: ""
 tags: ["LLM", "Cognitive Simulation", "Human Modeling"]
 
 links:

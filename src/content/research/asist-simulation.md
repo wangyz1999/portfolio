@@ -9,7 +9,10 @@ authors: ["Volkan Ustun", "Ronit Jorvekar", "Nikolos Gurney", "David V Pynadath"
 
 author_idx: 4
 hidden: true
-tags: ["Search & Rescue", "Route Optimization", "Human-AI Teaming", "Graph Neural Networks"]
+category: "conference"
+venue: "ICAART"
+tldr: ""
+tags: ["Route Optimization", "Human-AI Teaming", "Graph Neural Networks", "Reinforcement Learning"]
 
 links:
   Paper: "Assessing Routing Decisions of Search and Rescue Teams in Service of an Artificial Social Intelligence Agent"

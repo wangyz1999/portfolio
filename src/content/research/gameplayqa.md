@@ -18,6 +18,9 @@ authors:
 
 author_idx: 0
 selected: true
+category: "preprint"
+venue: ""
+tldr: ""
 tags: ["Multi-Agent", "Video Understanding", "Benchmark", "LLM", "Game AI"]
 
 links:

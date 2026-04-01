@@ -8,15 +8,6 @@ export const MENU_LINKS = [
 		path: "/research",
 	},
 	{
-		title: "Blog",
-		path: "/posts/",
-	},
-	{
-		title: "LinkedIn",
-		path: "https://www.linkedin.com/in/yunzhe-wang/",
-		external: true,
-	},
-	{
 		title: "GitHub",
 		path: "https://github.com/wangyz1999",
 		external: true,
