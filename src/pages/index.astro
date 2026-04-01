@@ -4,7 +4,7 @@ import PageLayout from "@/layouts/Base";
 import PostPreview from "@/components/blog/PostPreview";
 import ResearchPreview from "@/components/research/ResearchPreview";
 import { sortMDByDate, sortResearchByDate } from "@/utils";
-import { Picture } from "@astrojs/image/components";
+import { Picture } from "astro:assets";
 import profile_pic from "../assets/profile.jpg";
 import InLineLink from "@/components/InLineLink";
 import Icon from "../components/Icon.astro";
@@ -17,8 +17,12 @@ const allPosts = await getCollection("post");
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
 const allResearch = await getCollection("research");
-const preprints = sortResearchByDate(allResearch.filter(r => r.data.isPreprint));
-const publications = sortResearchByDate(allResearch.filter(r => !r.data.isPreprint)).slice(0, MAX_RESEARCH);
+const preprints = sortResearchByDate(
+	allResearch.filter((r) => r.data.isPreprint),
+);
+const publications = sortResearchByDate(
+	allResearch.filter((r) => !r.data.isPreprint),
+).slice(0, MAX_RESEARCH);
 ---
 
 <PageLayout meta={{ title: "Home" }}>
@@ -26,18 +30,18 @@ const publications = sortResearchByDate(allResearch.filter(r => !r.data.isPrepri
 		<!-- Sticky Sidebar -->
 		<aside class="lg:w-40 lg:flex-shrink-0">
 			<div class="lg:sticky lg:top-8">
-			<Picture
-				class="w-full rounded-full mb-6 aspect-square object-cover"
-				widths={[144, 192, 288]}
-				sizes="(max-width: 1023px) 192px, 144px"
-				loading="eager"
-				width={288}
-				height={288}
-				src={profile_pic}
-				alt="profile"
-			/>
-			
-			<!-- Social Links -->
+				<Picture
+					class="w-full rounded-full mb-6 aspect-square object-cover"
+					widths={[144, 192, 288]}
+					sizes="(max-width: 1023px) 192px, 144px"
+					loading="eager"
+					width={288}
+					height={288}
+					src={profile_pic}
+					alt="profile"
+				/>
+
+				<!-- Social Links -->
 				<nav class="flex flex-col space-y-1">
 					<a
 						href={SOCIAL_LINKS.linkedin}
@@ -48,7 +52,7 @@ const publications = sortResearchByDate(allResearch.filter(r => !r.data.isPrepri
 						<Icon name="linkedin" />
 						<span class="text-sm font-medium">LinkedIn</span>
 					</a>
-					
+
 					<a
 						href={SOCIAL_LINKS.github}
 						target="_blank"
@@ -58,7 +62,7 @@ const publications = sortResearchByDate(allResearch.filter(r => !r.data.isPrepri
 						<Icon name="github" />
 						<span class="text-sm font-medium">GitHub</span>
 					</a>
-					
+
 					<a
 						href={SOCIAL_LINKS.gscolar}
 						target="_blank"
@@ -68,7 +72,7 @@ const publications = sortResearchByDate(allResearch.filter(r => !r.data.isPrepri
 						<Icon name="scholar" />
 						<span class="text-sm font-medium">Google Scholar</span>
 					</a>
-					
+
 					<a
 						href={SOCIAL_LINKS.medium}
 						target="_blank"
@@ -78,7 +82,7 @@ const publications = sortResearchByDate(allResearch.filter(r => !r.data.isPrepri
 						<Icon name="medium" />
 						<span class="text-sm font-medium">Medium</span>
 					</a>
-					
+
 					<a
 						href={`mailto:${SOCIAL_LINKS.email}`}
 						class="flex items-center gap-3 p-2 rounded hover:bg-accent/10 transition-colors"
@@ -86,7 +90,7 @@ const publications = sortResearchByDate(allResearch.filter(r => !r.data.isPrepri
 						<Icon name="email" />
 						<span class="text-sm font-medium">Email</span>
 					</a>
-					
+
 					<a
 						href="/cv.pdf"
 						target="_blank"
@@ -103,24 +107,41 @@ const publications = sortResearchByDate(allResearch.filter(r => !r.data.isPrepri
 		<main class="flex-1 min-w-0">
 			<section>
 				<p class="mb-3 text-base">
-					I am a second year Computer Science PhD student at USC, advised by <InLineLink
+					I am a second year Computer Science PhD student at USC,
+					advised by <InLineLink
 						href="https://ict.usc.edu/about-us/leadership/research-leadership/volkan-ustun/"
 						text="Volkan Ustun"
 					/> and
 					<InLineLink
 						href="https://ict.usc.edu/about-us/leadership/senior-management/william-swartout/"
 						text="William Swartout"
-					/>. My research focuses on <b>agentic AI in multi-agent environments</b>, aiming to bridge the gap between humans and artificial agents to foster a collaborative future where both can thrive. I currently explore <b>autonomous agent systems powered by large language models</b>, <b>cooperative and competitive multi-agent learning</b>, <b>human-AI teaming and collaborative intelligence</b>, and <b>modeling human preferences in reinforcement learning and sequential decision-making</b>.
+					/>. My research focuses on <b
+						>agentic AI in multi-agent environments</b
+					>, aiming to bridge the gap between humans and artificial
+					agents to foster a collaborative future where both can
+					thrive. I currently explore <b
+						>autonomous agent systems powered by large language
+						models</b
+					>, <b>cooperative and competitive multi-agent learning</b>, <b
+						>human-AI teaming and collaborative intelligence</b
+					>, and <b
+						>modeling human preferences in reinforcement learning
+						and sequential decision-making</b
+					>.
 				</p>
 				<p class="mb-3 text-base">
-					Prior to joining USC, I worked a year as a Software Engineer at <InLineLink
+					Prior to joining USC, I worked a year as a Software Engineer
+					at <InLineLink
 						href="https://bubble.io/"
 						text="Bubble.io"
-					/>, where I developed LLM-Agents for LCNC interactive web development. I also conducted
-					research in machine learning and robotics during my master's at Columbia University's Creative Machines Lab
-					advised by <InLineLink href="https://www.hodlipson.com/" text="Hod Lipson" />.
+					/>, where I developed LLM-Agents for LCNC interactive web
+					development. I also conducted research in machine learning
+					and robotics during my master's at Columbia University's
+					Creative Machines Lab advised by <InLineLink
+						href="https://www.hodlipson.com/"
+						text="Hod Lipson"
+					/>.
 				</p>
-
 			</section>
 
 			<section class="mt-16">
@@ -151,28 +172,53 @@ const publications = sortResearchByDate(allResearch.filter(r => !r.data.isPrepri
 
 			<section class="mt-16">
 				<h2 class="text-xxl title mb-4">Services</h2>
-				<h3 class="text-md mb-2 font-semibold">Technical Program Committee (TPC) Member/Reviewer</h3>
+				<h3 class="text-md mb-2 font-semibold">
+					Technical Program Committee (TPC) Member/Reviewer
+				</h3>
 				<ul class="list-inside list-disc space-y-3 pl-4 sm:space-y-3">
-					<li class="pl-2">International Conference on Learning Representations (ICLR) 2025, 2026</li>
-					<li class="pl-2">Association for the Advancement of Artificial Intelligence (AAAI) 2025, 2026 </li>
-					<li class="pl-2">Conference on Empirical Methods in Natural Language Processing (EMNLP) 2025</li>
-					<li class="pl-2">International Conference on Autonomous Agents and Multiagent Systems (AAMAS) 2025, 2026</li>
-					<li class="pl-2">Conference on Neural Information Processing Systems (NeurIPS) 2026</li>
-					<li class="pl-2">IEEE Symposium Series on Computational Intelligence 2025</li>
 					<li class="pl-2">
-						IEEE Symposium on Computational Intelligence in Natural Language Processing and Social Media
-						(CINLPSoMe) 2025
+						International Conference on Learning Representations
+						(ICLR) 2025, 2026
 					</li>
-					<li class="pl-2">IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP) 2025</li>
-					<li class="pl-2">IEEE International Workshop on Machine Learning for Signal Processing (MLSP) 2025, 2026</li>
 					<li class="pl-2">
-						Conference on Neural Information Processing Systems (NeurIPS) 2024 Workshop Foundation
-						Models for Science
+						Association for the Advancement of Artificial
+						Intelligence (AAAI) 2025, 2026
+					</li>
+					<li class="pl-2">
+						Conference on Empirical Methods in Natural Language
+						Processing (EMNLP) 2025
+					</li>
+					<li class="pl-2">
+						International Conference on Autonomous Agents and
+						Multiagent Systems (AAMAS) 2025, 2026
+					</li>
+					<li class="pl-2">
+						Conference on Neural Information Processing Systems
+						(NeurIPS) 2026
+					</li>
+					<li class="pl-2">
+						IEEE Symposium Series on Computational Intelligence 2025
+					</li>
+					<li class="pl-2">
+						IEEE Symposium on Computational Intelligence in Natural
+						Language Processing and Social Media (CINLPSoMe) 2025
+					</li>
+					<li class="pl-2">
+						IEEE International Conference on Acoustics, Speech, and
+						Signal Processing (ICASSP) 2025
+					</li>
+					<li class="pl-2">
+						IEEE International Workshop on Machine Learning for
+						Signal Processing (MLSP) 2025, 2026
+					</li>
+					<li class="pl-2">
+						Conference on Neural Information Processing Systems
+						(NeurIPS) 2024 Workshop Foundation Models for Science
 					</li>
 				</ul>
 			</section>
 
-			<section aria-label="Blog post list" class="mt-16">
+			<!-- <section aria-label="Blog post list" class="mt-16">
 				<h2 class="text-xxl title mb-4">Posts</h2>
 				<ul class="space-y-4 sm:space-y-2">
 					{
@@ -183,6 +229,14 @@ const publications = sortResearchByDate(allResearch.filter(r => !r.data.isPrepri
 						))
 					}
 				</ul>
+			</section> -->
+
+			<section class="mt-16">
+				<img
+					src="https://ghchart.rshah.org/wangyz1999"
+					alt="GitHub contribution chart"
+					class="w-full"
+				/>
 			</section>
 		</main>
 	</div>

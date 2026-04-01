@@ -5,4 +5,4 @@
 [build.environment]
   SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
   PYTHON_VERSION = "3.12.3"
-  NODE_VERSION = "20.17.0"
+  NODE_VERSION = "25.6.1"
