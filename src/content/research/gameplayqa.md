@@ -1,7 +1,7 @@
 ---
 title: "GameplayQA: A Benchmarking Framework for Decision-Dense POV-Synced Multi-Video Understanding of 3D Virtual Agents"
 
-feature: "/imgs/projects/gameplayqa.jpg"
+feature: "/imgs/projects/gameplayqa.gif"
 description: "Preprint"
 
 publishDate: "Mar 2026"

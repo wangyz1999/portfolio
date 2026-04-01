@@ -1,7 +1,7 @@
 ---
 title: "Implicit Behavioral Alignment of Language Agents in High-Stakes Crowd Simulations"
 
-feature: "/imgs/projects/asi-llm.webp"
+feature: "/imgs/projects/asi-llm.gif"
 description: "Proceedings of the Conference on Empirical Methods in Natural Language Processing (EMNLP), 2025"
 
 publishDate: "Sep 2025"
