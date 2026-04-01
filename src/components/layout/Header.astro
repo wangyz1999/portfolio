@@ -22,68 +22,92 @@ const url = new URL(Astro.request.url);
 	});
 </script>
 
-<header id="main-header" class="group relative mb-8 flex items-center justify-between sm:mb-16">
+<style>
+	#navigation-menu {
+		transition: opacity 150ms ease, transform 150ms ease;
+		opacity: 0;
+		transform: translateY(-6px) scale(0.97);
+		transform-origin: top right;
+		pointer-events: none;
+	}
+	.menu-open #navigation-menu {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+		pointer-events: auto;
+	}
+	@media (min-width: 640px) {
+		#navigation-menu {
+			opacity: 1 !important;
+			transform: none !important;
+			pointer-events: auto !important;
+		}
+	}
+</style>
+
+<header id="main-header" class="group relative mb-6 flex items-center justify-between sm:mb-16">
 	<a href="/" aria-current={url.pathname === "/" ? "page" : false}>
 		<span class="text-2xl font-bold sm:text-3xl">Yunzhe Wang</span>
 	</a>
-	
-	<div class="flex items-center gap-4">
-		<nav
-			id="navigation-menu"
-			class="absolute -inset-x-4 top-14 hidden flex-col items-end gap-y-4 rounded-md bg-[--theme-menu-bg] py-4 text-accent shadow backdrop-blur group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:flex sm:flex-row sm:items-center sm:divide-x sm:divide-dashed sm:divide-accent sm:rounded-none sm:bg-transparent sm:py-0 sm:shadow-none sm:backdrop-blur-none"
-			aria-label="Main menu"
-		>
-				{
-					MENU_LINKS.map((link: any) => (
-						<a
-							href={link.path}
-							class={`px-4 py-4 sm:py-0 sm:hover:underline ${link.icon ? "flex items-center gap-1" : ""}`}
-							aria-current={url.pathname === link.path ? "page" : false}
-							rel={link.external ? "noopener noreferrer" : "prefetch"}
-							target={link.external ? "_blank" : undefined}
-						>
-							{link.icon && <Icon name={link.icon} />}
-							<span class={link.icon ? "sm:hidden" : ""}>{link.title}</span>
-						</a>
-					))
-				}
-		</nav>
-		<ThemeToggle />
-	</div>
-	<button
-		id="toggle-navigation-menu"
-		class="group relative h-7 w-7 sm:invisible sm:hidden"
-		type="button"
-		aria-label="Open main menu"
-		aria-expanded="false"
-		aria-haspopup="menu"
+
+	<!-- Desktop nav (hidden on mobile) -->
+	<nav
+		id="navigation-menu"
+		class="absolute right-0 top-12 z-50 hidden min-w-[160px] flex-col overflow-hidden rounded-xl border border-textColor/10 bg-[--theme-menu-bg] py-1 shadow-xl backdrop-blur-md group-[.menu-open]:flex sm:static sm:flex sm:min-w-0 sm:flex-row sm:items-center sm:gap-x-1 sm:rounded-none sm:border-none sm:bg-transparent sm:py-0 sm:shadow-none sm:backdrop-blur-none dark:border-white/10"
+		aria-label="Main menu"
 	>
-		<svg
-			id="line-svg"
-			class="absolute start-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transition-all group-aria-expanded:scale-0 group-aria-expanded:opacity-0"
-			aria-hidden="true"
-			focusable="false"
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke-width="1.5"
-			stroke="currentColor"
+		{
+			MENU_LINKS.map((link: any) => (
+				<a
+					href={link.path}
+					class={`flex items-center gap-2 px-4 py-2.5 text-sm transition-colors hover:text-accent sm:rounded sm:px-3 sm:py-1.5 sm:hover:bg-accent/10 ${url.pathname === link.path ? "font-semibold text-accent" : "text-textColor"}`}
+					aria-current={url.pathname === link.path ? "page" : false}
+					rel={link.external ? "noopener noreferrer" : "prefetch"}
+					target={link.external ? "_blank" : undefined}
+				>
+					{link.icon && <Icon name={link.icon} />}
+					<span class={link.icon ? "sm:hidden" : ""}>{link.title}</span>
+				</a>
+			))
+		}
+	</nav>
+
+	<!-- Right controls: desktop nav placeholder + theme toggle + hamburger -->
+	<div class="flex items-center gap-2">
+		<ThemeToggle />
+		<button
+			id="toggle-navigation-menu"
+			class="group relative h-9 w-9 rounded-md bg-zinc-200 p-2 ring-zinc-400 transition-all hover:ring-2 dark:bg-zinc-700 sm:invisible sm:hidden"
+			type="button"
+			aria-label="Open main menu"
+			aria-expanded="false"
+			aria-haspopup="menu"
 		>
-			<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"></path>
-		</svg>
-		<svg
-			id="cross-svg"
-			class="absolute start-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 scale-0 text-accent opacity-0 transition-all group-aria-expanded:scale-100 group-aria-expanded:opacity-100"
-			class="text-accent"
-			aria-hidden="true"
-			focusable="false"
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke-width="1.5"
-			stroke="currentColor"
-		>
-			<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-		</svg>
-	</button>
+			<svg
+				id="line-svg"
+				class="absolute start-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 transition-all group-aria-expanded:scale-0 group-aria-expanded:opacity-0"
+				aria-hidden="true"
+				focusable="false"
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+			>
+				<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"></path>
+			</svg>
+			<svg
+				id="cross-svg"
+				class="absolute start-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 scale-0 text-accent opacity-0 transition-all group-aria-expanded:scale-100 group-aria-expanded:opacity-100"
+				aria-hidden="true"
+				focusable="false"
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+			>
+				<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+			</svg>
+		</button>
+	</div>
 </header>
