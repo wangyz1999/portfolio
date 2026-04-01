@@ -1,7 +1,5 @@
 ---
 import PageLayout from "@/layouts/Base";
-// import { Image } from "astro:assets";
-// import aboutImg from "../assets/about-astro.png";
 import ProjectPreview from "@/components/project/ProjectPreview";
 import { getCollection } from "astro:content";
 import { selectBySlug } from "@/utils";
@@ -13,75 +11,26 @@ const meta = {
 
 const allProjects = await getCollection("project");
 
-const BrandingProjectList = ["trendemia"];
-const machineLearningProjectList = [
+const projectList = [
+	"arcforge",
+	"emoji3d",
+	"gpt-reply",
+	"timevae",
+	"trendemia",
 	"speaker-dia",
-	"coral-reef",
 	"hunchback",
+	"coral-reef",
 	"mapf",
 	"self-drive",
 	"unmt",
 ];
 
-const BrandingProjects = selectBySlug(allProjects, BrandingProjectList);
-const machineLearningProjects = selectBySlug(allProjects, machineLearningProjectList);
+const projects = selectBySlug(allProjects, projectList);
 ---
 
-<script>
-	const scrollBtn = document.getElementById("to-top-btn") as HTMLButtonElement;
-	const targetHeader = document.getElementById("project-feature") as HTMLDivElement;
-
-	function callback(entries: IntersectionObserverEntry[]) {
-		entries.forEach((entry) => {
-			// only show the scroll to top button when the heading is out of view
-			scrollBtn.dataset.show = (!entry.isIntersecting).toString();
-		});
-	}
-
-	scrollBtn.addEventListener("click", () => {
-		document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
-	});
-
-	const observer = new IntersectionObserver(callback);
-	observer.observe(targetHeader);
-</script>
-
 <PageLayout meta={meta}>
-	<div class="space-y-14">
-		<ul>
-			<li>
-				<h1 class="title mb-8" id="project-feature">Web App</h1>
-				<div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
-					{BrandingProjects.map((p: any) => <ProjectPreview project={p} />)}
-				</div>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				<h1 class="title mb-8" id="project-feature">AI and ML</h1>
-				<div class="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
-					{machineLearningProjects.map((p: any) => <ProjectPreview project={p} />)}
-				</div>
-			</li>
-		</ul>
+	<h1 class="title mb-8">Open-sourced Software Projects</h1>
+	<div class="flex flex-col gap-6">
+		{projects.map((p: any) => <ProjectPreview project={p} />)}
 	</div>
-
-	<button
-		id="to-top-btn"
-		class="z-90 fixed bottom-8 end-4 flex h-10 w-10 translate-y-28 items-center justify-center rounded-full border-2 border-transparent bg-zinc-200 text-3xl opacity-0 transition-all duration-300 hover:border-zinc-400 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 dark:bg-zinc-700 sm:end-8 sm:h-12 sm:w-12"
-		aria-label="Back to Top"
-		data-show="false"
-		><svg
-			xmlns="http://www.w3.org/2000/svg"
-			aria-hidden="true"
-			focusable="false"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke-width="2"
-			stroke="currentColor"
-			class="h-6 w-6"
-		>
-			<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"></path>
-		</svg>
-	</button>
 </PageLayout>

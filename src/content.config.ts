@@ -43,9 +43,12 @@ const project = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		subtitle: z.string().optional(),
-		imglink: z.string().optional(),
 		description: z.string().optional(),
 		feature: z.string().optional(),
+		links: z.record(z.string(), z.string()).default({}).optional(),
+		github_repo: z.string().optional(),
+		stars: z.number().optional(),
+		forks: z.number().optional(),
 	}),
 });
 

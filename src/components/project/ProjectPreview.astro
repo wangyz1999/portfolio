@@ -1,15 +1,150 @@
 ---
-const { project, as: Element = "div" } = Astro.props;
+import { render } from "astro:content";
+
+const { project } = Astro.props;
+const { title, subtitle, description, feature, links = {}, github_repo } = project.data;
+
+const { Content } = await render(project);
+
+let stars: number | null = null;
+let forks: number | null = null;
+if (github_repo) {
+  try {
+    const res = await fetch(`https://api.github.com/repos/${github_repo}`, {
+      headers: { Accept: "application/vnd.github+json" },
+      signal: AbortSignal.timeout(5000),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      stars = data.stargazers_count ?? null;
+      forks = data.forks_count ?? null;
+    }
+  } catch {}
+}
+
+const linkIcons: Record<string, { label: string; svg: string }> = {
+  github: {
+    label: "GitHub",
+    svg: `<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2c2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2a4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0c-2.4-1.6-3.5-1.3-3.5-1.3a4.2 4.2 0 0 0-.1 3.2a4.6 4.6 0 0 0-1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6.6-.6 1.2-.5 2v3.5"/>`,
+  },
+  website: {
+    label: "Website",
+    svg: `<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M3.6 9h16.8"/><path d="M3.6 15h16.8"/><path d="M11.5 3a17 17 0 0 0 0 18"/><path d="M12.5 3a17 17 0 0 1 0 18"/>`,
+  },
+  pdf: {
+    label: "PDF",
+    svg: `<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/><path d="M9 17c0 .552 .448 1 1 1h1a1 1 0 0 0 1 -1v-2a1 1 0 0 0 -1 -1h-1a1 1 0 0 0 -1 1v2z"/><path d="M13 17v-4"/><path d="M9 13v-1a1 1 0 0 1 1 -1h2"/>`,
+  },
+};
+
+const hasBody = project.body && project.body.trim().length > 0;
 ---
 
-<Element class="flex flex-col">
-	<a href={project.data.imglink} target="_blank"
-		><img
-			src={project.data.feature}
-			alt={project.data.title}
-			class="h-50 w-full rounded-lg object-cover ease-in-out hover:opacity-80"
-		/></a
-	>
-	<h3 class="title my-3 text-center text-xl">{project.data.title}</h3>
-	<h3 class="text-center">{project.data.subtitle}</h3>
-</Element>
+<div class="group flex flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white transition-shadow hover:shadow-md dark:border-zinc-700 dark:bg-zinc-900">
+  <div class="flex flex-row">
+    <!-- Feature image -->
+    {feature && (
+      <div class="w-40 shrink-0 overflow-hidden sm:w-48">
+        <img
+          src={feature}
+          alt={title}
+          class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+      </div>
+    )}
+
+    <!-- Content -->
+    <div class="flex flex-1 flex-col gap-1.5 p-4">
+      <!-- Title + subtitle -->
+      <div>
+        <h3 class="text-base font-bold leading-snug text-textColor">{title}</h3>
+        {subtitle && (
+          <p class="mt-0.5 text-xs text-textColor/50">{subtitle}</p>
+        )}
+      </div>
+
+      <!-- Description -->
+      {description && (
+        <p class="text-sm leading-relaxed text-textColor/70 line-clamp-3">{description}</p>
+      )}
+
+      <!-- Markdown body -->
+      {hasBody && (
+        <div class="prose prose-sm prose-zinc dark:prose-invert max-w-none text-sm text-textColor/70">
+          <Content />
+        </div>
+      )}
+
+      <!-- Footer: links + stars -->
+      <div class="mt-auto flex items-center justify-between pt-2">
+        <div class="flex items-center gap-0.5">
+          {Object.entries(links).map(([type, url]) => {
+            const icon = linkIcons[type] ?? linkIcons.website;
+            return (
+              <a
+                href={url as string}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={icon.label}
+                class="rounded p-1.5 text-textColor/40 transition-colors hover:bg-accent/10 hover:text-accent"
+              >
+                <svg
+                  class="h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <Fragment set:html={icon.svg} />
+                </svg>
+                <span class="sr-only">{icon.label}</span>
+              </a>
+            );
+          })}
+        </div>
+
+        {(stars !== null || forks !== null) && (
+          <div class="flex items-center gap-2">
+            {stars !== null && (
+              <a
+                href={`https://github.com/${github_repo}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-1 rounded px-1.5 py-0.5 text-xs text-textColor/40 transition-colors hover:bg-accent/10 hover:text-accent"
+                title="GitHub Stars"
+              >
+                <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                {stars}
+              </a>
+            )}
+            {forks !== null && (
+              <a
+                href={`https://github.com/${github_repo}/forks`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-1 rounded px-1.5 py-0.5 text-xs text-textColor/40 transition-colors hover:bg-accent/10 hover:text-accent"
+                title="GitHub Forks"
+              >
+                <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M12 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/>
+                  <path d="M7 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/>
+                  <path d="M17 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/>
+                  <path d="M7 8v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2 -2v-2"/>
+                  <path d="M12 12l0 4"/>
+                </svg>
+                {forks}
+              </a>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</div>

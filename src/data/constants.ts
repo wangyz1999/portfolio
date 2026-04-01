@@ -8,6 +8,10 @@ export const MENU_LINKS = [
 		path: "/research",
 	},
 	{
+		title: "Project",
+		path: "/project",
+	},
+	{
 		title: "GitHub",
 		path: "https://github.com/wangyz1999",
 		external: true,
