@@ -21,69 +21,72 @@ const selected = selectedResearch(allResearch);
 
 <PageLayout meta={{ title: "Home" }}>
 	<div class="flex flex-col lg:flex-row gap-8">
-		<!-- Sticky Sidebar -->
+		<!-- Sidebar -->
 		<aside class="lg:w-40 lg:flex-shrink-0">
 			<div class="lg:sticky lg:top-8">
-				<Picture
-					class="w-full rounded-full mb-6 aspect-square object-cover"
-					widths={[144, 192, 288]}
-					sizes="(max-width: 1023px) 192px, 144px"
-					loading="eager"
-					width={288}
-					height={288}
-					src={profile_pic}
-					alt="profile"
-				/>
+				<!-- Mobile: large avatar + vertical icon+label links -->
+				<div class="flex items-center gap-6 lg:hidden mb-6">
+					<Picture
+						class="h-32 w-32 rounded-full object-cover shrink-0"
+						widths={[128, 256]}
+						sizes="128px"
+						loading="eager"
+						width={256}
+						height={256}
+						src={profile_pic}
+						alt="profile"
+					/>
+					<nav class="flex flex-col gap-2">
+						<a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 rounded hover:bg-accent/10 transition-colors px-1 py-0.5">
+							<Icon name="github" />
+							<span class="text-sm font-medium">GitHub</span>
+						</a>
+						<a href={SOCIAL_LINKS.gscolar} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 rounded hover:bg-accent/10 transition-colors px-1 py-0.5">
+							<Icon name="scholar" />
+							<span class="text-sm font-medium">Scholar</span>
+						</a>
+						<a href={`mailto:${SOCIAL_LINKS.email}`} class="flex items-center gap-2 rounded hover:bg-accent/10 transition-colors px-1 py-0.5">
+							<Icon name="email" />
+							<span class="text-sm font-medium">Email</span>
+						</a>
+						<a href="/cv.pdf" target="_blank" class="flex items-center gap-2 rounded hover:bg-accent/10 transition-colors px-1 py-0.5">
+							<Icon name="cv" />
+							<span class="text-sm font-medium">CV</span>
+						</a>
+					</nav>
+				</div>
 
-				<!-- Social Links -->
-				<nav class="flex flex-col space-y-1">
-					<a
-						href={SOCIAL_LINKS.linkedin}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="flex items-center gap-3 p-2 rounded hover:bg-accent/10 transition-colors"
-					>
-						<Icon name="linkedin" />
-						<span class="text-sm font-medium">LinkedIn</span>
-					</a>
-
-					<a
-						href={SOCIAL_LINKS.github}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="flex items-center gap-3 p-2 rounded hover:bg-accent/10 transition-colors"
-					>
-						<Icon name="github" />
-						<span class="text-sm font-medium">GitHub</span>
-					</a>
-
-					<a
-						href={SOCIAL_LINKS.gscolar}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="flex items-center gap-3 p-2 rounded hover:bg-accent/10 transition-colors"
-					>
-						<Icon name="scholar" />
-						<span class="text-sm font-medium">Google Scholar</span>
-					</a>
-
-					<a
-						href={`mailto:${SOCIAL_LINKS.email}`}
-						class="flex items-center gap-3 p-2 rounded hover:bg-accent/10 transition-colors"
-					>
-						<Icon name="email" />
-						<span class="text-sm font-medium">Email</span>
-					</a>
-
-					<a
-						href="/cv.pdf"
-						target="_blank"
-						class="flex items-center gap-3 p-2 rounded hover:bg-accent/10 transition-colors"
-					>
-						<Icon name="cv" />
-						<span class="text-sm font-medium">CV</span>
-					</a>
-				</nav>
+				<!-- Desktop: full vertical sidebar -->
+				<div class="hidden lg:block">
+					<Picture
+						class="w-full rounded-full mb-6 aspect-square object-cover"
+						widths={[144, 288]}
+						sizes="144px"
+						loading="eager"
+						width={288}
+						height={288}
+						src={profile_pic}
+						alt="profile"
+					/>
+					<nav class="flex flex-col space-y-1">
+						<a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-2 rounded hover:bg-accent/10 transition-colors">
+							<Icon name="github" />
+							<span class="text-sm font-medium">GitHub</span>
+						</a>
+						<a href={SOCIAL_LINKS.gscolar} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-2 rounded hover:bg-accent/10 transition-colors">
+							<Icon name="scholar" />
+							<span class="text-sm font-medium">Google Scholar</span>
+						</a>
+						<a href={`mailto:${SOCIAL_LINKS.email}`} class="flex items-center gap-3 p-2 rounded hover:bg-accent/10 transition-colors">
+							<Icon name="email" />
+							<span class="text-sm font-medium">Email</span>
+						</a>
+						<a href="/cv.pdf" target="_blank" class="flex items-center gap-3 p-2 rounded hover:bg-accent/10 transition-colors">
+							<Icon name="cv" />
+							<span class="text-sm font-medium">CV</span>
+						</a>
+					</nav>
+				</div>
 			</div>
 		</aside>
 

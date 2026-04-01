@@ -63,6 +63,23 @@ const {
 
 		<!-- Visitor tracking (invisible) -->
 		<script is:inline type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&w=a&t=n&d=1NaCE8A7TNCv-6PYXXfIIVHOovLZTWfmWlgG8roOsZ0&co=ffffff&ct=808080&cmo=3acc3a&cmn=ff5353"></script>
+		<script is:inline>
+			(function () {
+				const remove = () => {
+					document.querySelectorAll('[id*="mapmyvisitors"], [class*="mapmyvisitors"], a[href*="mapmyvisitors"], img[src*="mapmyvisitors"]').forEach(el => {
+						const parent = el.closest('div, center, table') || el;
+						parent.remove();
+					});
+				};
+				remove();
+				new MutationObserver(remove).observe(document.body, { childList: true, subtree: true });
+			})();
+		</script>
+		<style>
+			[id*="mapmyvisitors"], [class*="mapmyvisitors"], [src*="mapmyvisitors"],
+			a[href*="mapmyvisitors"], img[src*="mapmyvisitors"],
+			div:has(> a[href*="mapmyvisitors"]) { display: none !important; }
+		</style>
 
 		<!-- Matomo -->
 		<!-- <script>
