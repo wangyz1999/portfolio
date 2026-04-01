@@ -8,16 +8,35 @@ const { Content } = await render(project);
 
 let stars: number | null = null;
 let forks: number | null = null;
+let issues: number | null = null;
+let contributors: number | null = null;
 if (github_repo) {
   try {
-    const res = await fetch(`https://api.github.com/repos/${github_repo}`, {
-      headers: { Accept: "application/vnd.github+json" },
-      signal: AbortSignal.timeout(5000),
-    });
-    if (res.ok) {
-      const data = await res.json();
+    const [repoRes, contribRes] = await Promise.all([
+      fetch(`https://api.github.com/repos/${github_repo}`, {
+        headers: { Accept: "application/vnd.github+json" },
+        signal: AbortSignal.timeout(5000),
+      }),
+      fetch(`https://api.github.com/repos/${github_repo}/contributors?per_page=1&anon=true`, {
+        headers: { Accept: "application/vnd.github+json" },
+        signal: AbortSignal.timeout(5000),
+      }),
+    ]);
+    if (repoRes.ok) {
+      const data = await repoRes.json();
       stars = data.stargazers_count ?? null;
       forks = data.forks_count ?? null;
+      issues = data.open_issues_count ?? null;
+    }
+    if (contribRes.ok) {
+      const link = contribRes.headers.get("link");
+      if (link) {
+        const match = link.match(/page=(\d+)>; rel="last"/);
+        contributors = match ? parseInt(match[1]) : null;
+      } else {
+        const data = await contribRes.json();
+        contributors = Array.isArray(data) ? data.length : null;
+      }
     }
   } catch {}
 }
@@ -107,16 +126,11 @@ const hasBody = project.body && project.body.trim().length > 0;
           })}
         </div>
 
-        {(stars !== null || forks !== null) && (
+        {(stars !== null || forks !== null || issues !== null || contributors !== null) && (
           <div class="flex items-center gap-2">
             {stars !== null && (
-              <a
-                href={`https://github.com/${github_repo}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center gap-1 rounded px-1.5 py-0.5 text-xs text-textColor/40 transition-colors hover:bg-accent/10 hover:text-accent"
-                title="GitHub Stars"
-              >
+              <a href={`https://github.com/${github_repo}`} target="_blank" rel="noopener noreferrer"
+                class="flex items-center gap-1 rounded px-1.5 py-0.5 text-xs text-textColor/40 transition-colors hover:bg-accent/10 hover:text-accent" title="Stars">
                 <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
@@ -124,13 +138,8 @@ const hasBody = project.body && project.body.trim().length > 0;
               </a>
             )}
             {forks !== null && (
-              <a
-                href={`https://github.com/${github_repo}/forks`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center gap-1 rounded px-1.5 py-0.5 text-xs text-textColor/40 transition-colors hover:bg-accent/10 hover:text-accent"
-                title="GitHub Forks"
-              >
+              <a href={`https://github.com/${github_repo}/forks`} target="_blank" rel="noopener noreferrer"
+                class="flex items-center gap-1 rounded px-1.5 py-0.5 text-xs text-textColor/40 transition-colors hover:bg-accent/10 hover:text-accent" title="Forks">
                 <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                   <path d="M12 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/>
@@ -140,6 +149,33 @@ const hasBody = project.body && project.body.trim().length > 0;
                   <path d="M12 12l0 4"/>
                 </svg>
                 {forks}
+              </a>
+            )}
+            {issues !== null && (
+              <a href={`https://github.com/${github_repo}/issues`} target="_blank" rel="noopener noreferrer"
+                class="flex items-center gap-1 rounded px-1.5 py-0.5 text-xs text-textColor/40 transition-colors hover:bg-accent/10 hover:text-accent" title="Open Issues">
+                <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/>
+                  <path d="M12 8v-4"/>
+                  <path d="M12 16v4"/>
+                  <path d="M8 12h-4"/>
+                  <path d="M16 12h4"/>
+                </svg>
+                {issues}
+              </a>
+            )}
+            {contributors !== null && (
+              <a href={`https://github.com/${github_repo}/graphs/contributors`} target="_blank" rel="noopener noreferrer"
+                class="flex items-center gap-1 rounded px-1.5 py-0.5 text-xs text-textColor/40 transition-colors hover:bg-accent/10 hover:text-accent" title="Contributors">
+                <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/>
+                  <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/>
+                </svg>
+                {contributors}
               </a>
             )}
           </div>
