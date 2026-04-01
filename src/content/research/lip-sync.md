@@ -26,6 +26,7 @@ authors:
 
 author_idx: 6
 selected: true
+tags: ["Robotics", "Humanoid", "Speech", "Deep Learning"]
 
 links:
   Paper: "https://www.science.org/doi/10.1126/scirobotics.adx3017"

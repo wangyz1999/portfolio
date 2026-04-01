@@ -8,7 +8,8 @@ publishDate: "02 Apr 2023"
 authors: ["Volkan Ustun", "Ronit Jorvekar", "Nikolos Gurney", "David V Pynadath", "Yunzhe Wang"]
 
 author_idx: 4
-selected: false
+hidden: true
+tags: ["Search & Rescue", "Route Optimization", "Human-AI Teaming", "Graph Neural Networks"]
 
 links:
   Paper: "Assessing Routing Decisions of Search and Rescue Teams in Service of an Artificial Social Intelligence Agent"

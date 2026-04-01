@@ -105,29 +105,40 @@ const paperLink = Object.entries(research.data.links).find(([key]) =>
 				{research.data.description}
 			</p>
 
-			<!-- Icon-based Links -->
-			<div class="flex flex-wrap gap-2">
-				{
-					Object.entries(research.data.links).map(([key, value]) => {
-						const iconType = getIcon(key);
-						const iconTitle = getIconTitle(key);
-						const url = value as string;
-						
-						return (
-							<a
-								href={url}
-								target={url.startsWith("/") ? "_self" : "_blank"}
-								rel={url.startsWith("/") ? "" : "noopener noreferrer"}
-								class="group/link flex items-center gap-1.5 rounded-full border border-white/30 bg-white/30 px-3 py-1 text-xs font-medium text-gray-800 backdrop-blur-sm transition-all hover:border-accent hover:bg-accent hover:text-white hover:scale-105 dark:border-white/20 dark:bg-white/10 dark:text-gray-100 dark:hover:border-accent-2 dark:hover:bg-accent-2"
-								title={iconTitle}
-							>
-								<Icon name={iconType} class="h-5 w-5" />
-								<span>{iconTitle}</span>
-							</a>
-						);
-					})
-				}
+		<!-- Tags -->
+		{research.data.tags && research.data.tags.length > 0 && (
+			<div class="mb-2 flex flex-wrap gap-1.5">
+				{research.data.tags.map((tag: string) => (
+					<span class="rounded border border-accent/40 bg-accent/5 px-2 py-0.5 text-xs font-medium text-accent dark:border-accent-2/40 dark:bg-accent-2/5 dark:text-accent-2">
+						{tag}
+					</span>
+				))}
 			</div>
+		)}
+
+		<!-- Icon-based Links -->
+		<div class="flex flex-wrap gap-2">
+			{
+				Object.entries(research.data.links).map(([key, value]) => {
+					const iconType = getIcon(key);
+					const iconTitle = getIconTitle(key);
+					const url = value as string;
+					
+					return (
+						<a
+							href={url}
+							target={url.startsWith("/") ? "_self" : "_blank"}
+							rel={url.startsWith("/") ? "" : "noopener noreferrer"}
+							class="group/link flex items-center gap-1.5 rounded-full border border-white/30 bg-white/30 px-3 py-1 text-xs font-medium text-gray-800 backdrop-blur-sm transition-all hover:border-accent hover:bg-accent hover:text-white hover:scale-105 dark:border-white/20 dark:bg-white/10 dark:text-gray-100 dark:hover:border-accent-2 dark:hover:bg-accent-2"
+							title={iconTitle}
+						>
+							<Icon name={iconType} class="h-5 w-5" />
+							<span>{iconTitle}</span>
+						</a>
+					);
+				})
+			}
+		</div>
 		</div>
 	</div>
 </Element>

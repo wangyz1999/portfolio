@@ -8,7 +8,8 @@ publishDate: "01 Feb 2021"
 authors: ["Yunzhe Wang", "Nikolos Gurney", "Jincheng Zhou", "David V. Pynadath", "Volkan Ustun"]
 author_idx: 0
 
-selected: true
+hidden: true
+tags: ["Search & Rescue", "Route Optimization", "Human-AI Teaming"]
 
 description: "AAAI-FSS 2021"
 

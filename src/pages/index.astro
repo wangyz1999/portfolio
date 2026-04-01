@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import PageLayout from "@/layouts/Base";
 import PostPreview from "@/components/blog/PostPreview";
 import ResearchPreview from "@/components/research/ResearchPreview";
-import { sortMDByDate, sortResearchByDate } from "@/utils";
+import { sortMDByDate, selectedResearch } from "@/utils";
 import { Picture } from "astro:assets";
 import profile_pic from "../assets/profile.jpg";
 import InLineLink from "@/components/InLineLink";
@@ -11,18 +11,12 @@ import Icon from "../components/Icon.astro";
 import { SOCIAL_LINKS } from "@/data/constants";
 
 const MAX_POSTS = 10;
-const MAX_RESEARCH = 10;
 
 const allPosts = await getCollection("post");
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
 const allResearch = await getCollection("research");
-const preprints = sortResearchByDate(
-	allResearch.filter((r) => r.data.isPreprint),
-);
-const publications = sortResearchByDate(
-	allResearch.filter((r) => !r.data.isPreprint),
-).slice(0, MAX_RESEARCH);
+const selected = selectedResearch(allResearch);
 ---
 
 <PageLayout meta={{ title: "Home" }}>
@@ -145,23 +139,18 @@ const publications = sortResearchByDate(
 			</section>
 
 			<section class="mt-16">
-				<h2 class="text-xxl title mb-6">Preprints</h2>
+				<div class="mb-6 flex items-baseline justify-between">
+					<h2 class="text-xxl title">Selected Work</h2>
+					<a
+						href="/research"
+						class="text-sm text-accent hover:underline dark:text-accent-2"
+					>
+						Full research list →
+					</a>
+				</div>
 				<ul class="space-y-6">
 					{
-						preprints.map((p: any) => (
-							<li>
-								<ResearchPreview research={p} />
-							</li>
-						))
-					}
-				</ul>
-			</section>
-
-			<section class="mt-16">
-				<h2 class="text-xxl title mb-6">Recent Publications</h2>
-				<ul class="space-y-6">
-					{
-						publications.map((p: any) => (
+						selected.map((p: any) => (
 							<li>
 								<ResearchPreview research={p} />
 							</li>

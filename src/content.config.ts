@@ -29,7 +29,8 @@ const research = defineCollection({
 		authors: z.array(z.string()).default([]).optional(),
 		author_idx: z.number().optional(),
 		selected: z.boolean().optional(),
-		isPreprint: z.boolean().optional(),
+		hidden: z.boolean().optional(),
+		tags: z.array(z.string()).default([]).optional(),
 		links: z.record(z.string(), z.string()).default({}).optional(),
 	}),
 });

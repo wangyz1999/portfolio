@@ -9,6 +9,7 @@ authors: ["Yunzhe Wang", "Volkan Ustun", "Chris McGroarty"]
 
 author_idx: 0
 selected: true
+tags: ["Multi-Agent", "Game AI", "Simulation", "Strategic Planning"]
 
 links:
   Paper: "https://arxiv.org/abs/2509.06355"

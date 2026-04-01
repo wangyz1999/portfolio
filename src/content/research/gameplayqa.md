@@ -18,7 +18,7 @@ authors:
 
 author_idx: 0
 selected: true
-isPreprint: true
+tags: ["Multi-Agent", "Video Understanding", "Benchmark", "LLM", "Game AI"]
 
 links:
   Paper: "https://arxiv.org/abs/2603.24329"

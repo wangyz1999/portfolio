@@ -9,6 +9,7 @@ authors: ["Yunzhe Wang", "Gale M. Lucas", "Burcin Becerik-Gerber", "Volkan Ustun
 
 author_idx: 0
 selected: true
+tags: ["LLM Agents", "Crowd Simulation", "Multi-Agent", "Human-AI Teaming"]
 
 links:
   Paper: "https://arxiv.org/abs/2509.16457"

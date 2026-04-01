@@ -9,7 +9,7 @@ authors: ["Yunzhe Wang", "Soham Hans", "Volkan Ustun"]
 
 author_idx: 0
 selected: true
-isPreprint: true
+tags: ["Video Understanding", "Contrastive Learning", "Game AI", "Multi-Agent"]
 
 links:
   Paper: "https://arxiv.org/abs/2510.19150"
