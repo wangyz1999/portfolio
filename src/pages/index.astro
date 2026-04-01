@@ -4,6 +4,7 @@ import PageLayout from "@/layouts/Base";
 import ResearchPreview from "@/components/research/ResearchPreview";
 import { selectedResearch } from "@/utils";
 import InLineLink from "@/components/InLineLink";
+import SocialList from "@/components/SocialList";
 
 const allResearch = await getCollection("research");
 const selected = selectedResearch(allResearch);

@@ -17,11 +17,6 @@ export const MENU_LINKS = [
 		path: "https://scholar.google.com/citations?user=Z_z6HywAAAAJ",
 		external: true,
 	},
-	{
-		title: "CV",
-		path: "/cv.pdf",
-		external: true,
-	},
 ];
 
 // ! Remember to add your own socials
