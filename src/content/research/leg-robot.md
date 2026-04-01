@@ -17,4 +17,5 @@ tags: ["Robotics", "Self-Modeling"]
 links:
   Paper: "https://arxiv.org/abs/2403.10496"
   Code: "https://github.com/H-Y-H-Y-H/meta_self_modeling_id"
+  Video: https://www.youtube.com/watch?v=WSaLwlacuy0
 ---

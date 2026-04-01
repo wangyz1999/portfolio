@@ -18,7 +18,7 @@ authors:
 author_idx: 1
 selected: false
 category: "preprint"
-venue: ""
+venue: "Arxiv"
 tldr: ""
 tags: ["Benchmark", "Reinforcement Learning", "Multi-Objective Optimization", "Graph Neural Networks"]
 

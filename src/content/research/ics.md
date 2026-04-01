@@ -10,7 +10,7 @@ authors: ["Tianyi Zhang", "Xiaolin Zhou", "Yunzhe Wang", "Erik Cambria", "David 
 author_idx: 2
 selected: false
 category: "preprint"
-venue: ""
+venue: "Arxiv"
 tldr: ""
 tags: ["LLM", "Cognitive Simulation", "Human Modeling"]
 

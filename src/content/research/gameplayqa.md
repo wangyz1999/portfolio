@@ -19,7 +19,7 @@ authors:
 author_idx: 0
 selected: true
 category: "preprint"
-venue: ""
+venue: "Arxiv"
 tldr: ""
 tags: ["Multi-Agent", "Video Understanding", "Benchmark", "LLM", "Game AI"]
 
