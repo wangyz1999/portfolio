@@ -57,26 +57,29 @@ const linkIcons: Record<string, { label: string; svg: string }> = {
 };
 
 const hasBody = project.body && project.body.trim().length > 0;
+const cardHref = (links as Record<string, string>).github ?? (github_repo ? `https://github.com/${github_repo}` : null);
 ---
 
 <div class="group flex flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white transition-shadow hover:shadow-md dark:border-zinc-700 dark:bg-zinc-900">
   <div class="flex flex-row">
     <!-- Feature image -->
     {feature && (
-      <div class="w-40 shrink-0 overflow-hidden sm:w-48">
+      <a href={cardHref ?? undefined} target="_blank" rel="noopener noreferrer" class="w-40 shrink-0 overflow-hidden sm:w-48">
         <img
           src={feature}
           alt={title}
           class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
-      </div>
+      </a>
     )}
 
     <!-- Content -->
     <div class="flex flex-1 flex-col gap-1.5 p-4">
       <!-- Title + subtitle -->
       <div>
-        <h3 class="text-base font-bold leading-snug text-textColor">{title}</h3>
+        <a href={cardHref ?? undefined} target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">
+          <h3 class="text-base font-bold leading-snug text-textColor hover:text-accent transition-colors">{title}</h3>
+        </a>
         {subtitle && (
           <p class="mt-0.5 text-xs text-textColor/50">{subtitle}</p>
         )}

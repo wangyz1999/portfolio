@@ -5,32 +5,32 @@ import { getCollection } from "astro:content";
 import { selectBySlug } from "@/utils";
 
 const meta = {
-	title: "Project",
-	description: "Some of my projects that I've worked on.",
+  title: "Project",
+  description: "Some of my projects that I've worked on.",
 };
 
 const allProjects = await getCollection("project");
 
 const projectList = [
-	"arcforge",
-	"emoji3d",
-	"gpt-reply",
-	"timevae",
-	"trendemia",
-	"speaker-dia",
-	"hunchback",
-	"coral-reef",
-	"mapf",
-	"self-drive",
-	"unmt",
+  "arcforge",
+  "emoji3d",
+  "gpt-reply",
+  "timevae",
+  "trendemia",
+  "speaker-dia",
+  "hunchback",
+  "coral-reef",
+  "mapf",
+  "self-drive",
+  "unmt",
 ];
 
 const projects = selectBySlug(allProjects, projectList);
 ---
 
 <PageLayout meta={meta}>
-	<h1 class="title mb-8">Open-sourced Software Projects</h1>
-	<div class="flex flex-col gap-6">
-		{projects.map((p: any) => <ProjectPreview project={p} />)}
-	</div>
+  <h1 class="title mb-8">Open-sourced Software</h1>
+  <div class="flex flex-col gap-6">
+    {projects.map((p: any) => <ProjectPreview project={p} />)}
+  </div>
 </PageLayout>
