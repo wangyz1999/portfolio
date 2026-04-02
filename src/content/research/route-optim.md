@@ -13,7 +13,7 @@ selected: false
 category: "workshop"
 venue: "AAAI-FSS"
 tldr: ""
-tags: ["Search & Rescue", "Route Optimization", "Human-AI Teaming"]
+tags: ["Route Optimization", "Human-AI Teaming", "Graph Neural Networks", "Reinforcement Learning"]
 
 description: "AAAI-FSS 2021"
 

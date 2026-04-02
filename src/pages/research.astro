@@ -55,7 +55,7 @@ const allTags = [
       <div id="tag-filters" class="hidden sm:flex flex-wrap gap-2">
         <button
           data-tag="__all__"
-          class="tag-btn active rounded-full border border-accent bg-accent px-3 py-1 text-xs font-medium text-white transition-all hover:scale-105 dark:border-accent-2 dark:bg-accent-2"
+          class="tag-btn active rounded-full border border-accent bg-accent px-3 py-1 text-xs font-medium text-white transition-all hover:scale-105 dark:border-accent dark:bg-accent dark:text-bgColor"
         >
           All
         </button>
@@ -168,8 +168,9 @@ const allTags = [
       btn.classList.toggle("border-accent", isActive);
       btn.classList.toggle("bg-accent", isActive);
       btn.classList.toggle("text-white", isActive);
-      btn.classList.toggle("dark:border-accent-2", isActive);
-      btn.classList.toggle("dark:bg-accent-2", isActive);
+      btn.classList.toggle("dark:border-accent", isActive);
+      btn.classList.toggle("dark:bg-accent", isActive);
+      btn.classList.toggle("dark:text-bgColor", isActive);
       btn.classList.toggle("border-gray-300", !isActive);
       btn.classList.toggle("bg-white/40", !isActive);
       btn.classList.toggle("text-gray-700", !isActive);
