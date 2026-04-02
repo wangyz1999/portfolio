@@ -4,7 +4,7 @@ title: "Human-Robot Facial Co-expression"
 feature: "/imgs/projects/coexpress.gif"
 description: Science Robotics 2024
 
-publishDate: "02 Jan 2023"
+publishDate: "27 Mar 2024"
 authors:
   [
     "Yuhang Hu",
