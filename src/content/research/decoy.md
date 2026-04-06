@@ -11,6 +11,7 @@ author_idx: 0
 selected: false
 category: "conference"
 venue: "WSC"
+venue_full: "Winter Simulation Conference"
 tldr: ""
 tags: ["Multi-Agent", "Game AI", "Simulation"]
 

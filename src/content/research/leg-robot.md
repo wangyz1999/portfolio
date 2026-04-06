@@ -11,6 +11,7 @@ author_idx: 1
 selected: true
 category: "conference"
 venue: "IROS"
+venue_full: "IEEE/RSJ International Conference on Intelligent Robots and Systems"
 tldr: ""
 tags: ["Robotics", "Self-Modeling"]
 

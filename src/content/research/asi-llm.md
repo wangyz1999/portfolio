@@ -11,6 +11,7 @@ author_idx: 0
 selected: true
 category: "conference"
 venue: "EMNLP"
+venue_full: "Conference on Empirical Methods in Natural Language Processing"
 tldr: ""
 tags: ["LLM", "Crowd Simulation", "Multi-Agent", "Human Modeling"]
 

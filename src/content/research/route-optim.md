@@ -12,6 +12,7 @@ hidden: false
 selected: false
 category: "workshop"
 venue: "AAAI-FSS"
+venue_full: "AAAI Fall Symposium Series"
 tldr: ""
 tags: ["Route Optimization", "Human-AI Teaming", "Graph Neural Networks", "Reinforcement Learning"]
 

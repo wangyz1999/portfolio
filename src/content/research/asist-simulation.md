@@ -11,6 +11,7 @@ author_idx: 4
 hidden: true
 category: "conference"
 venue: "ICAART"
+venue_full: "International Conference on Agents and Artificial Intelligence"
 tldr: ""
 tags: ["Route Optimization", "Human-AI Teaming", "Graph Neural Networks", "Reinforcement Learning"]
 

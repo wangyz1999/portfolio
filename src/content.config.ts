@@ -32,6 +32,7 @@ const research = defineCollection({
 		hidden: z.boolean().optional(),
 		category: z.enum(["preprint", "conference", "journal", "workshop"]).optional(),
 		venue: z.string().optional(),
+		venue_full: z.string().optional(),
 		tldr: z.string().optional(),
 		tags: z.array(z.string()).default([]).optional(),
 		links: z.record(z.string(), z.string()).default({}).optional(),

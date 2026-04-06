@@ -76,11 +76,12 @@ const category = research.data.category;
 const catCfg = category ? categoryConfig[category] : null;
 const year = new Date(research.data.publishDate).getFullYear();
 const venue = research.data.venue;
+const venueFull = research.data.venue_full;
 const tldr = research.data.tldr;
 ---
 
 <Element
-  class="group flex flex-col gap-0 overflow-hidden rounded-xl border border-textColor/10 bg-bgColor shadow-sm dark:border-white/10"
+  class="group flex flex-col gap-0 rounded-xl border border-textColor/10 bg-bgColor shadow-sm dark:border-white/10"
 >
   <div class="flex flex-col gap-4 p-5 sm:flex-row">
     <!-- Thumbnail -->
@@ -134,9 +135,20 @@ const tldr = research.data.tldr;
             {
               venue ? (
                 <>
-                  <span class="font-mono font-semibold text-accent dark:text-accent">
-                    {venue}
-                  </span>
+                  {venueFull ? (
+                    <span class="group/venue relative inline-block">
+                      <span class="font-mono font-semibold text-accent dark:text-accent cursor-help">
+                        {venue}
+                      </span>
+                      <span class="pointer-events-none absolute bottom-full left-1/2 z-10 mb-1.5 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900/90 px-2.5 py-1 text-xs font-normal text-white opacity-0 shadow-lg transition-opacity duration-150 group-hover/venue:opacity-100 dark:bg-gray-100/90 dark:text-gray-900">
+                        {venueFull}
+                      </span>
+                    </span>
+                  ) : (
+                    <span class="font-mono font-semibold text-accent dark:text-accent">
+                      {venue}
+                    </span>
+                  )}
                   <span class="opacity-40">·</span>
                 </>
               ) : null
