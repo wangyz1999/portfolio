@@ -19,7 +19,7 @@ authors:
 author_idx: 0
 selected: true
 category: "conference"
-venue: "ACL 2026"
+venue: "ACL"
 tldr: ""
 tags: ["Multi-Agent", "Video Understanding", "Benchmark", "LLM", "Game AI"]
 
