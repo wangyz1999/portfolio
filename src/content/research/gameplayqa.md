@@ -2,7 +2,7 @@
 title: "GameplayQA: A Benchmarking Framework for Decision-Dense POV-Synced Multi-Video Understanding of 3D Virtual Agents"
 
 feature: "/imgs/projects/gameplayqa.gif"
-description: "Preprint"
+description: "ACL 2026"
 
 publishDate: "Mar 2026"
 authors:
@@ -18,8 +18,8 @@ authors:
 
 author_idx: 0
 selected: true
-category: "preprint"
-venue: "Arxiv"
+category: "conference"
+venue: "ACL 2026"
 tldr: ""
 tags: ["Multi-Agent", "Video Understanding", "Benchmark", "LLM", "Game AI"]
 
