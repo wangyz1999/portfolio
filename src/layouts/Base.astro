@@ -67,11 +67,16 @@ const {
 
 		<!-- Visitor tracking (invisible) -->
 		<script is:inline type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&w=a&t=n&d=1NaCE8A7TNCv-6PYXXfIIVHOovLZTWfmWlgG8roOsZ0&co=ffffff&ct=808080&cmo=3acc3a&cmn=ff5353"></script>
+		<script is:inline type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=080808&w=a&t=n&d=8mlh35VvBfbMH0bKw_div-BWzXwgvV7yv6bGNSa0mT0&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=808080"></script>
 		<style>
 			[id*="mapmyvisitors"], [class*="mapmyvisitors"], [src*="mapmyvisitors"],
 			a[href*="mapmyvisitors"], img[src*="mapmyvisitors"],
 			div:has(> a[href*="mapmyvisitors"]),
-			center:has([class*="mapmyvisitors"]) {
+			center:has([class*="mapmyvisitors"]),
+			[id*="clustrmaps"], [class*="clustrmaps"], [src*="clustrmaps"],
+			a[href*="clustrmaps"], img[src*="clustrmaps"],
+			div:has(> a[href*="clustrmaps"]),
+			center:has([class*="clustrmaps"]) {
 				display: none !important;
 				visibility: hidden !important;
 				pointer-events: none !important;
@@ -162,7 +167,7 @@ const {
 	<script is:inline>
 		(function () {
 			const remove = () => {
-				document.querySelectorAll('[id*="mapmyvisitors"], [class*="mapmyvisitors"], a[href*="mapmyvisitors"], img[src*="mapmyvisitors"]').forEach(el => {
+				document.querySelectorAll('[id*="mapmyvisitors"], [class*="mapmyvisitors"], a[href*="mapmyvisitors"], img[src*="mapmyvisitors"], [id*="clustrmaps"], [class*="clustrmaps"], a[href*="clustrmaps"], img[src*="clustrmaps"]').forEach(el => {
 					(el.closest('center, div:not([class]):not([id])') || el).remove();
 				});
 			};
