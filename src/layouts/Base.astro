@@ -31,7 +31,7 @@ const {
 				if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
 					return localStorage.getItem("theme");
 				}
-				return "light";
+				return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 			}
 
 			const isDark = getThemePreference() === "dark";
@@ -55,19 +55,22 @@ const {
 			root.classList.toggle("dark", isDark);
 		</script>
 
-		<!-- Google tag (gtag.js) -->
-		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-Z93QE73T55"></script>
-		<script is:inline>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', 'G-Z93QE73T55');
+		<!-- Google tag (gtag.js) — runs in a web worker via Partytown -->
+		<script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-Z93QE73T55"
+		></script>
+		<script type="text/partytown">
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+			gtag("config", "G-Z93QE73T55");
 		</script>
 
 
-		<!-- Visitor tracking (invisible) -->
-		<script is:inline type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&w=a&t=n&d=1NaCE8A7TNCv-6PYXXfIIVHOovLZTWfmWlgG8roOsZ0&co=ffffff&ct=808080&cmo=3acc3a&cmn=ff5353"></script>
-		<script is:inline type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=080808&w=a&t=n&d=8mlh35VvBfbMH0bKw_div-BWzXwgvV7yv6bGNSa0mT0&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=808080"></script>
+		<!-- Visitor tracking (invisible) — deferred so they don't block first paint -->
+		<script is:inline defer type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&w=a&t=n&d=1NaCE8A7TNCv-6PYXXfIIVHOovLZTWfmWlgG8roOsZ0&co=ffffff&ct=808080&cmo=3acc3a&cmn=ff5353"></script>
+		<script is:inline defer type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=080808&w=a&t=n&d=8mlh35VvBfbMH0bKw_div-BWzXwgvV7yv6bGNSa0mT0&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=808080"></script>
 		<style>
 			[id*="mapmyvisitors"], [class*="mapmyvisitors"], [src*="mapmyvisitors"],
 			a[href*="mapmyvisitors"], img[src*="mapmyvisitors"],
@@ -120,10 +123,11 @@ const {
 							widths={[208, 416]}
 							sizes="208px"
 							loading="eager"
+							fetchpriority="high"
 							width={288}
 							height={288}
 							src={profile_pic}
-							alt="profile"
+							alt="Portrait of Yunzhe Wang"
 						/>
 						<p class="mb-2 text-center text-lg font-bold text-textColor">Yunzhe Wang</p>
 						<div class="flex justify-center mb-4">
@@ -145,10 +149,11 @@ const {
 							widths={[112, 224]}
 							sizes="112px"
 							loading="eager"
+							fetchpriority="high"
 							width={224}
 							height={224}
 							src={profile_pic}
-							alt="profile"
+							alt="Portrait of Yunzhe Wang"
 						/>
 						<p class="mb-2 text-base font-bold text-textColor">Yunzhe Wang</p>
 						<div class="mb-2">

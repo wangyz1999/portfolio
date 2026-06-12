@@ -18,7 +18,8 @@ export const siteConfig: SiteConfig = {
 	// Meta property used to construct the meta title property, found in src/components/BaseHead.astro L:11
 	title: "Yunzhe's Space",
 	// Meta property used as a default description meta property
-	description: "Yunzhe's Portfolio Website, outline of my projects and skills.",
+	description:
+		"Yunzhe Wang is a Computer Science PhD student at USC researching multi-agent interaction, realistic human simulation, and embodied AI agents.",
 	// HTML lang property, found in src/layouts/Base.astro L:18
 	lang: "en-US",
 	// Meta property, found in src/components/BaseHead.astro L:42

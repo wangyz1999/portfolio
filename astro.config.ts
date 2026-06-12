@@ -4,10 +4,13 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import partytown from "@astrojs/partytown";
 
+// Pages reachable from the nav. Everything else (posts, tags, hobbies, snowball)
+// stays deployed but hidden: excluded from the sitemap and disallowed in robots.txt.
+const HIDDEN_PATHS = ["/posts", "/tags", "/hobbies", "/snowball"];
+
 // https://astro.build/config
 export default defineConfig({
-	// ! Please remember to replace the following site property with your own domain
-	site: "https://www.yunzhew.com",
+	site: "https://yunzhe.wang",
 	markdown: {
 		shikiConfig: {
 			theme: "dracula",
@@ -19,7 +22,9 @@ export default defineConfig({
 		tailwind({
 			applyBaseStyles: false,
 		}),
-		sitemap(),
+		sitemap({
+			filter: (page) => !HIDDEN_PATHS.some((path) => new URL(page).pathname.startsWith(path)),
+		}),
 		partytown({
 			config: {
 				forward: ["dataLayer.push"],
@@ -32,5 +37,7 @@ export default defineConfig({
 			exclude: ["@resvg/resvg-js"],
 		},
 	},
-	prefetch: true,
+	prefetch: {
+		prefetchAll: true,
+	},
 });

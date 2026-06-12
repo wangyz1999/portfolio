@@ -2,7 +2,7 @@
 title: "GraphAllocBench: A Flexible Benchmark for Preference-Conditioned Multi-Objective Policy Learning"
 
 feature: "/imgs/projects/graphallocbench.jpg"
-description: "preprint"
+description: "MODeM @ IJCAI 2026"
 
 publishDate: "Jan 2026"
 authors:
@@ -17,8 +17,9 @@ authors:
 
 author_idx: 1
 selected: false
-category: "preprint"
-venue: "Arxiv"
+category: "workshop"
+venue: "MODeM @ IJCAI 2026"
+venue_full: "Multi-Objective Decision Making Workshop at IJCAI-ECAI 2026"
 tldr: ""
 tags: ["Benchmark", "Reinforcement Learning", "Multi-Objective Optimization", "Graph Neural Networks"]
 

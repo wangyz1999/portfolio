@@ -68,6 +68,8 @@ const cardHref = (links as Record<string, string>).github ?? (github_repo ? `htt
         <img
           src={feature}
           alt={title}
+          loading="lazy"
+          decoding="async"
           class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </a>

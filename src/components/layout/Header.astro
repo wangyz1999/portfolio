@@ -7,17 +7,29 @@ const url = new URL(Astro.request.url);
 ---
 
 <script>
-	import { toggleClass } from "@/utils";
-
 	document.addEventListener("DOMContentLoaded", () => {
 		const header = document.getElementById("main-header") as HTMLElement;
 		const toggleMenuButton = document.getElementById("toggle-navigation-menu") as HTMLButtonElement;
+		const navigationMenu = document.getElementById("navigation-menu") as HTMLElement;
 		let menuOpen = false;
 
-		toggleMenuButton.addEventListener("click", () => {
-			toggleClass(header, "menu-open");
-			menuOpen = !menuOpen;
+		function setMenuOpen(open: boolean) {
+			menuOpen = open;
+			header.classList.toggle("menu-open", menuOpen);
 			toggleMenuButton.setAttribute("aria-expanded", menuOpen.toString());
+		}
+
+		toggleMenuButton.addEventListener("click", () => setMenuOpen(!menuOpen));
+
+		// Close on Escape, on click outside, and when following a link
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && menuOpen) setMenuOpen(false);
+		});
+		document.addEventListener("click", (e) => {
+			if (menuOpen && !header.contains(e.target as Node)) setMenuOpen(false);
+		});
+		navigationMenu.addEventListener("click", (e) => {
+			if (menuOpen && (e.target as HTMLElement).closest("a")) setMenuOpen(false);
 		});
 	});
 </script>
@@ -59,7 +71,7 @@ const url = new URL(Astro.request.url);
 					href={link.path}
 					class={`flex items-center gap-2 px-4 py-2.5 text-sm transition-colors hover:text-accent sm:rounded sm:px-3 sm:py-1.5 sm:hover:bg-accent/10 ${url.pathname === link.path ? "font-semibold text-accent" : "text-textColor"}`}
 					aria-current={url.pathname === link.path ? "page" : false}
-					rel={link.external ? "noopener noreferrer" : "prefetch"}
+					rel={link.external ? "noopener noreferrer" : undefined}
 					target={link.external ? "_blank" : undefined}
 				>
 					{link.icon && <Icon name={link.icon} />}
