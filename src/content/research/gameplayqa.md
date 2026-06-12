@@ -29,5 +29,5 @@ links:
   Code: https://github.com/wangyz1999/sync-video-label
   Dataset: https://huggingface.co/datasets/wangyz1999/GameplayQA
   Website: https://hats-ict.github.io/gameplayqa/
-  Video: https://www.youtube.com/watch?v=rtcMkD8HC1U&t=3s
+  Video: https://www.youtube.com/watch?v=rtcMkD8HC1U
 ---
