@@ -28,7 +28,7 @@ author_idx: 6
 selected: true
 category: "journal"
 venue: "Science Robotics"
-tldr: ""
+tldr: "A humanoid face robot learns realistic, multilingual lip movements from human videos. Facial retargeting and a learned self-model connect observed human motion to robot actuation."
 tags: ["Robotics", "Human-Robot Interaction", "Speech", "Facial Expression"]
 
 links:

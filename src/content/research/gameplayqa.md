@@ -21,7 +21,7 @@ selected: true
 category: "conference"
 venue: "ACL"
 venue_full: "Annual Meeting of the Association for Computational Linguistics"
-tldr: ""
+tldr: "A benchmark of 2,365 questions across nine games tests how well multimodal LLMs understand synchronized agent views. The best model scores 71.3%, compared with 80.5% for humans."
 tags: ["Multi-Agent", "Video Understanding", "Benchmark", "LLM", "Game AI"]
 
 links:

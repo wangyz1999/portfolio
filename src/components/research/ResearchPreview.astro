@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Icon from "../Icon.astro";
+import MentorshipBadge from "./MentorshipBadge.astro";
 
 const { research, as: Element = "div" } = Astro.props;
 
@@ -79,158 +80,72 @@ const venue = research.data.venue;
 const venueFull = research.data.venue_full;
 const tldr = research.data.tldr;
 ---
-
-<Element
-  class="group flex flex-col gap-0 rounded-xl border border-textColor/10 bg-bgColor shadow-sm dark:border-white/10"
->
-  <div class="flex flex-col gap-4 p-5 sm:flex-row">
-    <!-- Thumbnail -->
-    <div class="shrink-0 self-center">
-      <button
-        type="button"
-        aria-label={`Enlarge figure for ${research.data.title}`}
-        class="img-preview-btn block overflow-hidden rounded-lg cursor-zoom-in"
-        data-src={typeof research.data.feature === "string"
-          ? research.data.feature
-          : research.data.feature.src}
-        data-alt={research.data.title}
-      >
-        <Image
-          src={research.data.feature}
-          alt={research.data.title}
-          height={200}
-          width={220}
-          class="object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-      </button>
+<Element class="research-card">
+  <div class="research-figure">
+    <button type="button" class="img-preview-btn" aria-label={`Enlarge figure for ${research.data.title}`}
+      data-src={typeof research.data.feature === "string" ? research.data.feature : research.data.feature.src}
+      data-alt={research.data.title}>
+      <Image src={research.data.feature} alt={research.data.title} height={200} width={260} loading="lazy" />
+    </button>
+  </div>
+  <div class="research-body">
+    <div class="research-meta">
+      {catCfg && <span class={`paper-category ${catCfg.style}`}>{catCfg.label}</span>}
+      <span title={venueFull} class="paper-venue">{venue}</span>
+      <span class="paper-year">{year}</span>
+      <MentorshipBadge mentees={research.data.mentored ?? []} />
     </div>
-
-    <!-- Body -->
-    <div class="flex min-w-0 flex-1 flex-col gap-2.5">
-      <!-- Line 1: Title -->
-      <div class="flex flex-col gap-1">
-        <a
-          href={paperLink}
-          target={paperLink.startsWith("/") ? "_self" : "_blank"}
-          rel={paperLink.startsWith("/") ? "" : "noopener noreferrer"}
-        >
-          <h2
-            class="text-lg font-bold leading-snug text-textColor transition-colors hover:text-accent dark:hover:text-accent"
-          >
-            {research.data.title}
-          </h2>
-        </a>
-
-        <!-- Category badge · Venue · Year -->
-        <div class="flex flex-wrap items-center gap-2">
-          {
-            catCfg && (
-              <span
-                class={`rounded-sm px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wider ${catCfg.style}`}
-              >
-                {catCfg.label}
-              </span>
-            )
-          }
-          <span class="text-xs text-textColor/40 dark:text-white/30">
-            {
-              venue ? (
-                <>
-                  {venueFull ? (
-                    <span class="group/venue relative inline-block">
-                      <span class="font-mono font-semibold text-accent dark:text-accent cursor-help">
-                        {venue}
-                      </span>
-                      <span class="pointer-events-none absolute bottom-full left-1/2 z-10 mb-1.5 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900/90 px-2.5 py-1 text-xs font-normal text-white opacity-0 shadow-lg transition-opacity duration-150 group-hover/venue:opacity-100 dark:bg-gray-100/90 dark:text-gray-900">
-                        {venueFull}
-                      </span>
-                    </span>
-                  ) : (
-                    <span class="font-mono font-semibold text-accent dark:text-accent">
-                      {venue}
-                    </span>
-                  )}
-                  <span class="opacity-40">·</span>
-                </>
-              ) : null
-            }
-            {year}
-          </span>
-        </div>
-      </div>
-
-      <!-- Line 2: Topic tags -->
-      {
-        research.data.tags && research.data.tags.length > 0 && (
-          <div class="flex flex-wrap gap-1">
-            {research.data.tags.map((tag: string) => (
-              <span class="rounded-full bg-zinc-200/80 px-2.5 py-0.5 text-xs font-medium text-zinc-400 dark:bg-zinc-800 dark:text-zinc-500">
-                {tag}
-              </span>
-            ))}
-          </div>
-        )
-      }
-
-      <!-- Line 3: Authors -->
-      <div
-        class="flex flex-wrap gap-x-1 text-sm text-textColor/60 dark:text-white/50"
-      >
-        {
-          research.data.authors.map((author: string, idx: number) => (
-            <span>
-              <span
-                class={
-                  idx === research.data.author_idx
-                    ? "font-semibold text-textColor dark:text-white"
-                    : ""
-                }
-              >
-                {author}{idx !== research.data.authors.length - 1 ? "," : ""}
-              </span>
-            </span>
-          ))
-        }
-      </div>
-
-      <!-- TL;DR -->
-      {
-        tldr && (
-          <p class="border-l-2 border-accent/40 pl-2.5 text-sm leading-relaxed text-textColor/60 dark:border-accent/40 dark:text-white/50">
-            <span class="font-semibold text-textColor/80 dark:text-white/70">
-              TL;DR
-            </span>{" "}
-            — {tldr}
-          </p>
-        )
-      }
-
-      <!-- Line 5: Links -->
-      <div class="flex flex-wrap gap-1.5 pt-0.5">
-        {
-          Object.entries(research.data.links).map(([key, value]) => {
-            const iconType = getIcon(key);
-            const iconTitle = getIconTitle(key);
-            const url = value as string;
-            return (
-              <a
-                href={url}
-                target={url.startsWith("/") ? "_self" : "_blank"}
-                rel={url.startsWith("/") ? "" : "noopener noreferrer"}
-                class="flex items-center gap-1 rounded-sm border border-textColor/15 bg-textColor/5 px-2 py-1 text-sm font-medium text-textColor/70 transition-all hover:border-accent hover:bg-accent hover:text-white dark:border-white/15 dark:bg-white/5 dark:text-white/60 dark:hover:border-accent dark:hover:bg-accent dark:hover:text-white"
-                title={iconTitle}
-              >
-                <Icon name={iconType} class="h-3.5 w-3.5" />
-                <span>{iconTitle}</span>
-              </a>
-            );
-          })
-        }
-      </div>
+    <a class="paper-title" href={paperLink} target={paperLink.startsWith("/") ? "_self" : "_blank"}
+      rel={paperLink.startsWith("/") ? undefined : "noopener noreferrer"}>
+      <h2>{research.data.title}</h2>
+    </a>
+    {tldr && <p class="paper-summary"><span>TL;DR</span> {tldr}</p>}
+    <p class="paper-authors">
+      {research.data.authors.map((author: string, idx: number) => (
+        <><span class={idx === research.data.author_idx ? "paper-self" : undefined}>{author}</span>{idx < research.data.authors.length - 1 ? ", " : ""}</>
+      ))}
+    </p>
+    <div class="paper-topics">{(research.data.tags ?? []).map((tag: string) => <span>{tag}</span>)}</div>
+    <div class="paper-links">
+      {Object.entries(research.data.links).map(([key, value]) => {
+        const url = value as string;
+        return <a href={url} target={url.startsWith("/") ? "_self" : "_blank"}
+          rel={url.startsWith("/") ? undefined : "noopener noreferrer"}>
+          <Icon name={getIcon(key)} class="h-3.5 w-3.5" /><span>{getIconTitle(key)}</span>
+        </a>;
+      })}
     </div>
   </div>
 </Element>
 
+<style>
+  .research-card { display:grid; grid-template-columns:184px minmax(0,1fr); gap:28px; padding:8px 0 30px; border-bottom:1px solid color-mix(in srgb, var(--surface-border) 65%, transparent); }
+  .research-figure { align-self:start; padding-top:4px; }
+  .img-preview-btn { display:flex; align-items:center; justify-content:center; width:100%; min-height:130px; border-radius:10px; overflow:hidden; cursor:zoom-in; background:var(--figure-bg); border:1px solid var(--surface-border); }
+  .img-preview-btn :global(img) { width:100%; height:auto; max-height:190px; object-fit:contain; }
+  .research-body { min-width:0; }
+  .research-meta { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:10px; font-size:12px; }
+  .paper-category { border-radius:4px; padding:3px 6px; font-weight:600; }
+  .paper-venue { font-weight:600; color:var(--theme-accent); }
+  .paper-year { color:var(--muted-text); }
+  .paper-title h2 { font-size:19px; line-height:1.4; font-weight:650; letter-spacing:-.025em; color:var(--theme-text); }
+  .paper-title:hover h2 { color:var(--theme-accent); }
+  .paper-summary { margin-top:12px; font-size:14px; line-height:1.7; color:var(--body-text); }
+  .paper-summary > span { font-size:10px; font-weight:700; letter-spacing:.07em; color:var(--theme-accent); margin-right:5px; }
+  .paper-authors { margin-top:12px; font-size:12px; line-height:1.75; color:var(--muted-text); }
+  .paper-self { font-weight:650; color:var(--body-text); }
+  .paper-topics { display:flex; flex-wrap:wrap; gap:5px 12px; margin-top:10px; color:var(--muted-text); font-size:11px; }
+  .paper-links { display:flex; flex-wrap:wrap; gap:7px; margin-top:15px; }
+  .paper-links a { display:inline-flex; align-items:center; gap:6px; padding:5px 9px; font-size:12px; font-weight:550; border:1px solid var(--surface-border); border-radius:6px; color:var(--body-text); }
+  .paper-links a:hover { background:var(--theme-accent); color:var(--theme-bg); border-color:var(--theme-accent); }
+  @media (max-width:700px) {
+    .research-card { grid-template-columns:1fr; gap:18px; padding:4px 0 26px; }
+    .research-figure { padding:0; }
+    .img-preview-btn { height:155px; }
+    .img-preview-btn :global(img) { width:auto; max-width:100%; max-height:155px; }
+    .paper-title h2 { font-size:18px; }
+  }
+</style>
 <script>
   // Create a single global lightbox on first use
   function getOrCreateLightbox() {

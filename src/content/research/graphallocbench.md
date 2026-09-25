@@ -1,7 +1,7 @@
 ---
 title: "GraphAllocBench: A Flexible Benchmark for Preference-Conditioned Multi-Objective Policy Learning"
 
-feature: "/imgs/projects/graphallocbench.jpg"
+feature: "/imgs/projects/graphallocbench-figure1.png"
 description: "MODeM @ IJCAI 2026"
 
 publishDate: "Jan 2026"
@@ -16,14 +16,15 @@ authors:
   ]
 
 author_idx: 1
-selected: false
+selected: true
+mentored: ["Zhiheng Jiang", "Ryan Marr"]
 category: "workshop"
 venue: "MODeM @ IJCAI 2026"
 venue_full: "Multi-Objective Decision Making Workshop at IJCAI-ECAI 2026"
-tldr: ""
+tldr: "A suite of 19 resource-allocation problems tests how reliably reinforcement-learning agents balance competing objectives and follow user preferences."
 tags: ["Benchmark", "Reinforcement Learning", "Multi-Objective Optimization", "Graph Neural Networks"]
 
 links:
   Paper: "https://arxiv.org/abs/2601.20753"
-  Code: https://github.com/jzh001/GraphAllocBench"
+  Code: https://github.com/jzh001/GraphAllocBench
 ---

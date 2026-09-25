@@ -7,9 +7,11 @@
 		"start": "astro dev",
 		"sync": "astro sync",
 		"check": "astro check",
-		"build": "astro build",
+		"build": "node scripts/sync-github-contributions.mjs && astro build",
 		"preview": "astro preview",
-		"format": "prettier -w --plugin-search-dir=. --cache ."
+		"format": "prettier -w --plugin-search-dir=. --cache .",
+		"sync:github": "node scripts/sync-github-contributions.mjs",
+		"test:github": "node --test scripts/github-contributions.test.mjs"
 	},
 	"devDependencies": {
 		"@astrojs/mdx": "^5.0.3",

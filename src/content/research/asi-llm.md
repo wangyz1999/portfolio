@@ -12,7 +12,7 @@ selected: true
 category: "conference"
 venue: "EMNLP"
 venue_full: "Conference on Empirical Methods in Natural Language Processing"
-tldr: ""
+tldr: "PersonaEvolve rewrites agent personas to align emergent crowd behavior with expert data, reducing divergence by 84% on average across four metrics versus unsteered agents, without model fine-tuning."
 tags: ["LLM", "Crowd Simulation", "Multi-Agent", "Human Modeling"]
 
 links:

@@ -1,0 +1,24 @@
+---
+interface Props {
+  mentees: string[];
+}
+
+const { mentees } = Astro.props;
+const detail = `Yunzhe mentored ${mentees.join(" and ")} on this work.`;
+---
+
+{
+  mentees.length > 0 && (
+    <span
+      title={detail}
+      aria-label={`Mentored research: ${detail}`}
+      class="inline-flex self-start items-center gap-1 rounded-full border border-violet-300/70 bg-violet-100 px-2.5 py-0.5 text-xs font-semibold text-violet-800 dark:border-violet-400/30 dark:bg-violet-400/15 dark:text-violet-200"
+    >
+      <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="7" r="3" />
+        <path d="M3 21v-2a6 6 0 0 1 12 0v2M16 4a3 3 0 0 1 0 6M21 21v-2a6 6 0 0 0-4-5.65" />
+      </svg>
+      Mentored research
+    </span>
+  )
+}

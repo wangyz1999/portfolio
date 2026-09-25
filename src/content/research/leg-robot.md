@@ -12,7 +12,7 @@ selected: true
 category: "conference"
 venue: "IROS"
 venue_full: "IEEE/RSJ International Conference on Intelligent Robots and Systems"
-tldr: ""
+tldr: "A reconfigurable robot infers its own body shape from joint motion alone. Encoder–decoder models trained on 200,000 configurations generalize to previously unseen morphologies."
 tags: ["Robotics", "Self-Modeling"]
 
 links:

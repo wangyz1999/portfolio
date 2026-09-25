@@ -20,7 +20,7 @@ author_idx: 3
 selected: true
 category: "journal"
 venue: "Science Robotics"
-tldr: ""
+tldr: "Emo anticipates and co-expresses human smiles in real time, using facial-landmark retargeting and a learned inverse self-model to control a 26-actuator robot face."
 tags: ["Robotics", "Human-Robot Interaction", "Facial Expression"]
 links:
   Paper: "https://www.science.org/doi/10.1126/scirobotics.adi4724"

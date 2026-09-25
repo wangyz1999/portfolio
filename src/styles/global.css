@@ -3,7 +3,17 @@
 @layer base {
 	:root {
 		color-scheme: light;
-		--theme-bg: #f4f4f4;
+		--theme-bg: #f7f8fa;
+    --surface: #ffffff;
+    --surface-border: #dce1e7;
+    --body-text: #394553;
+    --muted-text: #5e6a79;
+    --figure-bg: #f0f2f5;
+    --heat-0: #e6eaf0;
+    --heat-1: #c1ddcf;
+    --heat-2: #7fbea0;
+    --heat-3: #3d926d;
+    --heat-4: #166344;
 		--theme-link: #c4703a;
 		--theme-text: #2a2622;
 		--theme-accent: #b8273d;
@@ -14,7 +24,17 @@
 
 	:root.dark {
 		color-scheme: dark;
-		--theme-bg: #1d1f21;
+		--theme-bg: #16191d;
+    --surface: #1d2228;
+    --surface-border: #343e49;
+    --body-text: #c5cdd6;
+    --muted-text: #9ba7b5;
+    --figure-bg: #13171c;
+    --heat-0: #29323c;
+    --heat-1: #254d40;
+    --heat-2: #33785a;
+    --heat-3: #49ae7c;
+    --heat-4: #83d9a5;
 		--theme-link: #d480aa;
 		--theme-text: #c9cacc;
 		--theme-accent: #2bbc89;
@@ -28,9 +48,12 @@
 	}
 
 	html body {
-		@apply bg-bgColor pt-6 font-mono text-sm font-normal text-textColor antialiased sm:pt-9;
+		@apply bg-bgColor pt-6 font-sans text-sm font-normal text-textColor antialiased sm:pt-9;
 	}
 }
 
 @tailwind components;
 @tailwind utilities;
+
+:focus-visible { outline: 2px solid var(--theme-accent); outline-offset: 4px; }
+::selection { background: var(--theme-accent); color: var(--theme-bg); }
