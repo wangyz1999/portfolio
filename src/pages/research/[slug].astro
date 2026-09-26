@@ -5,7 +5,7 @@ import Research from "@/layouts/Research";
 
 export const getStaticPaths = (async () => {
 	const blogEntries = await getCollection("research");
-	return blogEntries.map((entry) => ({
+	return blogEntries.filter((entry) => entry.data.detailPage).map((entry) => ({
 		params: { slug: entry.id },
 		props: { entry },
 	}));

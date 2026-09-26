@@ -29,6 +29,7 @@ const research = defineCollection({
 		authors: z.array(z.string()).default([]).optional(),
 		author_idx: z.number().optional(),
 		selected: z.boolean().optional(),
+		detailPage: z.boolean().default(true),
 		hidden: z.boolean().optional(),
 		mentored: z.array(z.string()).default([]),
 		category: z.enum(["preprint", "conference", "journal", "workshop"]).optional(),
